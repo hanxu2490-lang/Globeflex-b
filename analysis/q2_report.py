@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Question 2 report outputs (Step 3 results gathered for the write-up).
 
 Table 1: equation (2) in every version (EM, EM ex-IT, EM local currency; with / without X;

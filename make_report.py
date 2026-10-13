@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Build the results report (report/index.html) from the tables in output/.
 
 Run `python run_all.py` first. Tables are filled from the CSV files; the written text describes
@@ -47,7 +48,7 @@ def figure(name, caption):
 
 # ------------------------------------------------------------------ tables
 def q1_table():
-    d = pd.read_csv(T / "step2_regressions.csv")
+    d = pd.read_csv(T / "step2_regressions.csv", encoding="utf-8-sig")
     rows = []
     for _, r in d.iterrows():
         rows.append([r["dependent"], r["interaction"].replace("w_IT,t-1", "w<sub>IT,t−1</sub>"), r["sample"],
@@ -57,7 +58,7 @@ def q1_table():
 
 
 def q2_table1():
-    d = pd.read_csv(T / "q2_table1_formatted.csv", index_col=0)
+    d = pd.read_csv(T / "q2_table1_formatted.csv", index_col=0, encoding="utf-8-sig")
     cols = list(d.columns)
     order = [("γ1 Fin", "γ<sub>1</sub> Fin"), ("γ2 Geo", "γ<sub>2</sub> Geo"),
              ("γ3 Fin × Current", "γ<sub>3</sub> Fin × Current"), ("γ4 Geo × Current", "γ<sub>4</sub> Geo × Current"),
@@ -79,8 +80,8 @@ def q2_table1():
 
 
 def q2_table2():
-    d = pd.read_csv(T / "q2_table2_event_study.csv")
-    g = pd.read_csv(T / "q2_table2_event_study_by_group.csv", index_col=0)
+    d = pd.read_csv(T / "q2_table2_event_study.csv", encoding="utf-8-sig")
+    g = pd.read_csv(T / "q2_table2_event_study_by_group.csv", index_col=0, encoding="utf-8-sig")
     heads = {"Past Fin": "Past financial crises (before 2018)", "Current Fin": "Current financial crises (from 2018)",
              "Past Geo": "Past war crises (before 2018)", "Current Geo": "Current war crises (from 2018)",
              "Current Trade": "Current trade conflicts (from 2018)"}
@@ -111,7 +112,7 @@ def q2_table2():
 
 
 def drivers_table():
-    d = pd.read_csv(T / "q2_drivers_by_crisis_cell.csv", index_col=0)
+    d = pd.read_csv(T / "q2_drivers_by_crisis_cell.csv", index_col=0, encoding="utf-8-sig")
     rows = [[k, int(r["months"]), num(r["EM − World"], sign=True), num(r["currency part (USD − local)"], sign=True),
              num(r["tech part (EM − EM ex-IT)"], sign=True), num(r["ΔDXY (%)"], sign=True),
              num(r["ΔVIX (points)"], sign=True), num(r["IT weight (%)"], 1)] for k, r in d.iterrows()]
@@ -120,7 +121,7 @@ def drivers_table():
 
 
 def portfolio_table():
-    d = pd.read_csv(T / "step4_portfolio_performance.csv", index_col=0)
+    d = pd.read_csv(T / "step4_portfolio_performance.csv", index_col=0, encoding="utf-8-sig")
     rows = [[k, num(r["ann. return %"]), num(r["ann. volatility %"]), num(r["Sharpe"]), num(r["max drawdown %"]),
              num(r["Fin months, current %"], sign=True), num(r["Geo months, current %"], sign=True),
              num(r["avg EM weight %"], 1), num(r["last EM weight %"], 1)] for k, r in d.iterrows()]
@@ -205,11 +206,18 @@ def build():
     for f in FIGS:
         shutil.copy(F / f"{f}.png", OUT / "figures" / f"{f}.png")
 
-    page = f"""<title>GlobeFlex B Results Report</title>
+    page = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GlobeFlex B Results Report</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
 <style>{CSS}</style>
+</head>
+<body>
 <div class="wrap">
 
 <header class="top">
@@ -405,8 +413,10 @@ Produced from <span class="mono">python run_all.py</span> and <span class="mono"
 Settings are in <span class="mono">analysis/config.py</span>; every table here has a CSV in <span class="mono">output/tables/</span>.
 </footer>
 </div>
+</body>
+</html>
 """
-    (OUT / "index.html").write_text(page)
+    (OUT / "index.html").write_text(page, encoding="utf-8")
     print(f"report written to {OUT / 'index.html'}")
 
 

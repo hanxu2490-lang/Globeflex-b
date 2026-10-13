@@ -132,7 +132,7 @@ def write_summary(data_tab, r1, r2, r3, r4, rob, m):
         crisis_md(rob["current_2022"]),
         "",
     ]
-    (C.OUT_DIR / "results_summary.md").write_text("\n".join(lines))
+    (C.OUT_DIR / "results_summary.md").write_text("\n".join(lines), encoding="utf-8")
 
 
 def main():

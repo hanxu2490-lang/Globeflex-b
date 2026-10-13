@@ -1,4 +1,4 @@
-,first,last,observations,note
+﻿,first,last,observations,note
 monthly returns,2001-01,2026-09,309,
 weekly returns (Step 1),2001-01-05,2026-09-25,1343,
 daily returns (event study),2001-01-01,2026-09-25,6715,MSCI data end 2026-09-25

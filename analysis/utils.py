@@ -37,7 +37,7 @@ def lincom(res, names):
 
 def save_table(df, name, index=True):
     C.TABLE_DIR.mkdir(parents=True, exist_ok=True)
-    df.to_csv(C.TABLE_DIR / f"{name}.csv", index=index)
+    df.to_csv(C.TABLE_DIR / f"{name}.csv", index=index, encoding="utf-8-sig")  # BOM so Excel reads Greek letters
 
 
 def to_markdown(df, floatfmt="{:.3f}", index=True):
