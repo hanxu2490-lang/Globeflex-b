@@ -9,7 +9,7 @@ pip install -r requirements.txt
 python run_all.py
 ```
 
-It runs in about 10 seconds. It writes every table to `output/tables/` (CSV), every chart to
+It runs in about 10 seconds. Then `python make_report.py` builds the results report in `report/index.html`. It writes every table to `output/tables/` (CSV), every chart to
 `output/figures/` (PNG) and a combined report to `output/results_summary.md`.
 
 ## Layout
@@ -23,7 +23,9 @@ It runs in about 10 seconds. It writes every table to `output/tables/` (CSV), ev
 | `analysis/step3_crisis.py` | Step 3 — equation (2) with and without X, EM ex-IT, daily event study (−5 to +20 days) |
 | `analysis/step4_portfolio.py` | Step 4 — USA + EM / EM Small Cap / EM ex-IT, rolling 60-month minimum variance, out of sample from 2006 |
 | `analysis/robustness.py` | Robustness — Small Cap net returns post-2010, local-currency EM, current period from 2022 |
+| `analysis/q2_report.py` | Question 2 write-up: Table 1 (all versions of equation 2), Table 2 (one row per crisis, with currency and tech parts), two-panel event figure, crisis-month drivers |
 | `run_all.py` | Runs everything in order and writes `output/results_summary.md` |
+| `make_report.py` | Builds the report page `report/index.html` from the tables and figures |
 
 ## Data (`data/`)
 

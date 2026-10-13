@@ -7,7 +7,7 @@ import time
 import pandas as pd
 
 from analysis import config as C
-from analysis import data_prep, robustness, step1_dcc, step2_beta_tech, step3_crisis, step4_portfolio
+from analysis import data_prep, q2_report, robustness, step1_dcc, step2_beta_tech, step3_crisis, step4_portfolio
 from analysis import utils as U
 
 
@@ -155,6 +155,8 @@ def main():
     print("step 4 done")
     rob = robustness.run(m, weekly)
     print("robustness done")
+    q2_report.run(raw, m)
+    print("question 2 report tables done")
     U.save_table(m, "data_monthly_panel")
     write_summary(data_tab, r1, r2, r3, r4, rob, m)
     print(f"finished in {time.time() - t0:.0f}s -> {C.OUT_DIR}")
