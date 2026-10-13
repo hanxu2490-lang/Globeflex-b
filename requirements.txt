@@ -1,0 +1,9 @@
+# tested with Python 3.13 and the versions in brackets
+pandas>=2.2        # (3.0.5)
+numpy>=1.26        # (2.5.3)
+openpyxl>=3.1      # (3.1.5)  .xlsx files
+xlrd>=2.0          # (2.0.2)  GPR .xls file
+statsmodels>=0.14  # (0.15.0)
+scipy>=1.11        # (1.18.1)
+arch>=6.2          # (8.0.0)
+matplotlib>=3.8    # (3.11.2)
