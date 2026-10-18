@@ -26,6 +26,7 @@ It runs in about 10 seconds. Then `python make_report.py` builds the results rep
 | `analysis/q2_report.py` | Question 2 write-up: Table 1 (all versions of equation 2), Table 2 (one row per crisis, with currency and tech parts), two-panel event figure, crisis-month drivers |
 | `run_all.py` | Runs everything in order and writes `output/results_summary.md` |
 | `make_report.py` | Builds the report page `report/index.html` from the tables and figures |
+| `notebooks/Module_E_Crisis_Analysis.ipynb` | Module E: event study around the 15 named crises, checked against the team CSVs, with like-for-like past-vs-current comparison, size against normal times and a country breakdown. Writes to `output/module_e/` |
 
 ## Data (`data/`)
 
@@ -39,6 +40,7 @@ It runs in about 10 seconds. Then `python make_report.py` builds the results rep
 | MSCI USA net, MSCI USA IT, MSCI World net | `MSCI USA  net total return.xlsx`, `MSCI USA IT.xlsx`, `MSCI WORLD net total return.xlsx` | Benchmarks |
 | GPR, TPU | `GPR monthly.xls` (column `GPR`), `TPU monthly.xlsx` (sheet `TPU_MONTHLY`) | Geo_t |
 | VIX, DXY, 3-month T-bill | `VIX daily.xlsx`, `DXY daily.xlsx`, `UST3M daily.xlsx` | X_t and the risk-free rate |
+| MSCI country indices for the 8 largest EM markets (Taiwan, Korea, China, India, Brazil, South Africa, Mexico, Saudi Arabia): daily levels and monthly market cap | `Country_returns_daily.xlsx`, `Country_mktcap_monthly.xlsx` | Module E country breakdown. Daily data start in 2001 for Taiwan, Korea, China and India only; Brazil and Mexico from 2010, South Africa 2012, Saudi Arabia 2015 (weights from Sep 2019) |
 
 ## How each rule is implemented
 
