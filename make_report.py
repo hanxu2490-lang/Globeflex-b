@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent
 T = ROOT / "output" / "tables"
 F = ROOT / "output" / "figures"
 OUT = ROOT / "report"
-FIGS = ["data_em_it_weight", "step1_dcc_correlations", "q2_event_paths", "step4_portfolios"]
+FIGS = ["data_em_it_weight", "step1_dcc_correlations", "q2_event_paths", "step4_mvo_frontiers", "step4_mvo_gains"]
 
 
 def num(v, d=2, sign=False):
@@ -57,9 +57,10 @@ def q1_table():
     return table(["Dependent", "Interaction", "Sample", "Months", "β", "δ", "t(δ)", "R²"], rows, "num")
 
 
-def q2_table1():
+def q2_table1(panels, headers):
+    """Crisis regressions; panels = which panel letters to show, headers = {letter: panel heading}."""
     d = pd.read_csv(T / "q2_table1_formatted.csv", index_col=0, encoding="utf-8-sig")
-    cols = list(d.columns)
+    cols = [c for c in d.columns if d.loc["panel", c] in panels]
     order = [("γ1 Fin", "γ<sub>1</sub> Fin"), ("γ2 Geo", "γ<sub>2</sub> Geo"),
              ("γ3 Fin × Current", "γ<sub>3</sub> Fin × Current"), ("γ4 Geo × Current", "γ<sub>4</sub> Geo × Current"),
              ("γ1+γ3 current Fin", "γ<sub>1</sub>+γ<sub>3</sub> (current Fin)"),
@@ -70,9 +71,11 @@ def q2_table1():
     rows = []
     for key, lab in order:
         cells = [("" if pd.isna(v) else v) for v in d.loc[key, cols]]
+        if key == "θ Post":
+            cells = [c if c != "" else "<span class='t'>not included</span>" for c in cells]
         rows.append([f'<span class="rl">{lab}</span>', *cells])
-    th_top = ('<tr class="panel"><th></th><th colspan="6">Panel A · Current = 1 from Jan 2018</th>'
-              '<th colspan="4">Panel B · Current = 1 from Jan 2022</th></tr>')
+    th_top = '<tr class="panel"><th></th>' + "".join(
+        f'<th colspan="{sum(d.loc["panel", c] == p for c in cols)}">{headers[p]}</th>' for p in panels) + "</tr>"
     t = table(head, rows, "num t1")
     t = t.replace("<thead>", "<thead>" + th_top, 1)
     # highlight the core test row
@@ -120,14 +123,26 @@ def drivers_table():
                   "ΔVIX pts", "IT weight %"], rows, "num")
 
 
-def portfolio_table():
-    d = pd.read_csv(T / "step4_portfolio_performance.csv", index_col=0, encoding="utf-8-sig")
-    rows = [[k, num(r["ann. return %"]), num(r["ann. volatility %"]), num(r["Sharpe"]), num(r["max drawdown %"]),
-             num(r["Fin months, current %"], sign=True), num(r["Geo months, current %"], sign=True),
-             num(r["avg EM weight %"], 1), num(r["last EM weight %"], 1)] for k, r in d.iterrows()]
-    return table(["Portfolio", "Return %/yr", "Volatility %/yr", "Sharpe", "Max drawdown %",
-                  "Avg return, current Fin months %", "Avg return, current Geo months %",
-                  "Avg EM weight %", "EM weight Sep 2026 %"], rows, "num")
+def mvo_table(fname, window_label="Window"):
+    d = pd.read_csv(T / fname, encoding="utf-8-sig")
+    rows = []
+    for w, g in d.groupby("window", sort=False):
+        rows.append(f"{window_label} {w} · 60/40 volatility {g['60/40 volatility %'].iloc[0]:.1f}%")
+        for _, r in g.iterrows():
+            rows.append([html.escape(r["portfolio"]), num(r["max Sharpe"]), num(r["change vs S&P+Agg"], sign=True),
+                         num(r["EM weight in max-Sharpe %"], 0), num(r["best return at 60/40 risk %"]),
+                         num(r["return gain at 60/40 risk (pp)"], sign=True), num(r["EM weight at 60/40 risk %"], 0)])
+    return table(["Portfolio", "Max Sharpe", "Change in Sharpe", "EM % at max Sharpe", "Return at 60/40 risk %",
+                  "Change (pp)", "EM % at 60/40 risk"], rows, "num")
+
+
+def mvo_country_table():
+    d = pd.read_csv(T / "step4_mvo_weights_5y.csv", encoding="utf-8-sig")
+    d = d[(d["portfolio"] == "+ EM countries") & (d["point on frontier"] == "at 60/40 risk")]
+    cols = ["S&P 500", "US Agg", "Taiwan", "Korea", "China", "India", "Brazil", "South Africa", "Mexico", "Saudi Arabia"]
+    rows = [[r["window"], *[("–" if pd.isna(r[c]) else ("0" if r[c] < 0.05 else num(r[c], 0))) for c in cols]]
+            for _, r in d.iterrows()]
+    return table(["Window", *cols], rows, "num")
 
 
 # ------------------------------------------------------------------ page
@@ -175,7 +190,7 @@ table.t1 td{font-family:var(--f-mono)!important;text-align:right}
 table.t1 td:first-child{text-align:left;font-family:var(--f-body)!important;white-space:nowrap}
 table.t1 thead th{text-align:right;white-space:normal}
 table.t2 td:nth-child(2){font-family:var(--f-mono)}
-table.t2 thead th{white-space:normal;min-width:64px}
+table.t2 thead th:not(:first-child),table.t2 thead th{white-space:normal;min-width:64px}
 table.t2 td:first-child{min-width:170px}
 table.t2 td,table.t2 th{padding:7px 8px;font-size:13px}
 tr.panel th{text-align:center!important;color:var(--accent);border-bottom:1px solid var(--line)}
@@ -229,7 +244,7 @@ def build():
   <nav class="toc" aria-label="Sections">
     <a href="#answers">Answers</a><a href="#data">Data</a><a href="#q1">Question 1</a>
     <a href="#q2">Question 2</a><a href="#t1">Table 1</a><a href="#t2">Table 2</a><a href="#drivers">Drivers</a>
-    <a href="#limits">Limitations</a><a href="#portfolio">Portfolio</a><a href="#robust">Robustness</a>
+    <a href="#limits">Limitations</a><a href="#portfolio">Optimizer</a><a href="#robust">Robustness</a>
   </nav>
 </header>
 
@@ -243,9 +258,9 @@ def build():
   <p>EM has <b>not</b> become more like the US. Weekly correlation with US equities stays around 0.6 with no trend.
   After the one structural break (Oct 2009), EM's beta to the US <i>fell</i> from 1.30 to 0.85. A higher IT weight is not
   linked to more US sensitivity.</p></div>
-  <div class="answer"><h4>Portfolio · Step 4</h4>
-  <p>For a US investor, minimum-variance weights gave EM <b>0% from 2006 to 2016</b>, then about 50% from 2022. Over 2006–2026,
-  adding EM barely lowered volatility (15.2% to 15.1%), and the Sharpe ratio fell from 0.63 to 0.60.</p></div>
+  <div class="answer"><h4>Optimizer · Step 4</h4>
+  <p>Next to the S&amp;P 500 and US bonds, the optimizer held <b>36–44% EM in 2001–2010</b> but <b>0% from 2011</b>, for EM and EM ex-IT alike.
+  Forcing 10% EM now costs return. Picking individual countries (Taiwan, Saudi Arabia, Mexico) still adds a little.</p></div>
 </div>
 </section>
 
@@ -257,6 +272,8 @@ price index on the same basis. A local-currency EM index tests the currency chan
 <li>EM ex-IT is backed out from EM and EM IT returns with the IT weight w<sub>IT</sub> = EM IT / EM market value at the previous month end.</li>
 <li>Crisis months. <b>Fin</b> = MSCI World more than 10% below its running peak (134 months). <b>Geo</b> = GPR or TPU in its
 top decile over 2001–2026, i.e. GPR ≥ 157.8 or TPU ≥ 168.0 (53 months). <b>Current</b> = from January 2018.</li>
+<li>For the optimizer (Step 4): S&amp;P 500 total return and the Bloomberg US Aggregate bond index, plus MSCI country indices for the eight
+largest EM markets (Taiwan, Korea, China, India, Brazil, South Africa, Mexico, Saudi Arabia).</li>
 <li>All series are aligned by calendar date. Returns are log returns in %. Regressions use Newey–West standard errors (5 lags).</li>
 </ul>
 </section>
@@ -296,12 +313,15 @@ war or trade crisis month today than in one in the past, in percentage points pe
 crises. X<sub>t</sub> holds the monthly changes in the VIX and the dollar index (DXY). The sample has 116 past and 18 current Fin months, and
 16 past and 37 current Geo months.</p>
 
-<h3 id="t1">Table 1 · Crisis regressions, all versions</h3>
+<h3 id="t1">Table 1 · Crisis regressions, with and without Post</h3>
 </div>
-{q2_table1()}
+{q2_table1(["A", "B"], {"A": "Panel A · with Post (break Oct 2009)", "B": "Panel B · without Post"})}
 <p class="note">Dependent variable: monthly log return of the named index minus MSCI World (USD net), in %. Coefficients with Newey–West
-t-statistics in brackets. "+ X" adds ΔVIX (points) and ΔDXY (%). Columns 5–6 use EM in local currency, still minus World in USD. Panel B moves
-the start of the current period to 2022. * 10%, ** 5%, *** 1%.</p>
+t-statistics in brackets. "+ X" adds ΔVIX (points) and ΔDXY (%). Current = 1 from January 2018. Panel B drops θ Post_t and keeps everything else.
+* 10%, ** 5%, *** 1%.</p>
+
+<div class="col"><h3>Table 1b · Robustness (with Post)</h3></div>
+{q2_table1(["C"], {"C": "EM in local currency (minus World in USD), and Current = 1 from January 2022"})}
 
 <div class="col">
 <h3>What γ<sub>4</sub> says</h3>
@@ -312,6 +332,10 @@ episodes, and the estimate is far from significant. γ<sub>3</sub> for financial
 <li><b>Crisis months themselves are not special.</b> γ<sub>1</sub> and γ<sub>2</sub> are close to zero too. The one strong term is θ Post
 (−1.3 to −1.9, t between −2.9 and −3.9): after the 2009 break, EM's return relative to World is about 1.5 percentage points a month lower than
 before, in crisis and normal months alike.</li>
+<li><b>Without Post the answer is the same.</b> Dropping θ Post moves EM's stronger pre-2009 returns into the crisis terms:
+γ<sub>1</sub> and γ<sub>2</sub> turn positive (0.56 and 0.69) and γ<sub>4</sub> turns negative (−0.74, t = −0.67; −1.39, t = −1.51 for EM ex-IT).
+None of the crisis terms is significant (all |t| &lt; 1.6), and R² falls from 0.04 to 0.01, so Post carries most of what the model explains.
+The dollar effect is unchanged (φ<sub>ΔDXY</sub> = −0.45, t = −4.2).</li>
 <li><b>From 2022 the sign is positive but still not significant.</b> With Current starting in 2022, γ<sub>4</sub> rises to 1.32 (t = 1.52)
 and to 1.45 with controls (t = 1.63). For EM ex-IT it is only 0.54–0.66. Most of the better showing since 2022 comes through the tech sector.</li>
 </ul>
@@ -379,22 +403,40 @@ mainly on the dollar: today's shocks have come with a stronger dollar and weaker
 </section>
 
 <section id="portfolio">
-<h2><span class="q">Step 4 · Questions 1 and 2</span>Portfolio evaluation</h2>
+<h2><span class="q">Step 4 · Questions 1 and 2</span>Mean-variance optimizer: does EM still earn a place?</h2>
 <div class="col">
-<p>A US investor holds MSCI USA and adds one EM index. Minimum-variance weights are re-estimated each month from the previous 60 months, long-only,
-and evaluated out of sample from January 2006 to September 2026 (249 months). Because EM was much more volatile than the US and highly correlated
-with it, the minimum-variance weight on every EM index was 0% from 2006 to 2016. These portfolios are therefore identical to USA only through
-the 2008 crisis, which is why they share the same maximum drawdown. As EM's beta and volatility fell, the weight rose to about 50% from 2022.</p>
+<p>Following Markowitz, we build long-only efficient frontiers from the S&amp;P 500 (total return) and the Bloomberg US Aggregate bond index,
+then add EM, EM ex-IT or the eight largest EM countries and see what the optimizer does. Each window uses its own average returns,
+volatilities and correlations (monthly returns, annualized). Two points on each frontier are compared: the <b>max-Sharpe</b> portfolio
+(risk-free rate = the window's average 3-month T-bill), and the <b>highest return at the risk of a 60/40</b> S&amp;P 500 / US Agg portfolio.
+We also force the optimizer to hold exactly <b>10% EM</b>.</p>
 </div>
-{portfolio_table()}
-<p class="note">Sharpe ratio uses the 3-month T-bill. No past Geo months fall in the out-of-sample period (all are 2001–2005), so only current
-crisis-month averages are shown. EM Small Cap and EM (price) exclude dividends and understate returns; compare them with each other.</p>
-{figure("step4_portfolios", "Growth of $1 and the weight in each EM index, out of sample 2006–2026.")}
+{figure("step4_mvo_frontiers", "Long-only efficient frontiers in each 5-year window. Dashed: S&P 500 + US Agg only. From 2011 the EM and EM ex-IT "
+        "frontiers lie on top of the stock-bond frontier, so the optimizer holds no EM. Only the country frontier still moves out.")}
+{figure("step4_mvo_gains", "Change in max Sharpe ratio (top) and in return at 60/40 risk (bottom) from adding EM, by 5-year window. Left: the optimizer "
+        "chooses how much EM to hold. Right: EM is forced to 10%.")}
 <div class="col">
-<p>Adding EM lowered volatility only slightly (EM ex-IT the most, to 14.7%) and lowered the Sharpe ratio in every case. In current Geo months the
-USA + EM did slightly better than USA only (+0.80% vs +0.66% a month), while USA + EM ex-IT and USA + EM Small Cap did slightly worse. In current
-financial-crisis months every portfolio with EM did worse than USA only.</p>
+<ul class="tight">
+<li><b>In the past EM really helped.</b> In 2001–2005 and 2006–2010 the optimizer put 36–44% in EM at 60/40 risk and raised the return at that risk
+by 4–7 percentage points a year. Even a forced 10% added 1.0–1.5 points.</li>
+<li><b>Since 2011 the optimizer says "don't bother".</b> In 2011–2015, 2016–2020 and 2021–2026 it holds 0% EM, and the EM frontier is the
+stock-bond frontier. Forcing 10% EM costs 0.1–1.8 points of return at 60/40 risk.</li>
+<li><b>EM ex-IT does not help now either.</b> It also gets 0%, and forced to 10% it costs more than broad EM (−0.40 vs −0.26 points in 2021–2026).
+Removing tech removed the part of EM that did well.</li>
+<li><b>Letting the optimizer pick countries still adds a little.</b> In 2016–2020 and 2021–2026 it holds 38–43% in a few countries at 60/40 risk
+(Taiwan, Saudi Arabia, Mexico, some India), adding about 1.5 points. With the countries together held at 10%, the gain is about 0.7 points.
+These choices are made with hindsight, so the country results are an upper bound.</li>
+</ul>
 </div>
+<div class="col"><h3>5-year windows</h3></div>
+{mvo_table("step4_mvo_5y.csv")}
+<p class="note">Change = difference from S&amp;P 500 + US Agg in the same window. EM weight = EM asset(s) in that portfolio. "+ EM countries" uses the
+countries with data for the whole window (four countries before 2011). Long-only, fully invested, sample means and covariances: an in-sample
+(hindsight) exercise, not an investable strategy.</p>
+<div class="col"><h3>Countries chosen at 60/40 risk (%)</h3></div>
+{mvo_country_table()}
+<div class="col"><h3>10-year windows</h3></div>
+{mvo_table("step4_mvo_10y.csv")}
 </section>
 
 <section id="robust" class="col">
@@ -402,9 +444,9 @@ financial-crisis months every portfolio with EM did worse than USA only.</p>
 <ul class="tight">
 <li><b>EM Small Cap net returns, post-2010.</b> Results with the net index are almost identical to the price index: the mean DCC correlation
 with the US is 0.602 in both. Equation (1) post-2010 (w<sub>IT</sub> version) is also nearly unchanged. The Post version cannot be estimated after
-2010 because Post = 1 throughout. In portfolios from June 2015, USA + EM Small Cap has a Sharpe ratio of 0.69 (net) vs 0.67 (price), and USA only has 0.76.</li>
-<li><b>Local-currency EM.</b> See Table 1, columns 5–6: γ<sub>3</sub> and γ<sub>4</sub> stay insignificant, and the dollar effect disappears.</li>
-<li><b>Current period from 2022.</b> See Table 1, Panel B: γ<sub>4</sub> becomes positive (1.32, t = 1.52) but is not significant at 10%.</li>
+2010 because Post = 1 throughout.</li>
+<li><b>Local-currency EM.</b> See Table 1b, columns 9–10: γ<sub>3</sub> and γ<sub>4</sub> stay insignificant, and the dollar effect disappears.</li>
+<li><b>Current period from 2022.</b> See Table 1b, columns 11–14: γ<sub>4</sub> becomes positive (1.32, t = 1.52) but is not significant at 10%.</li>
 </ul>
 </section>
 

@@ -7,7 +7,7 @@ import time
 import pandas as pd
 
 from analysis import config as C
-from analysis import data_prep, q2_report, robustness, step1_dcc, step2_beta_tech, step3_crisis, step4_portfolio
+from analysis import data_prep, q2_report, robustness, step1_dcc, step2_beta_tech, step3_crisis, step4_mvo
 from analysis import utils as U
 
 
@@ -88,7 +88,7 @@ def write_summary(data_tab, r1, r2, r3, r4, rob, m):
         U.to_markdown(reg[reg_cols], "{:.3f}", index=False),
         "",
         "## Step 3 - Crisis behaviour today versus the past",
-        "Equation (2), dependent = EM (or EM ex-IT) minus World. Current = from 2018.",
+        "Equation (2), dependent = EM (or EM ex-IT) minus World. Current = from 2018. Columns ending 'no Post' drop the Post_t term.",
         "",
         crisis_md(r3["coefs"]),
         "",
@@ -102,13 +102,25 @@ def write_summary(data_tab, r1, r2, r3, r4, rob, m):
         "",
         "![Event study](figures/step3_event_study.png)",
         "",
-        "## Step 4 - Portfolio evaluation (out of sample from 2006)",
-        perf_md(r4["performance"]),
+        "## Step 4 - Mean-variance optimizer: S&P 500 + US Agg, with and without EM",
+        "Long-only efficient frontiers in each window, from sample means and covariances of monthly returns. "
+        "Max Sharpe = tangency portfolio (rf = average 3-month T-bill). 'At 60/40 risk' = highest return the "
+        "assets can reach at the volatility of a 60/40 S&P 500 / US Agg portfolio. 'Fixed 10%' forces the "
+        "EM asset (or the EM countries together) to exactly 10%.",
         "",
-        "Weights are long-only minimum-variance weights from the previous 60 months. 'Geo months, past' is "
-        "empty because all pre-2018 Geo months (2001-2005) fall before the 2006 out-of-sample start.",
+        "5-year windows:",
         "",
-        "![Portfolios](figures/step4_portfolios.png)",
+        U.to_markdown(r4["table"].drop(columns=["countries available", "return %", "volatility %",
+                                                 "min-variance volatility %"]), "{:.2f}", index=False),
+        "",
+        "10-year windows:",
+        "",
+        U.to_markdown(r4["table10"].drop(columns=["countries available", "return %", "volatility %",
+                                                   "min-variance volatility %"]), "{:.2f}", index=False),
+        "",
+        "![Frontiers](figures/step4_mvo_frontiers.png)",
+        "",
+        "![Gains](figures/step4_mvo_gains.png)",
         "",
         "## Robustness",
         "### 1. EM Small Cap net returns, post-2010",
@@ -120,10 +132,6 @@ def write_summary(data_tab, r1, r2, r3, r4, rob, m):
         f"{r2['break_month']}, so Post_t = 1 in every post-2010 month (Post x r_US = r_US).",
         "",
         U.to_markdown(rob_reg[reg_cols], "{:.3f}", index=False),
-        "",
-        f"Portfolios, out of sample from {rob['emsc_net']['oos_start']}:",
-        "",
-        perf_md(rob["emsc_net"]["portfolio"]),
         "",
         "### 2. Local-currency EM returns (Step 3)",
         crisis_md(rob["local_ccy"]),
@@ -151,7 +159,7 @@ def main():
     print(f"step 2 done (Bai-Perron break: {r2['break_month']})")
     r3 = step3_crisis.run(m, daily)
     print("step 3 done")
-    r4 = step4_portfolio.run(m)
+    r4 = step4_mvo.run(raw, m)
     print("step 4 done")
     rob = robustness.run(m, weekly)
     print("robustness done")

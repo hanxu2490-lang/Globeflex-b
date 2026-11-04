@@ -3,6 +3,8 @@
   r_EM,t - r_DM,t = alpha + g1 Fin_t + g2 Geo_t + g3 (Fin_t x Current_t) + g4 (Geo_t x Current_t)
                     + theta Post_t + phi' X_t + e_t                                          (2)
 
+Equation (2) is estimated with and without the Post_t term.
+
 Fin_t = 1 when MSCI World is more than 10% below its peak; Geo_t = 1 when GPR or TPU is in its
 top decile; Current_t = 1 from 2018. X_t = changes in the VIX and the dollar index (reported with
 and without). Repeated for EM ex-IT. Daily cumulative EM-minus-DM returns from 5 days before to
@@ -20,18 +22,20 @@ COEF_NAMES = {"Fin": "g1 Fin", "Geo": "g2 Geo", "Fin_x_Current": "g3 Fin x Curre
               "dDXY": "phi dDXY", "const": "alpha"}
 
 
-def crisis_regression(m, dep, controls, current_start=C.CURRENT_START, dm="WORLD"):
+def crisis_regression(m, dep, controls, current_start=C.CURRENT_START, dm="WORLD", post=True):
     cur = (m.index >= pd.Period(current_start, "M")).astype(int)
     X = pd.DataFrame({"Fin": m["Fin"], "Geo": m["Geo"], "Fin_x_Current": m["Fin"] * cur,
-                      "Geo_x_Current": m["Geo"] * cur, "Post": m["Post"]}, index=m.index)
+                      "Geo_x_Current": m["Geo"] * cur}, index=m.index)
+    if post:
+        X["Post"] = m["Post"]
     if controls:
         X[["dVIX", "dDXY"]] = m[["dVIX", "dDXY"]]
     return U.ols_nw(m[dep] - m[dm], X), cur
 
 
-def crisis_column(m, dep, controls, current_start=C.CURRENT_START):
+def crisis_column(m, dep, controls, current_start=C.CURRENT_START, post=True):
     """One results column: coefficients (t-stats), current-crisis totals and month counts."""
-    res, cur = crisis_regression(m, dep, controls, current_start)
+    res, cur = crisis_regression(m, dep, controls, current_start, post=post)
     col = {}
     for k, lab in COEF_NAMES.items():
         if k in res.params:
@@ -49,13 +53,15 @@ def crisis_column(m, dep, controls, current_start=C.CURRENT_START):
     return col, res
 
 
-def regression_table(m, deps=("EM", "EM_EXIT"), current_start=C.CURRENT_START):
+def regression_table(m, deps=("EM", "EM_EXIT"), current_start=C.CURRENT_START, posts=(True,)):
+    """Columns are named "<index> - World, no X" (with Post) and "..., no X, no Post" (without Post)."""
     cols, pvals = {}, {}
-    for dep in deps:
-        for controls in (False, True):
-            name = f"{LABELS[dep]} - World, {'with' if controls else 'no'} X"
-            cols[name], res = crisis_column(m, dep, controls, current_start)
-            pvals[name] = res.pvalues.rename(COEF_NAMES)
+    for post in posts:
+        for dep in deps:
+            for controls in (False, True):
+                name = f"{LABELS[dep]} - World, {'with' if controls else 'no'} X{'' if post else ', no Post'}"
+                cols[name], res = crisis_column(m, dep, controls, current_start, post=post)
+                pvals[name] = res.pvalues.rename(COEF_NAMES)
     return pd.DataFrame(cols), pd.DataFrame(pvals)
 
 
@@ -103,7 +109,7 @@ def plot_events(group_paths, name):
 
 
 def run(m, daily):
-    coefs, pvals = regression_table(m)
+    coefs, pvals = regression_table(m, posts=(True, False))
     U.save_table(coefs, "step3_crisis_regressions")
     U.save_table(pvals, "step3_crisis_regressions_pvalues")
     paths, tab, group_paths, group_tab = event_study(daily)

@@ -88,36 +88,36 @@ Equation (1): r_EM = alpha + beta r_US + delta (interaction x r_US). w_IT,t-1 is
 | EM (price) | w_IT,t-1 | Non-crisis months | 140 | 1.083 | -1.240 | -0.565 | 0.351 |
 
 ## Step 3 - Crisis behaviour today versus the past
-Equation (2), dependent = EM (or EM ex-IT) minus World. Current = from 2018.
+Equation (2), dependent = EM (or EM ex-IT) minus World. Current = from 2018. Columns ending 'no Post' drop the Post_t term.
 
-| index | EM - World, no X | EM - World, with X | EM ex-IT - World, no X | EM ex-IT - World, with X |
-|---|---|---|---|---|
-| g1 Fin | 0.001 | 0.051 | 0.029 | 0.095 |
-| t: g1 Fin | 0.001 | 0.120 | 0.061 | 0.210 |
-| g2 Geo | 0.071 | -0.072 | 0.033 | -0.100 |
-| t: g2 Geo | 0.072 | -0.063 | 0.042 | -0.107 |
-| g3 Fin x Current | -0.026 | 0.034 | 0.157 | 0.227 |
-| t: g3 Fin x Current | -0.038 | 0.049 | 0.193 | 0.266 |
-| g4 Geo x Current | 0.191 | 0.403 | -0.250 | -0.038 |
-| t: g4 Geo x Current | 0.163 | 0.312 | -0.255 | -0.036 |
-| theta Post | -1.507 | -1.319 | -1.840 | -1.591 |
-| t: theta Post | -3.115 | -2.876 | -3.627 | -3.350 |
-| alpha | 1.085 | 0.925 | 1.194 | 0.983 |
-| t: alpha | 2.289 | 2.049 | 2.382 | 2.086 |
-| g1+g3 (current Fin) | -0.025 | 0.085 | 0.186 | 0.323 |
-| t: g1+g3 (current Fin) | -0.040 | 0.135 | 0.247 | 0.407 |
-| g2+g4 (current Geo) | 0.263 | 0.331 | -0.217 | -0.138 |
-| t: g2+g4 (current Geo) | 0.452 | 0.616 | -0.414 | -0.302 |
-| R2 | 0.041 | 0.109 | 0.062 | 0.156 |
-| N | 309 | 309 | 309 | 309 |
-| Fin months, past | 116 | 116 | 116 | 116 |
-| Fin months, current | 18 | 18 | 18 | 18 |
-| Geo months, past | 16 | 16 | 16 | 16 |
-| Geo months, current | 37 | 37 | 37 | 37 |
-| phi dVIX |  | 0.023 |  | 0.061 |
-| t: phi dVIX |  | 0.386 |  | 0.968 |
-| phi dDXY |  | -0.425 |  | -0.531 |
-| t: phi dDXY |  | -3.927 |  | -4.834 |
+| index | EM - World, no X | EM - World, with X | EM ex-IT - World, no X | EM ex-IT - World, with X | EM - World, no X, no Post | EM - World, with X, no Post | EM ex-IT - World, no X, no Post | EM ex-IT - World, with X, no Post |
+|---|---|---|---|---|---|---|---|---|
+| g1 Fin | 0.001 | 0.051 | 0.029 | 0.095 | 0.560 | 0.540 | 0.712 | 0.685 |
+| t: g1 Fin | 0.001 | 0.120 | 0.061 | 0.210 | 1.084 | 1.139 | 1.320 | 1.387 |
+| g2 Geo | 0.071 | -0.072 | 0.033 | -0.100 | 0.689 | 0.464 | 0.788 | 0.546 |
+| t: g2 Geo | 0.072 | -0.063 | 0.042 | -0.107 | 0.736 | 0.407 | 1.084 | 0.589 |
+| g3 Fin x Current | -0.026 | 0.034 | 0.157 | 0.227 | -0.881 | -0.705 | -0.886 | -0.664 |
+| t: g3 Fin x Current | -0.038 | 0.049 | 0.193 | 0.266 | -1.216 | -0.988 | -1.058 | -0.764 |
+| g4 Geo x Current | 0.191 | 0.403 | -0.250 | -0.038 | -0.741 | -0.403 | -1.388 | -1.009 |
+| t: g4 Geo x Current | 0.163 | 0.312 | -0.255 | -0.036 | -0.666 | -0.317 | -1.509 | -0.963 |
+| theta Post | -1.507 | -1.319 | -1.840 | -1.591 |  |  |  |  |
+| t: theta Post | -3.115 | -2.876 | -3.627 | -3.350 |  |  |  |  |
+| alpha | 1.085 | 0.925 | 1.194 | 0.983 | -0.093 | -0.106 | -0.244 | -0.261 |
+| t: alpha | 2.289 | 2.049 | 2.382 | 2.086 | -0.309 | -0.387 | -0.750 | -0.876 |
+| g1+g3 (current Fin) | -0.025 | 0.085 | 0.186 | 0.323 | -0.320 | -0.165 | -0.174 | 0.021 |
+| t: g1+g3 (current Fin) | -0.040 | 0.135 | 0.247 | 0.407 | -0.490 | -0.254 | -0.223 | 0.026 |
+| g2+g4 (current Geo) | 0.263 | 0.331 | -0.217 | -0.138 | -0.051 | 0.061 | -0.600 | -0.463 |
+| t: g2+g4 (current Geo) | 0.452 | 0.616 | -0.414 | -0.302 | -0.088 | 0.113 | -1.098 | -0.973 |
+| R2 | 0.041 | 0.109 | 0.062 | 0.156 | 0.012 | 0.086 | 0.021 | 0.126 |
+| N | 309 | 309 | 309 | 309 | 309 | 309 | 309 | 309 |
+| Fin months, past | 116 | 116 | 116 | 116 | 116 | 116 | 116 | 116 |
+| Fin months, current | 18 | 18 | 18 | 18 | 18 | 18 | 18 | 18 |
+| Geo months, past | 16 | 16 | 16 | 16 | 16 | 16 | 16 | 16 |
+| Geo months, current | 37 | 37 | 37 | 37 | 37 | 37 | 37 | 37 |
+| phi dVIX |  | 0.023 |  | 0.061 |  | 0.029 |  | 0.068 |
+| t: phi dVIX |  | 0.386 |  | 0.968 |  | 0.498 |  | 1.097 |
+| phi dDXY |  | -0.425 |  | -0.531 |  | -0.447 |  | -0.558 |
+| t: phi dDXY |  | -3.927 |  | -4.834 |  | -4.232 |  | -5.200 |
 
 Daily event study: cumulative EM minus World (log %), from day -5.
 
@@ -151,18 +151,78 @@ Average by group:
 
 ![Event study](figures/step3_event_study.png)
 
-## Step 4 - Portfolio evaluation (out of sample from 2006)
-| index | months | ann. return % | ann. volatility % | Sharpe | max drawdown % | avg return in crisis months % | Fin months, past % | Fin months, current % | Geo months, past % | Geo months, current % | avg EM weight % | last EM weight % |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| USA only | 249 | 10.68 | 15.21 | 0.63 | -51.12 | 0.18 | -0.00 | -0.88 |  | 0.66 |  |  |
-| USA + EM | 249 | 10.08 | 15.07 | 0.60 | -51.12 | 0.17 | -0.00 | -1.15 |  | 0.80 | 14.14 | 30.24 |
-| USA + EM Small Cap (price) | 249 | 9.92 | 15.36 | 0.58 | -51.12 | 0.11 | -0.00 | -1.07 |  | 0.53 | 10.76 | 44.46 |
-| USA + EM ex-IT | 249 | 8.93 | 14.70 | 0.54 | -51.12 | 0.03 | -0.00 | -1.26 |  | 0.43 | 16.13 | 50.68 |
-| USA + EM (price) | 249 | 9.71 | 15.06 | 0.58 | -51.12 | 0.14 | -0.00 | -1.25 |  | 0.74 | 14.22 | 30.51 |
+## Step 4 - Mean-variance optimizer: S&P 500 + US Agg, with and without EM
+Long-only efficient frontiers in each window, from sample means and covariances of monthly returns. Max Sharpe = tangency portfolio (rf = average 3-month T-bill). 'At 60/40 risk' = highest return the assets can reach at the volatility of a 60/40 S&P 500 / US Agg portfolio. 'Fixed 10%' forces the EM asset (or the EM countries together) to exactly 10%.
 
-Weights are long-only minimum-variance weights from the previous 60 months. 'Geo months, past' is empty because all pre-2018 Geo months (2001-2005) fall before the 2006 out-of-sample start.
+5-year windows:
 
-![Portfolios](figures/step4_portfolios.png)
+| window | months | portfolio | max Sharpe | change vs S&P+Agg | EM weight in max-Sharpe % | 60/40 volatility % | best return at 60/40 risk % | return gain at 60/40 risk (pp) | EM weight at 60/40 risk % |
+|---|---|---|---|---|---|---|---|---|---|
+| 2001–2005 | 60 | S&P 500 + US Agg | 0.96 | 0.00 | 0.00 | 8.55 | 5.80 | 0.00 | 0.00 |
+| 2001–2005 | 60 | + EM | 1.39 | 0.43 | 15.20 | 8.55 | 11.60 | 5.80 | 41.37 |
+| 2001–2005 | 60 | + EM ex-IT | 1.44 | 0.48 | 17.41 | 8.55 | 12.47 | 6.67 | 43.57 |
+| 2001–2005 | 60 | + EM countries | 1.56 | 0.60 | 12.37 | 8.55 | 13.57 | 7.77 | 30.27 |
+| 2001–2005 | 60 | + EM, fixed 10% | 1.34 | 0.38 | 10.00 | 8.55 | 7.20 | 1.40 | 10.00 |
+| 2001–2005 | 60 | + EM ex-IT, fixed 10% | 1.35 | 0.39 | 10.00 | 8.55 | 7.33 | 1.53 | 10.00 |
+| 2001–2005 | 60 | + EM countries, together 10% | 1.54 | 0.59 | 10.00 | 8.55 | 8.58 | 2.78 | 10.00 |
+| 2006–2010 | 60 | S&P 500 + US Agg | 0.96 | 0.00 | 0.00 | 11.01 | 5.71 | 0.00 | 0.00 |
+| 2006–2010 | 60 | + EM | 1.01 | 0.05 | 4.36 | 11.01 | 9.54 | 3.82 | 36.67 |
+| 2006–2010 | 60 | + EM ex-IT | 1.01 | 0.05 | 4.59 | 11.01 | 9.86 | 4.15 | 35.86 |
+| 2006–2010 | 60 | + EM countries | 1.07 | 0.12 | 6.19 | 11.01 | 11.53 | 5.81 | 31.80 |
+| 2006–2010 | 60 | + EM, fixed 10% | 0.96 | 0.00 | 10.00 | 11.01 | 6.76 | 1.04 | 10.00 |
+| 2006–2010 | 60 | + EM ex-IT, fixed 10% | 0.97 | 0.01 | 10.00 | 11.01 | 6.87 | 1.16 | 10.00 |
+| 2006–2010 | 60 | + EM countries, together 10% | 1.05 | 0.10 | 10.00 | 11.01 | 7.56 | 1.84 | 10.00 |
+| 2011–2015 | 60 | S&P 500 + US Agg | 1.73 | 0.00 | 0.00 | 6.93 | 8.83 | 0.00 | 0.00 |
+| 2011–2015 | 60 | + EM | 1.73 | 0.00 | 0.00 | 6.93 | 8.83 | -0.00 | 0.00 |
+| 2011–2015 | 60 | + EM ex-IT | 1.73 | 0.00 | 0.00 | 6.93 | 8.83 | -0.00 | 0.00 |
+| 2011–2015 | 60 | + EM countries | 1.73 | -0.00 | 0.00 | 6.93 | 8.83 | -0.00 | 0.00 |
+| 2011–2015 | 60 | + EM, fixed 10% | 1.06 | -0.67 | 10.00 | 6.93 | 7.01 | -1.82 | 10.00 |
+| 2011–2015 | 60 | + EM ex-IT, fixed 10% | 1.02 | -0.72 | 10.00 | 6.93 | 6.82 | -2.01 | 10.00 |
+| 2011–2015 | 60 | + EM countries, together 10% | 1.23 | -0.50 | 10.00 | 6.93 | 7.66 | -1.18 | 10.00 |
+| 2016–2020 | 60 | S&P 500 + US Agg | 1.40 | 0.00 | 0.00 | 9.24 | 11.00 | 0.00 | 0.00 |
+| 2016–2020 | 60 | + EM | 1.40 | 0.00 | 0.00 | 9.24 | 11.00 | -0.00 | 0.00 |
+| 2016–2020 | 60 | + EM ex-IT | 1.40 | 0.00 | 0.00 | 9.24 | 11.00 | -0.00 | 0.00 |
+| 2016–2020 | 60 | + EM countries | 1.48 | 0.08 | 11.89 | 9.24 | 12.59 | 1.59 | 38.55 |
+| 2016–2020 | 60 | + EM, fixed 10% | 1.29 | -0.11 | 10.00 | 9.24 | 10.88 | -0.12 | 10.00 |
+| 2016–2020 | 60 | + EM ex-IT, fixed 10% | 1.23 | -0.17 | 10.00 | 9.24 | 10.62 | -0.38 | 10.00 |
+| 2016–2020 | 60 | + EM countries, together 10% | 1.47 | 0.08 | 10.00 | 9.24 | 11.68 | 0.68 | 10.00 |
+| 2021–2026 | 69 | S&P 500 + US Agg | 0.79 | 0.00 | 0.00 | 10.63 | 8.91 | 0.00 | 0.00 |
+| 2021–2026 | 69 | + EM | 0.79 | 0.00 | 0.00 | 10.63 | 8.91 | 0.00 | 0.00 |
+| 2021–2026 | 69 | + EM ex-IT | 0.79 | 0.00 | 0.00 | 10.63 | 8.91 | 0.00 | 0.00 |
+| 2021–2026 | 69 | + EM countries | 0.92 | 0.13 | 66.05 | 10.63 | 10.40 | 1.49 | 42.70 |
+| 2021–2026 | 69 | + EM, fixed 10% | 0.77 | -0.02 | 10.00 | 10.63 | 8.65 | -0.26 | 10.00 |
+| 2021–2026 | 69 | + EM ex-IT, fixed 10% | 0.74 | -0.05 | 10.00 | 10.63 | 8.51 | -0.40 | 10.00 |
+| 2021–2026 | 69 | + EM countries, together 10% | 0.84 | 0.05 | 10.00 | 10.63 | 9.58 | 0.67 | 10.00 |
+
+10-year windows:
+
+| window | months | portfolio | max Sharpe | change vs S&P+Agg | EM weight in max-Sharpe % | 60/40 volatility % | best return at 60/40 risk % | return gain at 60/40 risk (pp) | EM weight at 60/40 risk % |
+|---|---|---|---|---|---|---|---|---|---|
+| 2001–2010 | 120 | S&P 500 + US Agg | 0.94 | 0.00 | 0.00 | 9.82 | 5.76 | 0.00 | 0.00 |
+| 2001–2010 | 120 | + EM | 1.12 | 0.18 | 9.37 | 9.82 | 10.44 | 4.69 | 38.35 |
+| 2001–2010 | 120 | + EM ex-IT | 1.14 | 0.19 | 10.01 | 9.82 | 10.92 | 5.16 | 38.39 |
+| 2001–2010 | 120 | + EM countries | 1.17 | 0.23 | 8.78 | 9.82 | 11.28 | 5.53 | 32.17 |
+| 2001–2010 | 120 | + EM, fixed 10% | 1.12 | 0.18 | 10.00 | 9.82 | 6.98 | 1.22 | 10.00 |
+| 2001–2010 | 120 | + EM ex-IT, fixed 10% | 1.14 | 0.19 | 10.00 | 9.82 | 7.10 | 1.34 | 10.00 |
+| 2001–2010 | 120 | + EM countries, together 10% | 1.17 | 0.22 | 10.00 | 9.82 | 7.51 | 1.75 | 10.00 |
+| 2011–2020 | 120 | S&P 500 + US Agg | 1.53 | 0.00 | 0.00 | 8.14 | 9.92 | 0.00 | 0.00 |
+| 2011–2020 | 120 | + EM | 1.53 | 0.00 | 0.00 | 8.14 | 9.92 | -0.00 | 0.00 |
+| 2011–2020 | 120 | + EM ex-IT | 1.53 | 0.00 | 0.00 | 8.14 | 9.92 | -0.00 | 0.00 |
+| 2011–2020 | 120 | + EM countries | 1.53 | -0.00 | 0.00 | 8.14 | 9.92 | -0.00 | 0.00 |
+| 2011–2020 | 120 | + EM, fixed 10% | 1.16 | -0.36 | 10.00 | 8.14 | 8.96 | -0.95 | 10.00 |
+| 2011–2020 | 120 | + EM ex-IT, fixed 10% | 1.11 | -0.41 | 10.00 | 8.14 | 8.74 | -1.17 | 10.00 |
+| 2011–2020 | 120 | + EM countries, together 10% | 1.32 | -0.20 | 10.00 | 8.14 | 9.66 | -0.26 | 10.00 |
+| 2016–2026 | 120 | S&P 500 + US Agg | 0.86 | 0.00 | 0.00 | 10.21 | 9.91 | 0.00 | 0.00 |
+| 2016–2026 | 120 | + EM | 0.86 | -0.00 | 0.00 | 10.21 | 9.91 | -0.00 | 0.00 |
+| 2016–2026 | 120 | + EM ex-IT | 0.86 | 0.00 | 0.00 | 10.21 | 9.91 | 0.00 | 0.00 |
+| 2016–2026 | 120 | + EM countries | 0.98 | 0.12 | 60.36 | 10.21 | 11.12 | 1.20 | 37.29 |
+| 2016–2026 | 120 | + EM, fixed 10% | 0.84 | -0.02 | 10.00 | 10.21 | 9.63 | -0.29 | 10.00 |
+| 2016–2026 | 120 | + EM ex-IT, fixed 10% | 0.82 | -0.04 | 10.00 | 10.21 | 9.38 | -0.54 | 10.00 |
+| 2016–2026 | 120 | + EM countries, together 10% | 0.91 | 0.05 | 10.00 | 10.21 | 10.47 | 0.56 | 10.00 |
+
+![Frontiers](figures/step4_mvo_frontiers.png)
+
+![Gains](figures/step4_mvo_gains.png)
 
 ## Robustness
 ### 1. EM Small Cap net returns, post-2010
@@ -185,16 +245,6 @@ Equation (1), post-2010 months. The Post interaction is not estimable here: the 
 | EM | w_IT,t-1 | Non-crisis months | 109 | 0.399 | 2.131 | 1.407 | 0.414 |
 | EM (price) | w_IT,t-1 | All months | 196 | 0.955 | -0.407 | -0.176 | 0.504 |
 | EM (price) | w_IT,t-1 | Non-crisis months | 109 | 0.417 | 2.041 | 1.326 | 0.416 |
-
-Portfolios, out of sample from 2015-06:
-
-| index | months | ann. return % | ann. volatility % | Sharpe | max drawdown % | avg return in crisis months % | Fin months, past % | Fin months, current % | Geo months, past % | Geo months, current % | avg EM weight % | last EM weight % |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| USA only | 136 | 13.46 | 15.30 | 0.76 | -25.08 | 0.21 | -2.78 | -0.88 |  | 0.66 |  |  |
-| USA + EM Small Cap (net) | 136 | 12.39 | 15.58 | 0.69 | -24.96 | 0.13 | -2.78 | -1.03 |  | 0.60 | 19.24 | 44.16 |
-| USA + EM Small Cap (price) | 136 | 11.92 | 15.58 | 0.67 | -25.13 | 0.07 | -2.78 | -1.07 |  | 0.53 | 19.43 | 44.46 |
-| USA + EM | 136 | 12.33 | 15.05 | 0.71 | -26.30 | 0.20 | -2.78 | -1.15 |  | 0.80 | 25.89 | 30.24 |
-| USA + EM (price) | 136 | 11.63 | 15.04 | 0.67 | -27.20 | 0.13 | -2.78 | -1.25 |  | 0.74 | 26.04 | 30.51 |
 
 ### 2. Local-currency EM returns (Step 3)
 | index | EM (USD) - World, no X | EM (USD) - World, with X | EM (local ccy) - World, no X | EM (local ccy) - World, with X |

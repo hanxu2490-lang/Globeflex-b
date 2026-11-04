@@ -22,19 +22,22 @@ ROWS = [("Fin", "γ1 Fin"), ("Geo", "γ2 Geo"), ("Fin_x_Current", "γ3 Fin × Cu
 
 
 def table1(m):
+    S18, S22 = C.CURRENT_START, C.CURRENT_START_ROBUST
+    # (panel, label, dependent, controls X, current from, Post in the equation)
     versions = [
-        ("A", "EM", "EM", False, C.CURRENT_START), ("A", "EM", "EM", True, C.CURRENT_START),
-        ("A", "EM ex-IT", "EM_EXIT", False, C.CURRENT_START), ("A", "EM ex-IT", "EM_EXIT", True, C.CURRENT_START),
-        ("A", "EM local ccy", "EM_LC", False, C.CURRENT_START), ("A", "EM local ccy", "EM_LC", True, C.CURRENT_START),
-        ("B", "EM", "EM", False, C.CURRENT_START_ROBUST), ("B", "EM", "EM", True, C.CURRENT_START_ROBUST),
-        ("B", "EM ex-IT", "EM_EXIT", False, C.CURRENT_START_ROBUST),
-        ("B", "EM ex-IT", "EM_EXIT", True, C.CURRENT_START_ROBUST),
+        ("A", "EM", "EM", False, S18, True), ("A", "EM", "EM", True, S18, True),
+        ("A", "EM ex-IT", "EM_EXIT", False, S18, True), ("A", "EM ex-IT", "EM_EXIT", True, S18, True),
+        ("B", "EM", "EM", False, S18, False), ("B", "EM", "EM", True, S18, False),
+        ("B", "EM ex-IT", "EM_EXIT", False, S18, False), ("B", "EM ex-IT", "EM_EXIT", True, S18, False),
+        ("C", "EM local ccy", "EM_LC", False, S18, True), ("C", "EM local ccy", "EM_LC", True, S18, True),
+        ("C", "EM, from 2022", "EM", False, S22, True), ("C", "EM, from 2022", "EM", True, S22, True),
+        ("C", "EM ex-IT, from 2022", "EM_EXIT", False, S22, True), ("C", "EM ex-IT, from 2022", "EM_EXIT", True, S22, True),
     ]
     num, txt = {}, {}
-    for k, (panel, lab, dep, ctrl, cur) in enumerate(versions, start=1):
-        res, _ = crisis_regression(m, dep, ctrl, cur)
+    for k, (panel, lab, dep, ctrl, cur, post) in enumerate(versions, start=1):
+        res, _ = crisis_regression(m, dep, ctrl, cur, post=post)
         col = f"({k}) {lab}{' + X' if ctrl else ''}"
-        n, t = {"panel": panel, "current from": cur[:4]}, {"panel": panel}
+        n, t = {"panel": panel, "current from": cur[:4], "Post": "yes" if post else "no"}, {"panel": panel}
         for key, rl in ROWS:
             if key in res.params:
                 b, tv, p = res.params[key], res.tvalues[key], res.pvalues[key]

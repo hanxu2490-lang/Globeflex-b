@@ -1,7 +1,7 @@
 """Robustness (methods page).
 
 1. Small Cap uses the price index (the net-return version starts in 2010), so post-2010 results are
-   re-checked with net returns (Steps 1, 2 and 4).
+   re-checked with net returns (Steps 1 and 2).
 2. Local-currency EM returns in the crisis regression (Step 3): how much of EM's crisis performance
    comes from currency moves.
 3. 2022 as the start of the current period (Step 3).
@@ -10,7 +10,7 @@ import pandas as pd
 
 from . import config as C
 from . import utils as U
-from . import step1_dcc, step2_beta_tech, step3_crisis, step4_portfolio
+from . import step1_dcc, step2_beta_tech, step3_crisis
 
 
 def emsc_net_post2010(m, weekly):
@@ -30,12 +30,7 @@ def emsc_net_post2010(m, weekly):
     samples = {"All months": mm.index, "Non-crisis months": mm.index[mm["Crisis"] == 0]}
     reg = step2_beta_tech.regression_table(mm, ["EMSC_NET", "EMSC", "EM", "EM_PX"], samples)
     U.save_table(reg, "robust1_post2010_regressions", index=False)
-
-    # Step 4: out of sample once 60 months of net data exist
-    oos = (pd.Period(C.POST2010_START, "M") + C.ROLL_WINDOW)
-    perf, _, _ = step4_portfolio.evaluate(m, ["EMSC_NET", "EMSC", "EM", "EM_PX"], start=str(oos))
-    U.save_table(perf, "robust1_post2010_portfolio")
-    return {"dcc": dcc, "regressions": reg, "portfolio": perf, "oos_start": str(oos)}
+    return {"dcc": dcc, "regressions": reg}
 
 
 def local_currency(m):

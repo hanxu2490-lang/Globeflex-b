@@ -20,8 +20,8 @@ It runs in about 10 seconds. Then `python make_report.py` builds the results rep
 | `analysis/data_prep.py` | Data: calendar-date alignment, log returns, EM ex-IT, Fin / Geo / Current, ΔVIX, ΔDXY, T-bill |
 | `analysis/step1_dcc.py` | Step 1 — DCC-GARCH(1,1) by maximum likelihood, weekly |
 | `analysis/step2_beta_tech.py` | Step 2 — Bai–Perron break, equation (1) with Post and with w_IT,t−1, Newey–West |
-| `analysis/step3_crisis.py` | Step 3 — equation (2) with and without X, EM ex-IT, daily event study (−5 to +20 days) |
-| `analysis/step4_portfolio.py` | Step 4 — USA + EM / EM Small Cap / EM ex-IT, rolling 60-month minimum variance, out of sample from 2006 |
+| `analysis/step3_crisis.py` | Step 3 — equation (2) with and without X, and with and without Post; EM ex-IT; daily event study (−5 to +20 days) |
+| `analysis/step4_mvo.py` | Step 4 — mean-variance optimizer: long-only efficient frontiers of S&P 500 + US Agg, adding EM, EM ex-IT or the 8 EM countries (free, or forced to 10%), in 5- and 10-year windows |
 | `analysis/robustness.py` | Robustness — Small Cap net returns post-2010, local-currency EM, current period from 2022 |
 | `analysis/q2_report.py` | Question 2 write-up: Table 1 (all versions of equation 2), Table 2 (one row per crisis, with currency and tech parts), two-panel event figure, crisis-month drivers |
 | `run_all.py` | Runs everything in order and writes `output/results_summary.md` |
@@ -40,18 +40,19 @@ It runs in about 10 seconds. Then `python make_report.py` builds the results rep
 | MSCI USA net, MSCI USA IT, MSCI World net | `MSCI USA  net total return.xlsx`, `MSCI USA IT.xlsx`, `MSCI WORLD net total return.xlsx` | Benchmarks |
 | GPR, TPU | `GPR monthly.xls` (column `GPR`), `TPU monthly.xlsx` (sheet `TPU_MONTHLY`) | Geo_t |
 | VIX, DXY, 3-month T-bill | `VIX daily.xlsx`, `DXY daily.xlsx`, `UST3M daily.xlsx` | X_t and the risk-free rate |
-| MSCI country indices for the 8 largest EM markets (Taiwan, Korea, China, India, Brazil, South Africa, Mexico, Saudi Arabia): daily levels and monthly market cap | `Country_returns_daily.xlsx`, `Country_mktcap_monthly.xlsx` | Module E country breakdown. Daily data start in 2001 for Taiwan, Korea, China and India only; Brazil and Mexico from 2010, South Africa 2012, Saudi Arabia 2015 (weights from Sep 2019) |
+| S&P 500 (total return) and Bloomberg US Aggregate (LBUSTRUU), daily and monthly | `SP500 and US Agg.xlsx` | Step 4 optimizer |
+| MSCI country indices for the 8 largest EM markets (Taiwan, Korea, China, India, Brazil, South Africa, Mexico, Saudi Arabia): daily levels and monthly market cap | `Country_returns_daily.xlsx`, `Country_mktcap_monthly.xlsx` | Module E country breakdown and Step 4 optimizer. Daily data start in 2001 for Taiwan, Korea, China and India only; Brazil and Mexico from 2010, South Africa 2012, Saudi Arabia 2015 (weights from Sep 2019) |
 
 ## How each rule is implemented
 
 **Confirmed by the team**
 - **Named crises for the event study:** 15 events, listed in `config.CRISES`. There are 6 past events (3 financial, 3 war) and 9 current ones (2 financial, 3 war, 4 trade). Day 0 is the first trading day on or after each date.
 - **Geo_t top decile:** computed over the 2001–2026 study sample. Thresholds are GPR ≥ 157.8 or TPU ≥ 168.0, which gives 53 Geo months.
-- **Step 4 weights:** long-only. The EM weight stays between 0% and 100%.
+- **Step 4 weights:** long-only and fully invested; "fixed 10%" holds the EM asset (or the countries together) at exactly 10%.
 
 **Defaults set in code (all changeable in `config.py`)**
 - **Alignment:** each month uses the last available observation in that calendar month, and each week ends on Friday. Daily series are joined on dates both series share. All daily series are cut at 25 Sep 2026, the last MSCI date, so September 2026 runs only to the 25th.
-- **Returns:** log returns in %. Exceptions are EM ex-IT and the portfolios, which use simple returns (see below).
+- **Returns:** log returns in %. Exceptions are EM ex-IT and the Step 4 optimizer, which use simple returns.
 - **EM ex-IT:** backed out from simple returns as R_exIT = (R_EM − w_{t−1} R_IT) / (1 − w_{t−1}), then converted to a log return. w = EM IT market cap / EM market cap at the end of the previous month.
 - **Fin_t:** month-end MSCI World net level more than 10% below its running peak. The peak is taken from 1990 onward, so Jan 2001 already counts the 2000 peak.
 - **X_t:** ΔVIX is the month-end change in index points. ΔDXY is the month-end log change in %.
@@ -71,5 +72,5 @@ It runs in about 10 seconds. Then `python make_report.py` builds the results rep
 ## Points to note when reading the results
 - **Fin_t marks long recovery periods.** World stayed more than 10% below its peak from Jan 2001 to Jul 2005 and from Jun 2008 to Dec 2012. Fin_t = 1 in 134 of 309 months, and only 140 months count as non-crisis.
 - **w_IT drops mechanically in Dec 2018.** It falls from 25.7% to 14.3% because the 2018 GICS change moved Tencent, Alibaba and similar names out of IT.
-- **Step 4 weights are zero for a decade.** The long-only minimum-variance weight on every EM index is 0% from 2006 to 2016, so those portfolios equal USA-only through the global financial crisis.
+- **Step 4 is in-sample.** Each window uses its own realized means and covariances, so the optimizer chooses with hindsight. This is strongest for the country results.
 - **Post2010 robustness:** the break falls in Oct 2009, so Post_t = 1 in every post-2010 month. Only the w_IT version of equation (1) can be estimated there.

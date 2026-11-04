@@ -26,10 +26,13 @@ BP_TRIM = 0.15                  # minimum regime length = 15% of the sample
 BP_MAX_BREAKS = 5               # largest number of breaks considered for the BIC
 BP_SUPF_CV5 = 11.47             # 5% critical value of supF(1), q = 2, trim 0.15 (Bai & Perron 2003, Table 1)
 
-# ---------------------------------------------------------------- portfolio (Step 4)
-OOS_START = "2006-01"           # first out-of-sample month
-ROLL_WINDOW = 60                # months used to estimate each month's minimum-variance weights
-LONG_ONLY = True                # EM weight kept between 0% and 100%
+# ---------------------------------------------------------------- mean-variance optimizer (Step 4)
+# Efficient frontiers of S&P 500 (total return) + Bloomberg US Aggregate, with and without EM, in big windows.
+MVO_WINDOWS = [("2001-01", "2005-12"), ("2006-01", "2010-12"), ("2011-01", "2015-12"),
+               ("2016-01", "2020-12"), ("2021-01", "2026-09")]                 # 5-year windows (last one 69 months)
+MVO_WINDOWS_10Y = [("2001-01", "2010-12"), ("2011-01", "2020-12"), ("2016-10", "2026-09")]
+MVO_FIXED_EM = 0.10             # "force it to own 10%": EM (or the EM countries together) held at exactly 10%
+EM_COUNTRIES = ["Taiwan", "Korea", "China", "India", "Brazil", "South Africa", "Mexico", "Saudi Arabia"]
 
 # ---------------------------------------------------------------- daily event study (Step 3)
 EVENT_PRE = 5                   # trading days before day 0
