@@ -155,6 +155,14 @@ def drivers_table():
                   "ΔVIX pts", "IT weight %"], rows, "num")
 
 
+def placebo_table():
+    d = pd.read_csv(T / "step3_placebo_summary.csv", index_col=0, encoding="utf-8-sig")
+    rows = [[k, int(r["n events"]), num(r["observed mean"], sign=True), num(r["placebo mean"], sign=True),
+             num(r["difference"], sign=True), num(r["p two-sided"], 3),
+             f'[{num(r["placebo 2.5%"], sign=True)}, {num(r["placebo 97.5%"], sign=True)}]'] for k, r in d.iterrows()]
+    return table(["Events", "n", "Observed mean", "Placebo mean", "Difference", "p (two-sided)", "Placebo 95% range"], rows, "num")
+
+
 # ------------------------------------------------------------------ page
 CSS = """
 :root{

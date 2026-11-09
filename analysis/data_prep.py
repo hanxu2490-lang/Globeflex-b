@@ -48,9 +48,10 @@ def _read_two_cols(fname, sheet, skip):
 
 
 def load_raw():
-    """Return a dict of raw level series, all cut at the last date common to the MSCI files."""
+    """Return a dict of raw level series, all cut at the end of the sample (31 Aug 2026)."""
     raw = {k: _read_two_cols(*v) for k, v in {**PRICE_FILES, **MARKET_FILES, **MCAP_FILES}.items()}
-    end = min(raw[k].index.max() for k in PRICE_FILES)            # 25 Sep 2026
+    end = pd.Period(C.SAMPLE_END, "M").end_time.normalize()
+    assert all(raw[k].index.max() >= end for k in PRICE_FILES), "MSCI data end before the sample end"
     raw = {k: s.loc[:end] for k, s in raw.items()}
 
     gpr = pd.read_excel(C.DATA_DIR / "GPR monthly.xls")

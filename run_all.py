@@ -22,7 +22,7 @@ def describe_data(raw, m, daily):
     rows = {"monthly returns (Question 2)": (m.index[0], m.index[-1], len(m)),
             "daily returns (event study)": (daily.index[0].date(), daily.index[-1].date(), len(daily))}
     tab = pd.DataFrame(rows, index=["first", "last", "observations"]).T
-    tab["note"] = ["", f"MSCI data end {raw['END_DATE'].date()}"]
+    tab["note"] = ["", f"sample end {raw['END_DATE'].date()}"]
     U.save_table(tab, "data_samples")
     return tab
 
@@ -103,6 +103,11 @@ def write_summary(data_tab, qa, qa3, qat, qb, qc, r3, rob, m):
         "Average by group:",
         "",
         U.to_markdown(r3["event_groups"], "{:.2f}"),
+        "",
+        "Crisis vs non-crisis placebo (mean CAR[-5,+20], 5,000 placebo sets matched by Past / Current; "
+        f"control dates: {r3['placebo_controls'].get('Past', 0)} past, {r3['placebo_controls'].get('Current', 0)} current):",
+        "",
+        U.to_markdown(r3["placebo"], "{:.3f}"),
         "",
         "![Event study](figures/step3_event_study.png)",
         "",

@@ -12,7 +12,7 @@ FIG_DIR = OUT_DIR / "figures"
 
 # ---------------------------------------------------------------- sample
 SAMPLE_START = "2001-01"        # first monthly return (Jan 2001)
-SAMPLE_END = "2026-09"          # last monthly return (Sep 2026; MSCI data end 25 Sep 2026)
+SAMPLE_END = "2026-08"          # last monthly return (Aug 2026); daily data also end 31 Aug 2026
 
 # ---------------------------------------------------------------- crisis flags (Step 3)
 FIN_DRAWDOWN = -0.10            # Fin_t = 1 when MSCI World is more than 10% below its running peak
@@ -23,6 +23,11 @@ CURRENT_START_ROBUST = "2022-01"  # robustness: current period from 2022
 # ---------------------------------------------------------------- daily event study (Step 3)
 EVENT_PRE = 5                   # trading days before day 0
 EVENT_POST = 20                 # trading days after day 0
+
+# Crisis vs non-crisis placebo (Module E placebo test)
+PLACEBO_DRAWS = 5000            # placebo sets
+PLACEBO_SEED = 20261103
+NON_CORE = ["China devaluation", "Crimea annexation", "COVID crash"]   # outside Module E's 12 core events
 
 # Named crises. Day 0 = first trading day on or after the date.
 # type: Fin = financial, Geo = war / geopolitical, Trade = trade conflict. period: Past = before 2018.
