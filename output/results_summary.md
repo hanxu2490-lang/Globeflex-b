@@ -55,16 +55,16 @@ Break (EM on U.S., sequential sup-F at 5%): **2009-10** (last month of the first
 
 | dependent | benchmark | sample | breaks (sequential) | dates | 90% CI | sup-F stats | BIC | LWZ | status |
 |---|---|---|---|---|---|---|---|---|---|
-| EM | USA | 2001-01…2026-08 | 1 | 2009-10 | 2008-07…2011-01 | 26.8, 7.3 | 1 | 0 | dates/tests exploratory; CIs formal |
-| EM | USA_IT | 2001-01…2026-08 | 1 | 2007-10 | 2005-03…2010-05 | 17.3, 12.8 | 2 | 0 | dates/tests exploratory; CIs formal |
-| EM_IT | USA | 2001-01…2026-08 | 0 | — | — | 5.5 | 0 | 0 | dates/tests exploratory; CIs formal |
-| EM_IT | USA_IT | 2001-01…2026-08 | 0 | — | — | 4.1 | 0 | 0 | dates/tests exploratory; CIs formal |
-| EM_exIT | USA | 2001-01…2026-08 | 1 | 2012-02 | 2010-11…2013-05 | 32.7, 6.4 | 1 | 1 | dates/tests exploratory; CIs formal |
-| EM_exIT | USA_IT | 2001-01…2026-08 | 2 | 2007-07, 2012-07 | 2007-02…2007-12; 2011-08…2013-06 | 19.4, 17.0, 7.9 | 2 | 0 | dates/tests exploratory; CIs formal |
-| EM_exTWKR | USA | 2001-02…2026-08 | 1 | 2012-12 | 2011-08…2014-04 | 32.1, 8.7 | 1 | 1 | dates/tests exploratory; CIs formal |
-| EM_exTWKR | USA_IT | 2001-02…2026-08 | 2 | 2007-09, 2016-03 | 2006-12…2008-06; 2015-01…2017-05 | 18.5, 19.0, 7.1 | 2 | 0 | dates/tests exploratory; CIs formal |
-| EMSC_P | USA | 2001-01…2026-08 | 1 | 2010-09 | 2009-01…2012-05 | 23.9, 5.5 | 2 | 0 | dates/tests exploratory; CIs formal |
-| EMSC_P | USA_IT | 2001-01…2026-08 | 1 | 2007-07 | 2005-02…2009-12 | 18.0, 11.9 | 2 | 1 | dates/tests exploratory; CIs formal |
+| EM | USA | 2001-01…2026-08 | 1 | 2009-10 | 2008-07…2011-01 | 26.8, 7.3 | 1 | 0 | dates/tests formal; CIs formal |
+| EM | USA_IT | 2001-01…2026-08 | 1 | 2007-10 | 2005-03…2010-05 | 17.3, 12.8 | 2 | 0 | dates/tests formal; CIs formal |
+| EM_IT | USA | 2001-01…2026-08 | 0 | — | — | 5.5 | 0 | 0 | dates/tests formal; CIs formal |
+| EM_IT | USA_IT | 2001-01…2026-08 | 0 | — | — | 4.1 | 0 | 0 | dates/tests formal; CIs formal |
+| EM_exIT | USA | 2001-01…2026-08 | 1 | 2012-02 | 2010-11…2013-05 | 32.7, 6.4 | 1 | 1 | dates/tests formal; CIs formal |
+| EM_exIT | USA_IT | 2001-01…2026-08 | 2 | 2007-07, 2012-07 | 2007-02…2007-12; 2011-08…2013-06 | 19.4, 17.0, 7.9 | 2 | 0 | dates/tests formal; CIs formal |
+| EM_exTWKR | USA | 2001-02…2026-08 | 1 | 2012-12 | 2011-08…2014-04 | 32.1, 8.7 | 1 | 1 | dates/tests formal; CIs formal |
+| EM_exTWKR | USA_IT | 2001-02…2026-08 | 2 | 2007-09, 2016-03 | 2006-12…2008-06; 2015-01…2017-05 | 18.5, 19.0, 7.1 | 2 | 0 | dates/tests formal; CIs formal |
+| EMSC_P | USA | 2001-01…2026-08 | 1 | 2010-09 | 2009-01…2012-05 | 23.9, 5.5 | 2 | 0 | dates/tests formal; CIs formal |
+| EMSC_P | USA_IT | 2001-01…2026-08 | 1 | 2007-07 | 2005-02…2009-12 | 18.0, 11.9 | 2 | 1 | dates/tests formal; CIs formal |
 
 | index | question | benchmark | δ | SE | p one-sided | p Holm | verdict | note |
 |---|---|---|---|---|---|---|---|---|
@@ -122,16 +122,16 @@ Countries chosen by the optimizer (S&P 500 + U.S. Agg + 8 countries):
 ## Module C - is the Sharpe gain from adding EM beyond chance? (A's five-year blocks)
 | asset | block | Sharpe gain, free EM | p free | Sharpe gain, EM = 10% | p 10% | GRS p |
 |---|---|---|---|---|---|---|
-| EM | 2001–05 | 0.433 | 0.025 | 0.380 | 0.010 | 0.005 |
-| EM | 2006–10 | 0.048 | 0.185 | 0.000 | 0.135 | 0.176 |
-| EM | 2011–15 | 0.000 | 1.000 | -0.672 | 0.995 | 0.001 |
-| EM | 2016–20 | 0.000 | 1.000 | -0.111 | 0.670 | 0.640 |
-| EM | 2021–26 | 0.000 | 1.000 | -0.024 | 0.210 | 0.656 |
-| EM_exIT | 2001–05 | 0.478 | 0.015 | 0.392 | 0.010 | 0.004 |
-| EM_exIT | 2006–10 | 0.054 | 0.175 | 0.011 | 0.125 | 0.164 |
-| EM_exIT | 2011–15 | 0.000 | 1.000 | -0.717 | 0.995 | 0.001 |
-| EM_exIT | 2016–20 | 0.000 | 1.000 | -0.168 | 0.820 | 0.384 |
-| EM_exIT | 2021–26 | 0.000 | 1.000 | -0.046 | 0.375 | 0.977 |
+| EM | 2001–05 | 0.433 | 0.015 | 0.380 | 0.004 | 0.005 |
+| EM | 2006–10 | 0.048 | 0.186 | 0.000 | 0.148 | 0.176 |
+| EM | 2011–15 | 0.000 | 1.000 | -0.672 | 0.996 | 0.001 |
+| EM | 2016–20 | 0.000 | 1.000 | -0.111 | 0.677 | 0.640 |
+| EM | 2021–26 | 0.000 | 1.000 | -0.024 | 0.217 | 0.656 |
+| EM_exIT | 2001–05 | 0.478 | 0.009 | 0.392 | 0.002 | 0.004 |
+| EM_exIT | 2006–10 | 0.054 | 0.182 | 0.011 | 0.144 | 0.164 |
+| EM_exIT | 2011–15 | 0.000 | 1.000 | -0.717 | 0.997 | 0.001 |
+| EM_exIT | 2016–20 | 0.000 | 1.000 | -0.168 | 0.814 | 0.384 |
+| EM_exIT | 2021–26 | 0.000 | 1.000 | -0.046 | 0.393 | 0.977 |
 
 # Question 2
 
