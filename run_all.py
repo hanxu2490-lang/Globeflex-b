@@ -96,6 +96,10 @@ def write_summary(data_tab, qa, qa3, qat, qb, qc, r3, rob, m):
         "",
         crisis_md(r3["coefs"]),
         "",
+        "Crisis selection: each named crisis against the crisis rule in its event month (Module E).",
+        "",
+        U.to_markdown(r3["selection"][["type", "period", "test", "test value (event month)", "threshold", "result", "status"]], "{:.3f}"),
+        "",
         "Daily event study: cumulative EM minus World (log %), from day -5.",
         "",
         U.to_markdown(r3["events"], "{:.2f}"),
@@ -140,9 +144,9 @@ def main(fast=False):
     data_tab = describe_data(raw, m, daily)
     break_month = pd.Period(qc["BREAKS_C"][0], "M")
     m["Post"] = (m.index > break_month).astype(int)          # Post_t = 1 after Module C's break
-    r3 = step3_crisis.run(m, daily); print("Question 2 regression and event study done")
+    r3 = step3_crisis.run(raw, m, daily); print("Question 2 regression and event study done")
     rob = robustness.run(m); print("Question 2 robustness done")
-    q2_report.run(raw, m); print("Question 2 report tables done")
+    q2_report.run(m, r3); print("Question 2 report tables done")
     U.save_table(m, "data_monthly_panel")
     write_summary(data_tab, qa, qa3, qat, qb, qc, r3, rob, m)
     print(f"finished in {time.time() - t0:.0f}s -> {C.OUT_DIR}")

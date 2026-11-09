@@ -7,8 +7,12 @@ Equation (2) is estimated with and without the Post_t term.
 
 Fin_t = 1 when MSCI World is more than 10% below its peak; Geo_t = 1 when GPR or TPU is in its
 top decile; Current_t = 1 from 2018. X_t = changes in the VIX and the dollar index (reported with
-and without). Repeated for EM ex-IT. Daily cumulative EM-minus-DM returns from 5 days before to
-20 days after each named crisis, compared with non-crisis placebo dates (Module E placebo test).
+and without). Repeated for EM ex-IT.
+
+Event study (Module E): each named crisis is checked against the crisis rule in its event month
+(crisis selection); daily EM, World and EM-minus-World log returns from 5 days before to 20 days after
+each crisis (event windows); the crises' mean cumulative EM minus World is compared with non-crisis
+placebo dates (placebo test).
 """
 import numpy as np
 import pandas as pd
@@ -65,24 +69,74 @@ def regression_table(m, deps=("EM", "EM_EXIT"), current_start=C.CURRENT_START, p
     return pd.DataFrame(cols), pd.DataFrame(pvals)
 
 
-# ------------------------------------------------------------------ daily event study
-def event_study(daily, crises=C.CRISES, pre=C.EVENT_PRE, post=C.EVENT_POST):
-    """Cumulative EM-minus-World log return (%) from day -pre to each day up to +post."""
-    rel = daily["EM"] - daily["WORLD"]
-    dates = rel.index
-    paths, info = {}, []
+# ------------------------------------------------------------------ crisis selection (Module E)
+SELECTION_STATUS = {"Met": "Core event (rule met)", "Met only after event": "Retained - shock-triggered",
+                    "Not met": "Additional case - rule not met"}
+
+
+def crisis_selection(raw, m, crises=C.CRISES, post=C.EVENT_POST):
+    """Check each named crisis against the crisis rule in its event month (Module E crisis selection).
+
+    Fin:   MSCI World month-end drawdown from its running peak in the event month at or below -10% -> Met;
+           otherwise, the daily drawdown reaches -10% between Day 0 and Day +post -> Met only after event.
+    Geo:   GPR in the event month in its top decile over the sample -> Met.
+    Trade: TPU in the event month in its top decile over the sample -> Met.
+    Status: Met = core event; Met only after event = retained, shock-triggered; Not met = additional case.
+    """
+    world = pd.concat({"EM": raw["EM"], "WORLD": raw["WORLD"]}, axis=1, join="inner")["WORLD"]
+    dd_daily = world / world.cummax() - 1            # daily drawdown on the event-study calendar
+    thr = {"Fin": C.FIN_DRAWDOWN, "Geo": m["GPR"].quantile(C.GEO_QUANTILE), "Trade": m["TPU"].quantile(C.GEO_QUANTILE)}
+    test = {"Fin": "World month-end drawdown", "Geo": "GPR", "Trade": "TPU"}
+    rows = []
     for name, date, kind, period in crises:
-        i0 = dates.searchsorted(pd.Timestamp(date))      # first trading day on/after the date
-        win = rel.iloc[i0 - pre:i0 + post + 1]
-        paths[name] = pd.Series(win.cumsum().values, index=range(-pre, post + 1))
-        info.append({"crisis": name, "type": kind, "period": period, "day0": dates[i0].date()})
-    paths = pd.DataFrame(paths)
-    info = pd.DataFrame(info).set_index("crisis")
+        d = pd.Timestamp(date)
+        i0 = world.index.searchsorted(d)
+        if kind == "Fin":
+            val = m.loc[d.to_period("M"), "WORLD_DD"]
+            res = ("Met" if val <= thr[kind] else
+                   "Met only after event" if (dd_daily.iloc[i0:i0 + post + 1] <= thr[kind]).any() else "Not met")
+        else:
+            val = m.loc[d.to_period("M"), "GPR" if kind == "Geo" else "TPU"]
+            res = "Met" if val >= thr[kind] else "Not met"
+        rows.append({"event": name, "event date": d.date(), "type": kind, "period": period, "day 0": world.index[i0].date(),
+                     "test": test[kind], "test value (event month)": val, "threshold": thr[kind],
+                     "daily drawdown at day 0": dd_daily.iloc[i0], "result": res, "status": SELECTION_STATUS[res]})
+    return pd.DataFrame(rows).set_index("event")
+
+
+# ------------------------------------------------------------------ daily event windows (Module E)
+def event_windows(daily, sel, pre=C.EVENT_PRE, post=C.EVENT_POST):
+    """Day -pre to +post around each crisis: daily and cumulative EM, World and EM - World log returns (%)."""
+    out = []
+    for name, r in sel.iterrows():
+        i0 = daily.index.searchsorted(pd.Timestamp(r["event date"]))     # first trading day on/after the date
+        assert i0 - pre >= 0 and i0 + post < len(daily), f"window outside the data: {name}"
+        w = daily.iloc[i0 - pre:i0 + post + 1]
+        out.append(pd.DataFrame({
+            "event": name, "event date": r["event date"], "day 0": daily.index[i0].date(), "type": r["type"],
+            "period": r["period"], "status": r["status"], "relative day": range(-pre, post + 1), "trading date": w.index.date,
+            "EM daily": w["EM"].values, "World daily": w["WORLD"].values, "EM - World daily": (w["EM"] - w["WORLD"]).values,
+            "EM cumulative": w["EM"].cumsum().values, "World cumulative": w["WORLD"].cumsum().values,
+            "EM - World cumulative": (w["EM"] - w["WORLD"]).cumsum().values}))
+    return pd.concat(out, ignore_index=True)
+
+
+def event_study(windows, sel, pre=C.EVENT_PRE, post=C.EVENT_POST):
+    """Per-crisis summary, cumulative EM - World paths and group averages (Past / Current x type)."""
+    paths = windows.pivot(index="relative day", columns="event", values="EM - World cumulative")[list(sel.index)]
+    last = windows[windows["relative day"] == post].set_index("event")
+    first = windows[windows["relative day"] == -pre].set_index("event")
+    tab = sel[["type", "period", "status", "day 0"]].copy()
+    tab["window start"], tab["window end"] = first["trading date"], last["trading date"]
+    tab[f"EM cumulative [-{pre},+{post}]"] = last["EM cumulative"]
+    tab[f"World cumulative [-{pre},+{post}]"] = last["World cumulative"]
     horizons = [-1, 0, 5, 10, 20]
-    tab = info.join(paths.loc[horizons].T.rename(columns=lambda h: f"CAR[-{pre},{h:+d}]"))
-    groups = info["period"] + " " + info["type"]
+    tab = tab.join(paths.loc[horizons].T.rename(columns=lambda h: f"CAR[-{pre},{h:+d}]"))
+    tab["observations"] = windows.groupby("event").size()
+    groups = tab["period"] + " " + tab["type"]
     group_paths = paths.T.groupby(groups).mean().T
-    group_tab = tab.groupby(groups)[[c for c in tab.columns if c.startswith("CAR")]].mean()
+    car_cols = [c for c in tab.columns if c.startswith(("CAR", "EM cum", "World cum"))]
+    group_tab = tab.groupby(groups)[car_cols].mean()
     group_tab.insert(0, "n events", groups.value_counts())
     return paths, tab, group_paths, group_tab
 
@@ -109,14 +163,14 @@ def plot_events(group_paths, name):
 
 
 # ------------------------------------------------------------------ crisis vs non-crisis placebo (Module E)
-def placebo_test(daily, m, crises=C.CRISES, pre=C.EVENT_PRE, post=C.EVENT_POST, B=C.PLACEBO_DRAWS,
-                 seed=C.PLACEBO_SEED):
+def placebo_test(daily, m, sel, pre=C.EVENT_PRE, post=C.EVENT_POST, B=C.PLACEBO_DRAWS, seed=C.PLACEBO_SEED):
     """Mean CAR[-5,+20] of the named crises against placebo sets drawn from non-crisis dates.
 
     Control dates: from 2001, in months with no Fin, GPR or TPU flag (Crisis_t = 0), and outside
     +/-(pre + post) trading days of every named event. Each placebo set draws, without replacement,
     as many Past and as many Current dates as there are events. Two-sided empirical p-value centred
-    on the placebo mean. Descriptive benchmark, not a causal test.
+    on the placebo mean. Samples: all 15, the core events (rule met), without Crimea, past, current.
+    Descriptive benchmark, not a causal test.
     """
     dates = daily.index
     arr = (daily["EM"] - daily["WORLD"]).to_numpy()
@@ -124,10 +178,8 @@ def placebo_test(daily, m, crises=C.CRISES, pre=C.EVENT_PRE, post=C.EVENT_POST, 
     def car(i):                                   # sum of EM - World from day -pre through day +post
         return float(arr[i - pre:i + post + 1].sum())
 
-    ev = pd.DataFrame(crises, columns=["event", "event_date", "type", "period"])
-    ev["event_date"] = pd.to_datetime(ev["event_date"])
-    ev["status"] = np.where(ev["event"].isin(C.NON_CORE), "Robustness", "Core")
-    idx = np.array([dates.searchsorted(d) for d in ev["event_date"]])
+    ev = sel.reset_index()[["event", "event date", "type", "period", "status"]]
+    idx = np.array([dates.searchsorted(pd.Timestamp(d)) for d in ev["event date"]])
     assert all(i >= pre and i + post < len(dates) for i in idx)
     ev["day0"] = dates[idx]
     ev["car_log_pp"] = [car(i) for i in idx]
@@ -159,8 +211,9 @@ def placebo_test(daily, m, crises=C.CRISES, pre=C.EVENT_PRE, post=C.EVENT_POST, 
                 "p two-sided": pval, "placebo 2.5%": np.quantile(draws, .025),
                 "placebo 97.5%": np.quantile(draws, .975)}, draws
 
-    samples = [("All 15", ev), ("Core 12", ev[ev["status"] == "Core"]),
-               ("Excluding Crimea (14)", ev[~ev["event"].str.contains("Crimea")]),
+    core = ev[ev["status"].str.startswith("Core")]
+    no_crimea = ev[~ev["event"].str.contains("Crimea")]
+    samples = [("All 15", ev), (f"Core {len(core)}", core), (f"Excluding Crimea ({len(no_crimea)})", no_crimea),
                ("Past", ev[ev["period"] == "Past"]), ("Current", ev[ev["period"] == "Current"])]
     rows, dists = {}, {}
     for name, df in samples:
@@ -184,20 +237,26 @@ def plot_placebo(ev, dists, name):
     U.save_fig(fig, name)
 
 
-def run(m, daily):
+def run(raw, m, daily):
     coefs, pvals = regression_table(m, posts=(True, False))
     U.save_table(coefs, "step3_crisis_regressions")
     U.save_table(pvals, "step3_crisis_regressions_pvalues")
-    paths, tab, group_paths, group_tab = event_study(daily)
+
+    sel = crisis_selection(raw, m)
+    U.save_table(sel, "step3_crisis_selection")
+    windows = event_windows(daily, sel)
+    U.save_table(windows, "step3_event_windows", index=False)
+    paths, tab, group_paths, group_tab = event_study(windows, sel)
     U.save_table(paths, "step3_event_paths_daily")
     U.save_table(tab, "step3_event_study")
     U.save_table(group_tab, "step3_event_study_by_group")
     plot_events(group_paths, "step3_event_study")
-    placebo, ev, controls, dists = placebo_test(daily, m)
+
+    placebo, ev, controls, dists = placebo_test(daily, m, sel)
     U.save_table(placebo, "step3_placebo_summary")
     U.save_table(controls.set_index("date"), "step3_placebo_control_pool")
-    U.save_table(pd.DataFrame({k: dists[k] for k in ["All 15", "Core 12", "Excluding Crimea (14)"]},
+    U.save_table(pd.DataFrame({k: dists[k] for k in list(dists)[:3]},
                               index=pd.RangeIndex(1, C.PLACEBO_DRAWS + 1, name="replicate")), "step3_placebo_draws")
     plot_placebo(ev, dists, "step3_placebo")
-    return {"coefs": coefs, "pvals": pvals, "events": tab, "event_groups": group_tab, "placebo": placebo,
-            "placebo_controls": controls["period"].value_counts()}
+    return {"coefs": coefs, "pvals": pvals, "selection": sel, "events": tab, "paths": paths,
+            "event_groups": group_tab, "placebo": placebo, "placebo_controls": controls["period"].value_counts()}

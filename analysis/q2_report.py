@@ -3,16 +3,12 @@
 
 Table 1: equation (2) in every version (EM, EM ex-IT, EM local currency; with / without X;
          Current from 2018 and from 2022), coefficients with Newey-West t-stats.
-Table 2: event study, one row per crisis, with the currency and tech parts of EM minus World.
 Figure:  average cumulative EM minus World from day -5 to +20, past vs current,
-         financial crises and war / trade crises in separate panels.
-Drivers: average monthly values in each crisis cell (dollar, VIX, currency part, tech part).
+         financial crises and war / trade crises in separate panels (event windows from Step 3).
 """
-import numpy as np
 import pandas as pd
 
 from . import config as C
-from . import data_prep
 from . import utils as U
 from .step3_crisis import crisis_regression
 
@@ -56,60 +52,8 @@ def table1(m):
     return pd.DataFrame(num), pd.DataFrame(txt)
 
 
-def daily_components(raw, m):
-    """Daily EM minus World, its currency part and EM ex-IT minus World (log %)."""
-    d = data_prep.build_daily(raw, cols=("EM", "WORLD", "EM_LC", "EM_IT"))
-    w = m["W_IT"].shift(1).reindex(d.index.to_period("M")).values     # weight at previous month end
-    R_em, R_it = np.exp(d["EM"] / 100) - 1, np.exp(d["EM_IT"] / 100) - 1
-    exit_ = 100 * np.log(1 + (R_em - w * R_it) / (1 - w))
-    return pd.DataFrame({"rel": d["EM"] - d["WORLD"], "ccy": d["EM"] - d["EM_LC"],
-                         "rel_exit": exit_ - d["WORLD"]}, index=d.index)
-
-
-def table2(comp, pre=C.EVENT_PRE, post=C.EVENT_POST):
-    rows, paths = [], {}
-    for name, date, kind, period in C.CRISES:
-        i0 = comp.index.searchsorted(pd.Timestamp(date))
-        win = comp.iloc[i0 - pre:i0 + post + 1]
-        cum = win.cumsum()
-        paths[name] = pd.Series(cum["rel"].values, index=range(-pre, post + 1))
-        rows.append({"crisis": name, "type": kind, "period": period, "day 0": comp.index[i0].date(),
-                     "CAR[-5,0]": cum["rel"].iloc[pre], "CAR[-5,+5]": cum["rel"].iloc[pre + 5],
-                     "CAR[-5,+20]": cum["rel"].iloc[-1],
-                     "currency part": cum["ccy"].iloc[-1],
-                     "local-ccy CAR[-5,+20]": cum["rel"].iloc[-1] - cum["ccy"].iloc[-1],
-                     "EM ex-IT CAR[-5,+20]": cum["rel_exit"].iloc[-1],
-                     "tech part": cum["rel"].iloc[-1] - cum["rel_exit"].iloc[-1]})
-    tab = pd.DataFrame(rows)
-    order = {"Past Fin": 0, "Current Fin": 1, "Past Geo": 2, "Current Geo": 3, "Current Trade": 4}
-    tab["_o"] = (tab["period"] + " " + tab["type"]).map(order)
-    tab = tab.sort_values(["_o", "day 0"]).drop(columns="_o").reset_index(drop=True)
-    num_cols = [c for c in tab.columns if "CAR" in c or "part" in c]
-    grp = tab.assign(group=tab["period"] + " " + tab["type"]).groupby("group", sort=False)
-    avg = grp[num_cols].mean()
-    avg.insert(0, "events", grp.size())
-    # war and trade together (= Geo in the regression)
-    geo_cur = tab[(tab["period"] == "Current") & tab["type"].isin(["Geo", "Trade"])]
-    avg.loc["Current Geo + Trade"] = [len(geo_cur), *geo_cur[num_cols].mean().values]
-    return tab, avg, pd.DataFrame(paths)
-
-
-def drivers(m):
-    """Average monthly values per crisis cell (cells can overlap: a month may be Fin and Geo)."""
-    cur = m["Current"] == 1
-    cells = {"Non-crisis": m["Crisis"] == 0,
-             "Fin, past": (m["Fin"] == 1) & ~cur, "Fin, current": (m["Fin"] == 1) & cur,
-             "Geo, past": (m["Geo"] == 1) & ~cur, "Geo, current": (m["Geo"] == 1) & cur}
-    v = pd.DataFrame({"EM − World": m["EM"] - m["WORLD"], "currency part (USD − local)": m["EM"] - m["EM_LC"],
-                      "tech part (EM − EM ex-IT)": m["EM"] - m["EM_EXIT"],
-                      "ΔDXY (%)": m["dDXY"], "ΔVIX (points)": m["dVIX"], "IT weight (%)": 100 * m["W_IT_LAG"]})
-    out = pd.DataFrame({k: v[s].mean() for k, s in cells.items()}).T
-    out.insert(0, "months", [int(s.sum()) for s in cells.values()])
-    return out
-
-
 def plot(tab, paths, name="q2_event_paths"):
-    key = tab.set_index("crisis")
+    key = tab
     panels = [("Financial crises", {"Past": ["Fin"], "Current": ["Fin"]}),
               ("War and trade crises", {"Past": ["Geo"], "Current": ["Geo", "Trade"]})]
     fig, axes = U.new_fig(1, 2, figsize=(11, 4.4), sharey=True)
@@ -133,15 +77,9 @@ def plot(tab, paths, name="q2_event_paths"):
     U.save_fig(fig, name)
 
 
-def run(raw, m):
+def run(m, r3):
     t1_num, t1_txt = table1(m)
     U.save_table(t1_num, "q2_table1_crisis_regressions")
     U.save_table(t1_txt, "q2_table1_formatted")
-    comp = daily_components(raw, m)
-    t2, t2_avg, paths = table2(comp)
-    U.save_table(t2, "q2_table2_event_study", index=False)
-    U.save_table(t2_avg, "q2_table2_event_study_by_group")
-    drv = drivers(m)
-    U.save_table(drv, "q2_drivers_by_crisis_cell")
-    plot(t2, paths)
-    return {"t1_num": t1_num, "t1_txt": t1_txt, "t2": t2, "t2_avg": t2_avg, "drivers": drv}
+    plot(r3["events"], r3["paths"])
+    return {"t1_num": t1_num, "t1_txt": t1_txt}

@@ -27,7 +27,6 @@ EVENT_POST = 20                 # trading days after day 0
 # Crisis vs non-crisis placebo (Module E placebo test)
 PLACEBO_DRAWS = 5000            # placebo sets
 PLACEBO_SEED = 20261103
-NON_CORE = ["China devaluation", "Crimea annexation", "COVID crash"]   # outside Module E's 12 core events
 
 # Named crises. Day 0 = first trading day on or after the date.
 # type: Fin = financial, Geo = war / geopolitical, Trade = trade conflict. period: Past = before 2018.
