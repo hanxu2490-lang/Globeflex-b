@@ -2,7 +2,7 @@
 """Build the results report (report/index.html) from the tables in output/.
 
 Run `python run_all.py` first. Tables are filled from the result files; the written text describes
-the results of the latest run (data to 25 Sep 2026).
+the results of the latest run (data to 31 Aug 2026).
 """
 import html
 import shutil
@@ -256,9 +256,9 @@ def build():
 <header class="top">
   <div class="eyebrow">GlobeFlex B, San Diego · Team Delta · Results report</div>
   <h1>Is there still a diversification benefit to emerging markets?</h1>
-  <p class="lede">Team results on MSCI data from January 2001 to September 2026, with the focus on
+  <p class="lede">Team results on MSCI data from January 2001 to August 2026, with the focus on
   Question 2: does EM do better relative to developed markets in today's war and trade crises than in past crises?</p>
-  <div class="meta">Jun Wang, Yujia Chen, Xu Han, Yaqi Xiao, Luqi Yang · Question 1: 2001-01 to 2026-08 · Question 2: 2001-01 to 2026-09</div>
+  <div class="meta">Jun Wang, Yujia Chen, Xu Han, Yaqi Xiao, Luqi Yang · Question 1 and Question 2: 2001-01 to 2026-08</div>
   <nav class="toc" aria-label="Sections">
     <a href="#answers">Answers</a><a href="#data">Data</a><a href="#q1">Question 1</a>
     <a href="#q2">Question 2</a><a href="#t1">Table 1</a><a href="#t2">Table 2</a><a href="#drivers">Drivers</a>
@@ -270,7 +270,7 @@ def build():
 <div class="answers">
   <div class="answer main"><h4>Question 2 · crises</h4>
   <p>EM's relative performance in today's war and trade crises is <b>not significantly different</b> from past crises
-  (γ<sub>4</sub> = 0.19, t = 0.16). What moves it is mainly <b>the dollar</b>. Recent shocks come with a stronger dollar
+  (γ<sub>4</sub> = −0.08, t = −0.07). What moves it is mainly <b>the dollar</b>. Recent shocks come with a stronger dollar
   and weaker EM currencies, which costs EM about as much as its larger tech weight gains.</p></div>
   <div class="answer"><h4>Question 1 · co-movement</h4>
   <p>EM's link to the U.S. <b>changed once</b>, in a post-GFC transition (point estimate Oct 2009). After it, non-tech EM's
@@ -289,11 +289,11 @@ def build():
 price index on the same basis. A local-currency EM index tests the currency channel.</li>
 <li>EM ex-IT is backed out from EM and EM IT returns with the IT weight w<sub>IT</sub> = EM IT / EM market value at the previous month end.</li>
 <li>Crisis months (Question 2). <b>Fin</b> = MSCI World more than 10% below its running peak (134 months). <b>Geo</b> = GPR or TPU in its
-top decile over 2001–2026, i.e. GPR ≥ 157.8 or TPU ≥ 168.0 (53 months). <b>Current</b> = from January 2018.</li>
+top decile over 2001–2026, i.e. GPR ≥ 158.0 or TPU ≥ 165.2 (53 months). <b>Current</b> = from January 2018.</li>
 <li>Question 1 (Modules A, A3, B, C): monthly data 2001-01 to 2026-08. Series are built in simple returns with last month's weights
 (EM ex-IT, EM ex-Taiwan &amp; Korea) and converted to log returns for correlations, betas and tests. The optimizer uses the S&amp;P 500 total
 return, the Bloomberg US Aggregate and MSCI country indices for the eight largest EM markets.</li>
-<li>Question 2: monthly data 2001-01 to 2026-09, log returns in %, Newey–West standard errors (5 lags).</li>
+<li>Question 2: monthly data 2001-01 to 2026-08 (daily data to 31 Aug 2026), log returns in %, Newey–West standard errors (5 lags).</li>
 </ul>
 </section>
 {figure("a_fig1_tech_share", "Module A, Fig 1. IT share of MSCI EM. The Dec 2018 drop is the GICS reclassification that moved internet firms out of IT; "
@@ -337,7 +337,7 @@ conditional on the break date. H1: EM ex-IT; H2: spread EM IT − EM ex-IT; H3: 
 <p>γ<sub>4</sub> is the core test. It measures how much better (positive) or worse EM does relative to World in a
 war or trade crisis month today than in one in the past, in percentage points per month. γ<sub>3</sub> does the same for financial
 crises. X<sub>t</sub> holds the monthly changes in the VIX and the dollar index (DXY). The sample has 116 past and 18 current Fin months, and
-16 past and 37 current Geo months.</p>
+17 past and 36 current Geo months.</p>
 
 <h3 id="t1">Table 1 · Crisis regressions, with and without Post</h3>
 </div>
@@ -352,18 +352,18 @@ t-statistics in brackets. "+ X" adds ΔVIX (points) and ΔDXY (%). Current = 1 f
 <div class="col">
 <h3>What γ<sub>4</sub> says</h3>
 <ul class="tight">
-<li><b>No significant difference.</b> In the main version, γ<sub>4</sub> = 0.19 (t = 0.16). With the VIX and dollar controls it is 0.40
-(t = 0.31). In a war or trade crisis month today, EM's relative return is within a fraction of a percentage point of what it was in past
+<li><b>No significant difference.</b> In the main version, γ<sub>4</sub> = −0.08 (t = −0.07). With the VIX and dollar controls it is 0.19
+(t = 0.15). In a war or trade crisis month today, EM's relative return is within a fraction of a percentage point of what it was in past
 episodes, and the estimate is far from significant. γ<sub>3</sub> for financial crises is just as close to zero (|t| &lt; 0.4 in every version).</li>
 <li><b>Crisis months themselves are not special.</b> γ<sub>1</sub> and γ<sub>2</sub> are close to zero too. The one strong term is θ Post
-(−1.3 to −1.9, t between −2.9 and −3.9): after the 2009 break, EM's return relative to World is about 1.5 percentage points a month lower than
+(−1.3 to −1.8, t between −2.9 and −3.6): after the 2009 break, EM's return relative to World is about 1.5 percentage points a month lower than
 before, in crisis and normal months alike.</li>
 <li><b>Without Post the answer is the same.</b> Dropping θ Post moves EM's stronger pre-2009 returns into the crisis terms:
-γ<sub>1</sub> and γ<sub>2</sub> turn positive (0.56 and 0.69) and γ<sub>4</sub> turns negative (−0.74, t = −0.67; −1.39, t = −1.51 for EM ex-IT).
-None of the crisis terms is significant (all |t| &lt; 1.6), and R² falls from 0.04 to 0.01, so Post carries most of what the model explains.
+γ<sub>1</sub> and γ<sub>2</sub> turn positive (0.54 and 0.85) and γ<sub>4</sub> becomes more negative (−0.93, t = −0.86; −1.43, t = −1.62 for EM ex-IT).
+None of the crisis terms is significant (all |t| &lt; 1.7), and R² falls from 0.04 to 0.01, so Post carries most of what the model explains.
 The dollar effect is unchanged (φ<sub>ΔDXY</sub> = −0.45, t = −4.2).</li>
-<li><b>From 2022 the sign is positive but still not significant.</b> With Current starting in 2022, γ<sub>4</sub> rises to 1.32 (t = 1.52)
-and to 1.45 with controls (t = 1.63). For EM ex-IT it is only 0.54–0.66. Most of the better showing since 2022 comes through the tech sector.</li>
+<li><b>From 2022 the sign is positive but still not significant.</b> With Current starting in 2022, γ<sub>4</sub> rises to 1.12 (t = 1.27)
+and to 1.28 with controls (t = 1.44). For EM ex-IT it is only 0.47–0.63. Most of the better showing since 2022 comes through the tech sector.</li>
 </ul>
 
 <h3 id="t2">Table 2 · Event study, one row per crisis</h3>
@@ -389,6 +389,22 @@ two current events (COVID +3.9%, SVB −1.8%). Also, Fin in the regression cover
 includes Russia's removal from MSCI EM in March 2022, which is specific to that event.</li>
 </ul>
 
+<h3 id="placebo">Placebo test · crisis vs non-crisis dates (Module E)</h3>
+<p>The mean CAR[−5,+20] of the named crises is compared with 5,000 placebo sets of non-crisis dates. Each set draws as many past and
+current dates as there are events, without replacement, from months with no Fin, GPR or TPU flag and outside ±25 trading days of every
+named event (1,802 past and 1,003 current dates).</p>
+</div>
+{placebo_table()}
+<p class="note">Mean cumulative EM − World log return from Day −5 to Day +20, in percentage points. Two-sided empirical p-value centred on
+the placebo mean. Core 12 leaves out China devaluation, Crimea and COVID; excluding Crimea leaves 14. A descriptive randomization benchmark,
+not a causal test and not a test of the difference between past and current crises.</p>
+<div class="col">
+<ul class="tight">
+<li><b>All 15 crises:</b> EM lost 2.11 points against World, against −0.24 on placebo dates (p = 0.044). For the 12 core events the
+loss is 2.85 (p = 0.011), and 2.45 without Crimea (p = 0.023).</li>
+<li><b>Past crises:</b> −3.36 against +0.08 on placebo dates (p = 0.026). <b>Current crises:</b> −1.27 against −0.50 (p = 0.49).</li>
+</ul>
+
 <h3 id="drivers">What drives the difference: the dollar, currencies or tech?</h3>
 </div>
 {drivers_table()}
@@ -398,23 +414,23 @@ currency. Tech part = EM minus EM ex-IT. IT weight at the previous month end.</p
 <ul class="tight">
 <li><b>The dollar is the clearest driver.</b> In equation (2), φ<sub>ΔDXY</sub> = −0.43 (t = −3.9): a 1% rise in the dollar in a month
 lowers EM's return relative to World by 0.43 percentage points. It is the only control that is strongly significant. Past Geo months
-(2001–2005) came with a falling dollar (−0.66% a month). Current Geo months came with a rising one (+0.25%). Current Fin months also saw the
-dollar rise (+0.34% vs −0.15% in the past). Holding the dollar fixed, γ<sub>4</sub> doubles from 0.19 to 0.40, though it stays insignificant.</li>
+(mostly 2001–2005) came with a falling dollar (−0.78% a month). Current Geo months came with a rising one (+0.21%). Current Fin months also saw the
+dollar rise (+0.34% vs −0.15% in the past). Holding the dollar fixed, γ<sub>4</sub> rises from −0.08 to 0.19, though it stays insignificant.</li>
 <li><b>It works through EM currencies.</b> In local currency the dollar coefficient disappears (0.01, t = 0.09). The currency part of EM's
-return is −0.33 points a month in current Geo months, against +0.11 in past ones. In the event study, almost all of EM's past
+return is −0.34 points a month in current Geo months, against +0.18 in past ones. In the event study, almost all of EM's past
 financial-crisis underperformance is currency: −4.9 of the −4.4 total, while the local-currency result is +0.6. In local currency, γ<sub>4</sub> is
-0.55 instead of 0.19: in local terms the gain over past crises is larger, and weaker currencies take part of it away.</li>
-<li><b>Tech partly offsets the dollar.</b> EM ex-IT has lower γ<sub>4</sub> than EM in every version (−0.25 vs 0.19; 0.54 vs 1.32 from
-2022). In current Geo months the tech part adds +0.69 points a month (IT weight 27% on average), against −0.10 in past ones. In the event study,
+0.38 instead of −0.08: in local terms the gain over past crises is larger, and weaker currencies take part of it away.</li>
+<li><b>Tech partly offsets the dollar.</b> EM ex-IT has lower γ<sub>4</sub> than EM in every version (−0.39 vs −0.08; 0.47 vs 1.12 from
+2022). In current Geo months the tech part adds +0.61 points a month (IT weight 26% on average), against −0.04 in past ones. In the event study,
 tech added +1.0 points in current wars but −0.6 in trade conflicts, where tariffs hit EM's tech exporters (Section 301 −1.0, Liberation Day −1.3).</li>
 </ul>
 
 <h3 id="limits">Limitations</h3>
 <ul class="tight">
-<li><b>Few current crises.</b> The current period has only 18 Fin months and 37 Geo months, and the event study has 2 current financial, 3 current war
-and 4 trade events. Single events (COVID, Russia–Ukraine) swing the group averages. Standard errors are wide: the 95% interval for γ<sub>4</sub> runs from about −2.1 to +2.5 points a month.</li>
-<li><b>Crisis type overlaps with time period.</b> All 16 past Geo months fall in 2001–2005 (9/11, the Iraq war). They are war shocks in a falling-dollar,
-pre-tech-boom era. 31 of the 37 current Geo months are flagged by trade-policy uncertainty (TPU), and no past month is, so there is no past trade crisis to compare with.
+<li><b>Few current crises.</b> The current period has only 18 Fin months and 36 Geo months, and the event study has 2 current financial, 3 current war
+and 4 trade events. Single events (COVID, Russia–Ukraine) swing the group averages. Standard errors are wide: the 95% interval for γ<sub>4</sub> runs from about −2.3 to +2.2 points a month.</li>
+<li><b>Crisis type overlaps with time period.</b> 16 of the 17 past Geo months fall in 2001–2005 (9/11, the Iraq war). They are war shocks in a falling-dollar,
+pre-tech-boom era. 30 of the 36 current Geo months are flagged by trade-policy uncertainty (TPU), and only one past month is (January 2017), so there is almost no past trade crisis to compare with.
 γ<sub>4</sub> therefore mixes three things: the type of shock (war vs trade), the dollar regime, and index composition. The Post dummy (break in 2009) and
 the rising IT weight also change with time.</li>
 <li><b>The Fin flag is a drawdown state.</b> It is on for long recovery periods (Jan 2001–Jul 2005, Jun 2008–Dec 2012), so "past financial crisis
@@ -457,7 +473,7 @@ bootstrap samples (Module A tests, O2).</li>
 <h2>Robustness</h2>
 <ul class="tight">
 <li><b>Local-currency EM.</b> See Table 1b, columns 9–10: γ<sub>3</sub> and γ<sub>4</sub> stay insignificant, and the dollar effect disappears.</li>
-<li><b>Current period from 2022.</b> See Table 1b, columns 11–14: γ<sub>4</sub> becomes positive (1.32, t = 1.52) but is not significant at 10%.</li>
+<li><b>Current period from 2022.</b> See Table 1b, columns 11–14: γ<sub>4</sub> becomes positive (1.12, t = 1.27) but is not significant at 10%.</li>
 </ul>
 </section>
 

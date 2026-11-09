@@ -27,7 +27,7 @@ Question 2 tables go to `output/tables/`, figures to `output/figures/`, and `out
 | `analysis/q1_module_c.py` | **Module C** — Bai–Perron break search (robust sup-LM, simulated critical values, Monte Carlo validation), full Bai–Perron table, α/β split, date robustness, primary tests H1–H3 with Holm, with/without the break, correlation bootstrap, robustness, Sharpe-gain tests (GRS and bootstrap), tech share, EM Small Cap, China |
 | `analysis/config.py` | Question 2 settings: sample, crisis rules, crisis list |
 | `analysis/data_prep.py` | Question 2 data: calendar-date alignment, log returns in %, EM ex-IT, Fin / Geo / Current, ΔVIX, ΔDXY |
-| `analysis/step3_crisis.py` | Question 2 — equation (2) with and without X and with and without Post (Post = after Module C's break); EM ex-IT; daily event study (−5 to +20 days) |
+| `analysis/step3_crisis.py` | Question 2 — equation (2) with and without X and with and without Post (Post = after Module C's break); EM ex-IT; daily event study (−5 to +20 days) with the Module E crisis vs non-crisis placebo test |
 | `analysis/robustness.py` | Question 2 robustness — local-currency EM, current period from 2022 |
 | `analysis/q2_report.py` | Question 2 write-up tables and the two-panel event figure |
 | `run_all.py` | Runs Question 1, then Question 2, and writes `output/results_summary.md` |
@@ -51,8 +51,10 @@ Question 2 tables go to `output/tables/`, figures to `output/figures/`, and `out
 The teammates' notebooks used underscore file names (e.g. `MSCI_EM_Returns_daily.xlsx`); `q1_data.FILES` maps them to the files above.
 
 ## Question 2 rules
+- **Sample:** January 2001 to August 2026, as in Question 1; daily data end on 31 Aug 2026.
 - **Named crises:** 15 events in `config.CRISES`; day 0 is the first trading day on or after each date.
-- **Geo_t:** GPR or TPU in its top decile over 2001–2026 (GPR ≥ 157.8 or TPU ≥ 168.0).
+- **Geo_t:** GPR or TPU in its top decile over 2001–2026 (GPR ≥ 158.0 or TPU ≥ 165.2).
 - **Fin_t:** month-end MSCI World more than 10% below its running peak (peak from 1990).
 - **Post_t:** 1 after Module C's break (2009-10, last month of the first regime). Equation (2) is reported with and without Post.
 - **X_t:** ΔVIX in points, ΔDXY as a log change in %. Newey–West lags floor(4 (T/100)^(2/9)) = 5.
+- **Placebo test (Module E):** the mean CAR[−5,+20] of the crises against 5,000 placebo sets of non-crisis dates, matched by Past / Current, drawn without replacement from months with no Fin, GPR or TPU flag and outside ±25 trading days of every named event (seed 20261103). Two-sided empirical p-value centred on the placebo mean. Samples: all 15, the 12 core events (without China devaluation, Crimea and COVID), without Crimea (14), past, current.
