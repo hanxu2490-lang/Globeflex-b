@@ -1,0 +1,16 @@
+﻿event,event date,type,period,day 0,test,test value (event month),threshold,daily drawdown at day 0,result,status
+Lehman bankruptcy,2008-09-15,Fin,Past,2008-09-15,World month-end drawdown,-0.28245966410873524,-0.1,-0.2503908397751331,Met,Core event (rule met)
+US downgrade / euro crisis,2011-08-08,Fin,Past,2011-08-08,World month-end drawdown,-0.21637792842784942,-0.1,-0.2682427775862686,Met,Core event (rule met)
+China devaluation,2015-08-11,Fin,Past,2015-08-11,World month-end drawdown,-0.07151572871101486,-0.1,-0.03088427792762405,Met only after event,Retained - shock-triggered
+9/11 attacks,2001-09-11,Geo,Past,2001-09-11,GPR,498.64788818359375,157.98586425781252,-0.3304026889194793,Met,Core event (rule met)
+Iraq invasion,2003-03-20,Geo,Past,2003-03-20,GPR,358.711181640625,157.98586425781252,-0.4469601068462923,Met,Core event (rule met)
+Crimea annexation,2014-03-03,Geo,Past,2014-03-03,GPR,119.83855438232422,157.98586425781252,-0.01182332802742303,Not met,Additional case - rule not met
+COVID crash,2020-02-24,Fin,Current,2020-02-24,World month-end drawdown,-0.0900974867070159,-0.1,-0.04207421697058855,Met only after event,Retained - shock-triggered
+SVB collapse,2023-03-10,Fin,Current,2023-03-10,World month-end drawdown,-0.11813316407833208,-0.1,-0.16613439382696749,Met,Core event (rule met)
+Russia invades Ukraine,2022-02-24,Geo,Current,2022-02-24,GPR,216.1590118408203,157.98586425781252,-0.10392088395500265,Met,Core event (rule met)
+Hamas attack on Israel,2023-10-09,Geo,Current,2023-10-09,GPR,197.8870086669922,157.98586425781252,-0.09320104901737214,Met,Core event (rule met)
+Israel-Iran war,2025-06-13,Geo,Current,2025-06-13,GPR,222.33692932128906,157.98586425781252,-0.01097140028663579,Met,Core event (rule met)
+US Section 301 China tariffs,2018-03-22,Trade,Current,2018-03-22,TPU,260.5556427562392,165.17832019499417,-0.07532687275241723,Met,Core event (rule met)
+US-China tariff escalation,2019-05-06,Trade,Current,2019-05-06,TPU,189.7933361450865,165.17832019499417,-0.010973841506827564,Met,Core event (rule met)
+Yuan breaks 7 / new tariffs,2019-08-05,Trade,Current,2019-08-05,TPU,254.2201556656221,165.17832019499417,-0.054016731529395456,Met,Core event (rule met)
+'Liberation Day' tariffs,2025-04-03,Trade,Current,2025-04-03,TPU,1151.35558243791,165.17832019499417,-0.09435313100428966,Met,Core event (rule met)

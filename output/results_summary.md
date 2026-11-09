@@ -167,35 +167,55 @@ Equation (2), dependent = EM (or EM ex-IT) minus World. Current = from 2018. Pos
 | phi dDXY |  | -0.426 |  | -0.530 |  | -0.448 |  | -0.556 |
 | t: phi dDXY |  | -3.945 |  | -4.824 |  | -4.234 |  | -5.167 |
 
+Crisis selection: each named crisis against the crisis rule in its event month (Module E).
+
+| event | type | period | test | test value (event month) | threshold | result | status |
+|---|---|---|---|---|---|---|---|
+| Lehman bankruptcy | Fin | Past | World month-end drawdown | -0.282 | -0.100 | Met | Core event (rule met) |
+| US downgrade / euro crisis | Fin | Past | World month-end drawdown | -0.216 | -0.100 | Met | Core event (rule met) |
+| China devaluation | Fin | Past | World month-end drawdown | -0.072 | -0.100 | Met only after event | Retained - shock-triggered |
+| 9/11 attacks | Geo | Past | GPR | 498.648 | 157.986 | Met | Core event (rule met) |
+| Iraq invasion | Geo | Past | GPR | 358.711 | 157.986 | Met | Core event (rule met) |
+| Crimea annexation | Geo | Past | GPR | 119.839 | 157.986 | Not met | Additional case - rule not met |
+| COVID crash | Fin | Current | World month-end drawdown | -0.090 | -0.100 | Met only after event | Retained - shock-triggered |
+| SVB collapse | Fin | Current | World month-end drawdown | -0.118 | -0.100 | Met | Core event (rule met) |
+| Russia invades Ukraine | Geo | Current | GPR | 216.159 | 157.986 | Met | Core event (rule met) |
+| Hamas attack on Israel | Geo | Current | GPR | 197.887 | 157.986 | Met | Core event (rule met) |
+| Israel-Iran war | Geo | Current | GPR | 222.337 | 157.986 | Met | Core event (rule met) |
+| US Section 301 China tariffs | Trade | Current | TPU | 260.556 | 165.178 | Met | Core event (rule met) |
+| US-China tariff escalation | Trade | Current | TPU | 189.793 | 165.178 | Met | Core event (rule met) |
+| Yuan breaks 7 / new tariffs | Trade | Current | TPU | 254.220 | 165.178 | Met | Core event (rule met) |
+| 'Liberation Day' tariffs | Trade | Current | TPU | 1151.356 | 165.178 | Met | Core event (rule met) |
+
 Daily event study: cumulative EM minus World (log %), from day -5.
 
-| crisis | type | period | day0 | CAR[-5,-1] | CAR[-5,+0] | CAR[-5,+5] | CAR[-5,+10] | CAR[-5,+20] |
-|---|---|---|---|---|---|---|---|---|
-| Lehman bankruptcy | Fin | Past | 2008-09-15 | -3.14 | -3.00 | -1.75 | -3.24 | -7.61 |
-| US downgrade / euro crisis | Fin | Past | 2011-08-08 | 0.09 | 0.33 | -3.45 | -1.95 | -1.47 |
-| China devaluation | Fin | Past | 2015-08-11 | -0.65 | -0.75 | -3.98 | -1.61 | -3.97 |
-| 9/11 attacks | Geo | Past | 2001-09-11 | 1.59 | -0.24 | -3.85 | -6.02 | -7.92 |
-| Iraq invasion | Geo | Past | 2003-03-20 | -5.26 | -3.94 | -4.73 | -5.15 | -1.87 |
-| Crimea annexation | Geo | Past | 2014-03-03 | -0.23 | -0.67 | -1.50 | -1.42 | 2.65 |
-| COVID crash | Fin | Current | 2020-02-24 | -0.83 | -0.50 | 1.00 | 4.27 | 3.92 |
-| SVB collapse | Fin | Current | 2023-03-10 | -0.17 | -0.27 | -0.55 | 0.27 | -1.77 |
-| Russia invades Ukraine | Geo | Current | 2022-02-24 | 2.00 | -2.32 | -2.06 | -5.72 | -8.38 |
-| Hamas attack on Israel | Geo | Current | 2023-10-09 | -1.37 | -2.05 | -1.82 | -1.40 | 0.42 |
-| Israel-Iran war | Geo | Current | 2025-06-13 | 0.41 | 0.46 | 0.91 | 0.96 | 0.24 |
-| US Section 301 China tariffs | Trade | Current | 2018-03-22 | 0.43 | 1.09 | -0.90 | -1.87 | -2.09 |
-| US-China tariff escalation | Trade | Current | 2019-05-06 | 0.24 | -1.14 | -1.86 | -5.03 | -0.61 |
-| Yuan breaks 7 / new tariffs | Trade | Current | 2019-08-05 | -1.34 | -1.98 | -2.81 | -3.14 | -2.72 |
-| 'Liberation Day' tariffs | Trade | Current | 2025-04-03 | -0.70 | 2.29 | -1.43 | 0.74 | -0.43 |
+| event | type | period | status | day 0 | window start | window end | EM cumulative [-5,+20] | World cumulative [-5,+20] | CAR[-5,-1] | CAR[-5,+0] | CAR[-5,+5] | CAR[-5,+10] | CAR[-5,+20] | observations |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Lehman bankruptcy | Fin | Past | Core event (rule met) | 2008-09-15 | 2008-09-08 | 2008-10-13 | -31.52 | -23.91 | -3.14 | -3.00 | -1.75 | -3.24 | -7.61 | 26 |
+| US downgrade / euro crisis | Fin | Past | Core event (rule met) | 2011-08-08 | 2011-08-01 | 2011-09-05 | -13.63 | -12.16 | 0.09 | 0.33 | -3.45 | -1.95 | -1.47 | 26 |
+| China devaluation | Fin | Past | Retained - shock-triggered | 2015-08-11 | 2015-08-04 | 2015-09-08 | -11.66 | -7.69 | -0.65 | -0.75 | -3.98 | -1.61 | -3.97 | 26 |
+| 9/11 attacks | Geo | Past | Core event (rule met) | 2001-09-11 | 2001-09-04 | 2001-10-09 | -14.77 | -6.85 | 1.59 | -0.24 | -3.85 | -6.02 | -7.92 | 26 |
+| Iraq invasion | Geo | Past | Core event (rule met) | 2003-03-20 | 2003-03-13 | 2003-04-17 | 9.29 | 11.16 | -5.26 | -3.94 | -4.73 | -5.15 | -1.87 | 26 |
+| Crimea annexation | Geo | Past | Additional case - rule not met | 2014-03-03 | 2014-02-24 | 2014-03-31 | 3.78 | 1.13 | -0.23 | -0.67 | -1.50 | -1.42 | 2.65 | 26 |
+| COVID crash | Fin | Current | Retained - shock-triggered | 2020-02-24 | 2020-02-17 | 2020-03-23 | -37.57 | -41.49 | -0.83 | -0.50 | 1.00 | 4.27 | 3.92 | 26 |
+| SVB collapse | Fin | Current | Core event (rule met) | 2023-03-10 | 2023-03-03 | 2023-04-07 | 1.06 | 2.83 | -0.17 | -0.27 | -0.55 | 0.27 | -1.77 | 26 |
+| Russia invades Ukraine | Geo | Current | Core event (rule met) | 2022-02-24 | 2022-02-17 | 2022-03-24 | -8.79 | -0.41 | 2.00 | -2.32 | -2.06 | -5.72 | -8.38 | 26 |
+| Hamas attack on Israel | Geo | Current | Core event (rule met) | 2023-10-09 | 2023-10-02 | 2023-11-06 | 1.76 | 1.34 | -1.37 | -2.05 | -1.82 | -1.40 | 0.42 | 26 |
+| Israel-Iran war | Geo | Current | Core event (rule met) | 2025-06-13 | 2025-06-06 | 2025-07-11 | 4.31 | 4.06 | 0.41 | 0.46 | 0.91 | 0.96 | 0.24 | 26 |
+| US Section 301 China tariffs | Trade | Current | Core event (rule met) | 2018-03-22 | 2018-03-15 | 2018-04-19 | -2.69 | -0.60 | 0.43 | 1.09 | -0.90 | -1.87 | -2.09 | 26 |
+| US-China tariff escalation | Trade | Current | Core event (rule met) | 2019-05-06 | 2019-04-29 | 2019-06-03 | -6.36 | -5.75 | 0.24 | -1.14 | -1.86 | -5.03 | -0.61 | 26 |
+| Yuan breaks 7 / new tariffs | Trade | Current | Core event (rule met) | 2019-08-05 | 2019-07-29 | 2019-09-02 | -6.15 | -3.42 | -1.34 | -1.98 | -2.81 | -3.14 | -2.72 | 26 |
+| 'Liberation Day' tariffs | Trade | Current | Core event (rule met) | 2025-04-03 | 2025-03-27 | 2025-05-01 | -1.43 | -1.00 | -0.70 | 2.29 | -1.43 | 0.74 | -0.43 | 26 |
 
 Average by group:
 
-| index | n events | CAR[-5,-1] | CAR[-5,+0] | CAR[-5,+5] | CAR[-5,+10] | CAR[-5,+20] |
-|---|---|---|---|---|---|---|
-| Current Fin | 2 | -0.50 | -0.38 | 0.23 | 2.27 | 1.07 |
-| Current Geo | 3 | 0.35 | -1.30 | -0.99 | -2.05 | -2.57 |
-| Current Trade | 4 | -0.34 | 0.06 | -1.75 | -2.32 | -1.46 |
-| Past Fin | 3 | -1.24 | -1.14 | -3.06 | -2.27 | -4.35 |
-| Past Geo | 3 | -1.30 | -1.62 | -3.36 | -4.20 | -2.38 |
+| index | n events | EM cumulative [-5,+20] | World cumulative [-5,+20] | CAR[-5,-1] | CAR[-5,+0] | CAR[-5,+5] | CAR[-5,+10] | CAR[-5,+20] |
+|---|---|---|---|---|---|---|---|---|
+| Current Fin | 2 | -18.26 | -19.33 | -0.50 | -0.38 | 0.23 | 2.27 | 1.07 |
+| Current Geo | 3 | -0.91 | 1.66 | 0.35 | -1.30 | -0.99 | -2.05 | -2.57 |
+| Current Trade | 4 | -4.16 | -2.69 | -0.34 | 0.06 | -1.75 | -2.32 | -1.46 |
+| Past Fin | 3 | -18.94 | -14.59 | -1.24 | -1.14 | -3.06 | -2.27 | -4.35 |
+| Past Geo | 3 | -0.57 | 1.81 | -1.30 | -1.62 | -3.36 | -4.20 | -2.38 |
 
 Crisis vs non-crisis placebo (mean CAR[-5,+20], 5,000 placebo sets matched by Past / Current; control dates: 1802 past, 1003 current):
 
