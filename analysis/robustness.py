@@ -1,36 +1,14 @@
-"""Robustness (methods page).
+"""Robustness of the Question 2 crisis regression (methods page).
 
-1. Small Cap uses the price index (the net-return version starts in 2010), so post-2010 results are
-   re-checked with net returns (Steps 1 and 2).
-2. Local-currency EM returns in the crisis regression (Step 3): how much of EM's crisis performance
-   comes from currency moves.
-3. 2022 as the start of the current period (Step 3).
+1. Local-currency EM returns: how much of EM's crisis performance comes from currency moves.
+2. 2022 as the start of the current period.
+(The EM Small Cap net-return check for Question 1 is in Module C, section 7, and Module B.)
 """
 import pandas as pd
 
 from . import config as C
 from . import utils as U
-from . import step1_dcc, step2_beta_tech, step3_crisis
-
-
-def emsc_net_post2010(m, weekly):
-    # Step 1: DCC over the post-2010 weeks, Small Cap price vs net
-    wk = weekly.dropna(subset=["EMSC_NET"])
-    rows = {}
-    for col, lab in [("EMSC", "EM Small Cap (price)"), ("EMSC_NET", "EM Small Cap (net)")]:
-        r = wk[["EM", col, "US", "US_IT"]].rename(columns={col: "EMSC"})
-        corr = step1_dcc.fit_dcc(r)["corr"]
-        rows[lab] = {"weeks": len(corr), "mean corr vs USA": corr["EMSC~US"].mean(),
-                     "mean corr vs USA IT": corr["EMSC~US_IT"].mean()}
-    dcc = pd.DataFrame(rows).T
-    U.save_table(dcc, "robust1_post2010_dcc_emsc_price_vs_net")
-
-    # Step 2: regressions on the post-2010 months
-    mm = m.loc[C.POST2010_START:]
-    samples = {"All months": mm.index, "Non-crisis months": mm.index[mm["Crisis"] == 0]}
-    reg = step2_beta_tech.regression_table(mm, ["EMSC_NET", "EMSC", "EM", "EM_PX"], samples)
-    U.save_table(reg, "robust1_post2010_regressions", index=False)
-    return {"dcc": dcc, "regressions": reg}
+from . import step3_crisis
 
 
 def local_currency(m):
@@ -53,6 +31,5 @@ def current_from_2022(m):
     return tab
 
 
-def run(m, weekly):
-    return {"emsc_net": emsc_net_post2010(m, weekly), "local_ccy": local_currency(m),
-            "current_2022": current_from_2022(m)}
+def run(m):
+    return {"local_ccy": local_currency(m), "current_2022": current_from_2022(m)}

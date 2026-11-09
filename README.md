@@ -1,76 +1,58 @@
 # GlobeFlex B — Is there still a diversification benefit to emerging markets?
 
-Team Delta. Code for the full analysis in the methods page (Steps 1–4 and robustness).
+Team Delta (Jun Wang, Yujia Chen, Xu Han, Yaqi Xiao, Luqi Yang). One code base for the whole project:
+Question 1 follows the team's Modules A, A3, A tests, B and C; Question 2 holds the crisis regression and the event study.
 
 ## Run
 
 ```bash
 pip install -r requirements.txt
-python run_all.py
+python run_all.py            # full run; Module C's Monte Carlo checks and bootstraps take the longest
+python run_all.py --fast     # fewer Monte Carlo / bootstrap draws in Module C, for testing only
+python make_report.py        # report page in report/index.html
 ```
 
-It runs in about 10 seconds. Then `python make_report.py` builds the results report in `report/index.html`. It writes every table to `output/tables/` (CSV), every chart to
-`output/figures/` (PNG) and a combined report to `output/results_summary.md`.
+Question 1 results go to `output/q1/<module>/` (each module's Excel workbook, figures and CSV files, as in the notebooks).
+Question 2 tables go to `output/tables/`, figures to `output/figures/`, and `output/results_summary.md` collects the key tables of both questions.
 
 ## Layout
 
-| File | Methods page |
+| File | Content |
 |---|---|
-| `analysis/config.py` | All settings: sample, crisis rules, crisis list, portfolio rules |
-| `analysis/data_prep.py` | Data: calendar-date alignment, log returns, EM ex-IT, Fin / Geo / Current, ΔVIX, ΔDXY, T-bill |
-| `analysis/step1_dcc.py` | Step 1 — DCC-GARCH(1,1) by maximum likelihood, weekly |
-| `analysis/step2_beta_tech.py` | Step 2 — Bai–Perron break, equation (1) with Post and with w_IT,t−1, Newey–West |
-| `analysis/step3_crisis.py` | Step 3 — equation (2) with and without X, and with and without Post; EM ex-IT; daily event study (−5 to +20 days) |
-| `analysis/step4_mvo.py` | Step 4 — mean-variance optimizer: long-only efficient frontiers of S&P 500 + US Agg, adding EM, EM ex-IT or the 8 EM countries (free, or forced to 10%), in 5- and 10-year windows |
-| `analysis/robustness.py` | Robustness — Small Cap net returns post-2010, local-currency EM, current period from 2022 |
-| `analysis/q2_report.py` | Question 2 write-up: Table 1 (all versions of equation 2), Table 2 (one row per crisis, with currency and tech parts), two-panel event figure, crisis-month drivers |
-| `run_all.py` | Runs everything in order and writes `output/results_summary.md` |
-| `make_report.py` | Builds the report page `report/index.html` from the tables and figures |
-| `notebooks/Module_E_Crisis_Analysis.ipynb` | Module E: event study around the 15 named crises, checked against the team CSVs, with like-for-like past-vs-current comparison, size against normal times and a country breakdown. Writes to `output/module_e/` |
+| `analysis/q1_data.py` | Question 1 data, built as Module A builds it: month-end simple returns, EM without a part backed out with last month's weights (EM ex-IT, EM ex-Taiwan & Korea), log returns ln(1 + r), country weights, 3-month T-bill, S&P 500 and U.S. Aggregate, EM Small Cap, crisis months (World ≤ −10% from its running peak); weekly returns for Module B |
+| `analysis/q1_module_a.py` | **Module A** — EM's composition (IT share, country weights), IT share of EM risk, performance by block, link to the U.S. and U.S. tech (rolling, by block, trend regression), country leave-one-out and Taiwan & Korea (T0–T7, Fig 1–7) |
+| `analysis/q1_module_a3.py` | **Module A3** — mean-variance optimizer: S&P 500 + U.S. Aggregate baseline, MSCI EM / EM ex-IT fixed at 0–100% in rolling 5- and 10-year windows, optimizer-chosen EM countries (T0–T6, Fig 1–4) |
+| `analysis/q1_module_a_tests.py` | **Module A tests** — block-bootstrap tests of Module A's latest-block findings (T1–T8, Holm) and of A3 (10% EM ex-IT vs EM; stability of the country choice) |
+| `analysis/q1_module_b.py` | **Module B** — A3 optimizer extended to EM ex-Taiwan & Korea, EM Small Cap net and an out-of-sample country sleeve; five-year blocks; 60-month out-of-sample backtests (free and fixed 10%); full-sample DCC-GARCH (model choice by diagnostics and BIC, bivariate DCC with a 0.998 persistence cap, weekly and monthly); rolling-correlation gaps |
+| `analysis/q1_module_c.py` | **Module C** — Bai–Perron break search (robust sup-LM, simulated critical values, Monte Carlo validation), full Bai–Perron table, α/β split, date robustness, primary tests H1–H3 with Holm, with/without the break, correlation bootstrap, robustness, Sharpe-gain tests (GRS and bootstrap), tech share, EM Small Cap, China |
+| `analysis/config.py` | Question 2 settings: sample, crisis rules, crisis list |
+| `analysis/data_prep.py` | Question 2 data: calendar-date alignment, log returns in %, EM ex-IT, Fin / Geo / Current, ΔVIX, ΔDXY |
+| `analysis/step3_crisis.py` | Question 2 — equation (2) with and without X and with and without Post (Post = after Module C's break); EM ex-IT; daily event study (−5 to +20 days) |
+| `analysis/robustness.py` | Question 2 robustness — local-currency EM, current period from 2022 |
+| `analysis/q2_report.py` | Question 2 write-up tables and the two-panel event figure |
+| `run_all.py` | Runs Question 1, then Question 2, and writes `output/results_summary.md` |
+| `make_report.py` | Builds the report page `report/index.html` |
+| `notebooks/Module_E_Crisis_Analysis.ipynb` | Module E: event study around the 15 named crises (Question 2) |
 
 ## Data (`data/`)
 
-| Series | File | Used as |
+| Series | File | Used in |
 |---|---|---|
-| MSCI EM, USD net | `MSCI EM Returns daily.xlsx` | EM (main) |
-| MSCI EM, USD price | `MSCI EM price index.xlsx` | Same-basis comparator for EM Small Cap |
-| MSCI EM, local-currency net | `MSCI Emerging Net Total Return Local Index.xlsx` | Robustness (currency) |
-| MSCI EM Small Cap, price / net | `EMSC.xlsx` | Price series is the main one; net series (from 2010) is the robustness check |
-| MSCI EM IT returns and market cap; MSCI EM market cap | `MSCI EM IT market cap & returns.xlsx`, `MSCI EM INDX MARKET_CAP_MONTHLY.xlsx` | w_IT and EM ex-IT |
-| MSCI USA net, MSCI USA IT, MSCI World net | `MSCI USA  net total return.xlsx`, `MSCI USA IT.xlsx`, `MSCI WORLD net total return.xlsx` | Benchmarks |
-| GPR, TPU | `GPR monthly.xls` (column `GPR`), `TPU monthly.xlsx` (sheet `TPU_MONTHLY`) | Geo_t |
-| VIX, DXY, 3-month T-bill | `VIX daily.xlsx`, `DXY daily.xlsx`, `UST3M daily.xlsx` | X_t and the risk-free rate |
-| S&P 500 (total return) and Bloomberg US Aggregate (LBUSTRUU), daily and monthly | `SP500 and US Agg.xlsx` | Step 4 optimizer |
-| MSCI country indices for the 8 largest EM markets (Taiwan, Korea, China, India, Brazil, South Africa, Mexico, Saudi Arabia): daily levels and monthly market cap | `Country_returns_daily.xlsx`, `Country_mktcap_monthly.xlsx` | Module E country breakdown and Step 4 optimizer. Daily data start in 2001 for Taiwan, Korea, China and India only; Brazil and Mexico from 2010, South Africa 2012, Saudi Arabia 2015 (weights from Sep 2019) |
+| MSCI EM, USD net | `MSCI EM Returns daily.xlsx` | Q1, Q2 |
+| MSCI EM IT returns and market cap; MSCI EM market cap | `MSCI EM IT market cap & returns.xlsx`, `MSCI EM INDX MARKET_CAP_MONTHLY.xlsx` | IT share, EM ex-IT |
+| MSCI USA net, MSCI USA IT, MSCI World net | `MSCI USA  net total return.xlsx`, `MSCI USA IT.xlsx`, `MSCI WORLD net total return.xlsx` | Q1 benchmarks; World for Q2 and crisis months |
+| MSCI country indices, 8 largest EM markets: daily levels and monthly market cap | `Country_returns_daily.xlsx`, `Country_mktcap_monthly.xlsx` | Q1 (weights, leave-one-out, optimizer); Module E |
+| S&P 500 total return and Bloomberg U.S. Aggregate | `SP500 and US Agg.xlsx` (the team's `US_index.xlsx` / `index.xlsx`) | Q1 optimizer |
+| MSCI EM Small Cap price / net; MSCI EM price | `EMSC.xlsx`, `MSCI EM price index.xlsx` | Q1 (Modules B, C) |
+| MSCI EM, local-currency net | `MSCI Emerging Net Total Return Local Index.xlsx` | Q1 (Module C 1e), Q2 robustness |
+| GPR, TPU | `GPR monthly.xls`, `TPU monthly.xlsx` | Q2 Geo_t |
+| VIX, DXY, 3-month T-bill | `VIX daily.xlsx`, `DXY daily.xlsx`, `UST3M daily.xlsx` | Q2 X_t; risk-free rate |
 
-## How each rule is implemented
+The teammates' notebooks used underscore file names (e.g. `MSCI_EM_Returns_daily.xlsx`); `q1_data.FILES` maps them to the files above.
 
-**Confirmed by the team**
-- **Named crises for the event study:** 15 events, listed in `config.CRISES`. There are 6 past events (3 financial, 3 war) and 9 current ones (2 financial, 3 war, 4 trade). Day 0 is the first trading day on or after each date.
-- **Geo_t top decile:** computed over the 2001–2026 study sample. Thresholds are GPR ≥ 157.8 or TPU ≥ 168.0, which gives 53 Geo months.
-- **Step 4 weights:** long-only and fully invested; "fixed 10%" holds the EM asset (or the countries together) at exactly 10%.
-
-**Defaults set in code (all changeable in `config.py`)**
-- **Alignment:** each month uses the last available observation in that calendar month, and each week ends on Friday. Daily series are joined on dates both series share. All daily series are cut at 25 Sep 2026, the last MSCI date, so September 2026 runs only to the 25th.
-- **Returns:** log returns in %. Exceptions are EM ex-IT and the Step 4 optimizer, which use simple returns.
-- **EM ex-IT:** backed out from simple returns as R_exIT = (R_EM − w_{t−1} R_IT) / (1 − w_{t−1}), then converted to a log return. w = EM IT market cap / EM market cap at the end of the previous month.
-- **Fin_t:** month-end MSCI World net level more than 10% below its running peak. The peak is taken from 1990 onward, so Jan 2001 already counts the 2000 peak.
-- **X_t:** ΔVIX is the month-end change in index points. ΔDXY is the month-end log change in %.
-- **Risk-free rate:** the 3-month T-bill yield at the previous month end, divided by 12.
-- **Step 1:** a single joint DCC(1,1) on EM, EM Small Cap (price), USA and USA IT. It is estimated in two steps: a GARCH(1,1) for each series, then (a, b) by maximum likelihood. Standard errors come from the numerical Hessian of the second stage.
-- **Step 2, Bai–Perron:**
-  - The regression is EM on USA; both the constant and the slope may change at the break.
-  - Each regime must cover at least 15% of the sample.
-  - Break dates come from the global SSR minimum.
-  - Post_t uses the single-break model. The 2–5 break models and the BIC are reported for reference.
-  - supF(1) is compared with the Bai–Perron (2003) 5% critical value of 11.47.
-  - The same break date is used for every index and in Step 3.
-- **Same-basis comparison:** wherever EM Small Cap (price) appears, EM (price) is reported next to it.
-- **Newey–West lags:** floor(4 (T/100)^(2/9)), which is 5 for the full monthly sample.
-- **Non-crisis months:** months where both Fin_t = 0 and Geo_t = 0.
-
-## Points to note when reading the results
-- **Fin_t marks long recovery periods.** World stayed more than 10% below its peak from Jan 2001 to Jul 2005 and from Jun 2008 to Dec 2012. Fin_t = 1 in 134 of 309 months, and only 140 months count as non-crisis.
-- **w_IT drops mechanically in Dec 2018.** It falls from 25.7% to 14.3% because the 2018 GICS change moved Tencent, Alibaba and similar names out of IT.
-- **Step 4 is in-sample.** Each window uses its own realized means and covariances, so the optimizer chooses with hindsight. This is strongest for the country results.
-- **Post2010 robustness:** the break falls in Oct 2009, so Post_t = 1 in every post-2010 month. Only the w_IT version of equation (1) can be estimated there.
+## Question 2 rules
+- **Named crises:** 15 events in `config.CRISES`; day 0 is the first trading day on or after each date.
+- **Geo_t:** GPR or TPU in its top decile over 2001–2026 (GPR ≥ 157.8 or TPU ≥ 168.0).
+- **Fin_t:** month-end MSCI World more than 10% below its running peak (peak from 1990).
+- **Post_t:** 1 after Module C's break (2009-10, last month of the first regime). Equation (2) is reported with and without Post.
+- **X_t:** ΔVIX in points, ΔDXY as a log change in %. Newey–West lags floor(4 (T/100)^(2/9)) = 5.

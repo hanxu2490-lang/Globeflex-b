@@ -1,6 +1,6 @@
-"""Settings for the GlobeFlex B analysis.
+"""Settings for the Question 2 code (crisis regression and event study).
 
-Every choice the methods page leaves open is fixed here, so it can be changed in one place.
+Question 1 settings live at the top of each module (q1_data.py, q1_module_*.py), as in the teammates' notebooks.
 """
 from pathlib import Path
 
@@ -13,26 +13,12 @@ FIG_DIR = OUT_DIR / "figures"
 # ---------------------------------------------------------------- sample
 SAMPLE_START = "2001-01"        # first monthly return (Jan 2001)
 SAMPLE_END = "2026-09"          # last monthly return (Sep 2026; MSCI data end 25 Sep 2026)
-POST2010_START = "2010-06"      # first monthly return of EM Small Cap net (net series starts May 2010)
 
 # ---------------------------------------------------------------- crisis flags (Step 3)
 FIN_DRAWDOWN = -0.10            # Fin_t = 1 when MSCI World is more than 10% below its running peak
 GEO_QUANTILE = 0.90             # Geo_t = 1 when GPR or TPU is in its top decile (decile over the study sample)
 CURRENT_START = "2018-01"       # Current_t = 1 from 2018
 CURRENT_START_ROBUST = "2022-01"  # robustness: current period from 2022
-
-# ---------------------------------------------------------------- Bai-Perron (Step 2)
-BP_TRIM = 0.15                  # minimum regime length = 15% of the sample
-BP_MAX_BREAKS = 5               # largest number of breaks considered for the BIC
-BP_SUPF_CV5 = 11.47             # 5% critical value of supF(1), q = 2, trim 0.15 (Bai & Perron 2003, Table 1)
-
-# ---------------------------------------------------------------- mean-variance optimizer (Step 4)
-# Efficient frontiers of S&P 500 (total return) + Bloomberg US Aggregate, with and without EM, in big windows.
-MVO_WINDOWS = [("2001-01", "2005-12"), ("2006-01", "2010-12"), ("2011-01", "2015-12"),
-               ("2016-01", "2020-12"), ("2021-01", "2026-09")]                 # 5-year windows (last one 69 months)
-MVO_WINDOWS_10Y = [("2001-01", "2010-12"), ("2011-01", "2020-12"), ("2016-10", "2026-09")]
-MVO_FIXED_EM = 0.10             # "force it to own 10%": EM (or the EM countries together) held at exactly 10%
-EM_COUNTRIES = ["Taiwan", "Korea", "China", "India", "Brazil", "South Africa", "Mexico", "Saudi Arabia"]
 
 # ---------------------------------------------------------------- daily event study (Step 3)
 EVENT_PRE = 5                   # trading days before day 0

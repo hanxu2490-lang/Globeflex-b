@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Build the results report (report/index.html) from the tables in output/.
 
-Run `python run_all.py` first. Tables are filled from the CSV files; the written text describes
-the results of the run of 13 Oct 2026 (data to 25 Sep 2026).
+Run `python run_all.py` first. Tables are filled from the result files; the written text describes
+the results of the latest run (data to 25 Sep 2026).
 """
 import html
 import shutil
@@ -14,7 +14,12 @@ ROOT = Path(__file__).resolve().parent
 T = ROOT / "output" / "tables"
 F = ROOT / "output" / "figures"
 OUT = ROOT / "report"
-FIGS = ["data_em_it_weight", "step1_dcc_correlations", "q2_event_paths", "step4_mvo_frontiers", "step4_mvo_gains"]
+Q1 = ROOT / "output" / "q1"
+FIGS = {"q2_event_paths": F / "q2_event_paths.png",
+        "a_fig1_tech_share": Q1 / "module_A" / "fig1_tech_share.png",
+        "b_weekly_dcc": Q1 / "module_B" / "B_06_Weekly_DCC_FullSample.png",
+        "c_fig4_step_vs_blocks": Q1 / "module_C" / "figC4_step_vs_five_year_blocks_v2.png",
+        "a3_fig2_sharpe_gain_5y": Q1 / "module_A3" / "fig2_sharpe_gain_5y.png"}
 
 
 def num(v, d=2, sign=False):
@@ -47,14 +52,41 @@ def figure(name, caption):
 
 
 # ------------------------------------------------------------------ tables
-def q1_table():
-    d = pd.read_csv(T / "step2_regressions.csv", encoding="utf-8-sig")
+def q1_breaks_table():
+    d = pd.read_excel(Q1 / "module_C" / "module_C_results_v2.xlsx", sheet_name="C1_breaks", index_col=[0, 1])
+    rows = [[dep, b, int(r["breaks (sequential)"]), r["dates"], r["90% CI"], r["sup-F stats"]] for (dep, b), r in d.iterrows()]
+    return table(["Dependent", "Benchmark", "Breaks", "Dates", "90% CI", "sup-F statistics"], rows, "num")
+
+
+def q1_primary_table():
+    d = pd.read_excel(Q1 / "module_C" / "module_C_results_v2.xlsx", sheet_name="C2_primary", index_col=0)
+    rows = [[i, r["dependent"], r["benchmark"], num(r["β first"]), num(r["β last"]), num(r["δ = last − first"], sign=True),
+             num(r["SE (NW)"]), num(r["p one-sided"], 3), num(r["p Holm"], 3)] for i, r in d.iterrows()]
+    return table(["Test", "Dependent", "Benchmark", "β 2001-01…2009-10", "β 2009-11…2026-08", "δ", "SE (NW)",
+                  "p one-sided", "p Holm"], rows, "num")
+
+
+def q1_blocks_table():
+    d = pd.read_excel(Q1 / "module_C" / "module_C_results_v2.xlsx", sheet_name="C2b_five_year_blocks", index_col=[0, 1, 2])
     rows = []
-    for _, r in d.iterrows():
-        rows.append([r["dependent"], r["interaction"].replace("w_IT,t-1", "w<sub>IT,t−1</sub>"), r["sample"],
-                     int(r["N"]), num(r["beta"]), num(r["delta"]) + stars(r["p_delta"]),
-                     num(r["t_delta"]), num(r["R2"], 3)])
-    return table(["Dependent", "Interaction", "Sample", "Months", "β", "δ", "t(δ)", "R²"], rows, "num")
+    for (b, dep), g in d.groupby(level=[0, 1], sort=False):
+        rows.append([b, dep, *[f"{num(r['β'])} <span class='t'>({num(r['corr'])})</span>" for _, r in g.iterrows()]])
+    blocks = list(d.index.get_level_values(2).unique())
+    return table(["Benchmark", "Dependent", *blocks], rows, "num")
+
+
+def q1_sharpe_table():
+    d = pd.read_excel(Q1 / "module_C" / "module_C_results_v2.xlsx", sheet_name="C4c_sharpe_blocks", index_col=[0, 1])
+    rows = [[a, blk, num(r["best EM %"], 0), num(r["Sharpe gain, free EM"], 3), num(r["Holm p free"], 3),
+             num(r["Sharpe gain, EM = 10%"], 3, sign=True), num(r["Holm p 10%"], 3), num(r["GRS p"], 3)] for (a, blk), r in d.iterrows()]
+    return table(["Asset", "Block", "Best EM %", "Sharpe gain, free", "Holm p", "Sharpe gain, 10% EM", "Holm p", "GRS p"], rows, "num")
+
+
+def q1_oos_table():
+    d = pd.read_excel(Q1 / "module_B" / "B_Module_Results.xlsx", sheet_name="OOS_Performance", index_col=0)
+    rows = [[i, int(r["OOS months"]), num(r["Annualized return %"]), num(r["Annualized volatility %"]), num(r["Sharpe"]),
+             num(r["Max drawdown %"])] for i, r in d.iterrows()]
+    return table(["Portfolio (60-month lookback)", "Months", "Return %/yr", "Volatility %/yr", "Sharpe", "Max drawdown %"], rows, "num")
 
 
 def q2_table1(panels, headers):
@@ -121,28 +153,6 @@ def drivers_table():
              num(r["ΔVIX (points)"], sign=True), num(r["IT weight (%)"], 1)] for k, r in d.iterrows()]
     return table(["Months flagged", "Months", "EM − World", "Currency part", "Tech part", "ΔDXY %",
                   "ΔVIX pts", "IT weight %"], rows, "num")
-
-
-def mvo_table(fname, window_label="Window"):
-    d = pd.read_csv(T / fname, encoding="utf-8-sig")
-    rows = []
-    for w, g in d.groupby("window", sort=False):
-        rows.append(f"{window_label} {w} · 60/40 volatility {g['60/40 volatility %'].iloc[0]:.1f}%")
-        for _, r in g.iterrows():
-            rows.append([html.escape(r["portfolio"]), num(r["max Sharpe"]), num(r["change vs S&P+Agg"], sign=True),
-                         num(r["EM weight in max-Sharpe %"], 0), num(r["best return at 60/40 risk %"]),
-                         num(r["return gain at 60/40 risk (pp)"], sign=True), num(r["EM weight at 60/40 risk %"], 0)])
-    return table(["Portfolio", "Max Sharpe", "Change in Sharpe", "EM % at max Sharpe", "Return at 60/40 risk %",
-                  "Change (pp)", "EM % at 60/40 risk"], rows, "num")
-
-
-def mvo_country_table():
-    d = pd.read_csv(T / "step4_mvo_weights_5y.csv", encoding="utf-8-sig")
-    d = d[(d["portfolio"] == "+ EM countries") & (d["point on frontier"] == "at 60/40 risk")]
-    cols = ["S&P 500", "US Agg", "Taiwan", "Korea", "China", "India", "Brazil", "South Africa", "Mexico", "Saudi Arabia"]
-    rows = [[r["window"], *[("–" if pd.isna(r[c]) else ("0" if r[c] < 0.05 else num(r[c], 0))) for c in cols]]
-            for _, r in d.iterrows()]
-    return table(["Window", *cols], rows, "num")
 
 
 # ------------------------------------------------------------------ page
@@ -218,8 +228,8 @@ footer{margin-top:60px;padding-top:18px;border-top:1px solid var(--line);font-si
 def build():
     OUT.mkdir(exist_ok=True)
     (OUT / "figures").mkdir(exist_ok=True)
-    for f in FIGS:
-        shutil.copy(F / f"{f}.png", OUT / "figures" / f"{f}.png")
+    for name, src in FIGS.items():
+        shutil.copy(src, OUT / "figures" / f"{name}.png")
 
     page = f"""<!doctype html>
 <html lang="en">
@@ -238,9 +248,9 @@ def build():
 <header class="top">
   <div class="eyebrow">GlobeFlex B, San Diego · Team Delta · Results report</div>
   <h1>Is there still a diversification benefit to emerging markets?</h1>
-  <p class="lede">Results of the four-step analysis on MSCI data from January 2001 to September 2026, with the focus on
+  <p class="lede">Team results on MSCI data from January 2001 to September 2026, with the focus on
   Question 2: does EM do better relative to developed markets in today's war and trade crises than in past crises?</p>
-  <div class="meta">Jun Wang, Yujia Chen, Xu Han, Yaqi Xiao, Luqi Yang · Data to 25 Sep 2026 · 309 months, 1,343 weeks, 6,715 days</div>
+  <div class="meta">Jun Wang, Yujia Chen, Xu Han, Yaqi Xiao, Luqi Yang · Question 1: 2001-01 to 2026-08 · Question 2: 2001-01 to 2026-09</div>
   <nav class="toc" aria-label="Sections">
     <a href="#answers">Answers</a><a href="#data">Data</a><a href="#q1">Question 1</a>
     <a href="#q2">Question 2</a><a href="#t1">Table 1</a><a href="#t2">Table 2</a><a href="#drivers">Drivers</a>
@@ -255,12 +265,12 @@ def build():
   (γ<sub>4</sub> = 0.19, t = 0.16). What moves it is mainly <b>the dollar</b>. Recent shocks come with a stronger dollar
   and weaker EM currencies, which costs EM about as much as its larger tech weight gains.</p></div>
   <div class="answer"><h4>Question 1 · co-movement</h4>
-  <p>EM has <b>not</b> become more like the US. Weekly correlation with US equities stays around 0.6 with no trend.
-  After the one structural break (Oct 2009), EM's beta to the US <i>fell</i> from 1.30 to 0.85. A higher IT weight is not
-  linked to more US sensitivity.</p></div>
-  <div class="answer"><h4>Optimizer · Step 4</h4>
-  <p>Next to the S&amp;P 500 and US bonds, the optimizer held <b>36–44% EM in 2001–2010</b> but <b>0% from 2011</b>, for EM and EM ex-IT alike.
-  Forcing 10% EM now costs return. Picking individual countries (Taiwan, Saudi Arabia, Mexico) still adds a little.</p></div>
+  <p>EM's link to the U.S. <b>changed once</b>, in a post-GFC transition (point estimate Oct 2009). After it, non-tech EM's
+  sensitivity to the U.S. <b>fell</b> (β 1.27 → 0.80, Holm p = 0.008), while EM's link to U.S. tech shows no significant change.
+  In 2021–26, Taiwan and Korea carry much of EM's link to U.S. tech.</p></div>
+  <div class="answer"><h4>Optimizer · Modules A3 and B</h4>
+  <p>EM's gain is significant only in the <b>early 2000s</b>. Since then the optimizer gives EM <b>0%</b>, including EM ex-IT today,
+  and adding EM does not reliably help out of sample. The optimizer's country gains cannot be told apart from chance.</p></div>
 </div>
 </section>
 
@@ -270,35 +280,43 @@ def build():
 <li>MSCI USD net total-return indices for EM, USA, World and USA IT. EM Small Cap uses the price index, so it is compared with the EM
 price index on the same basis. A local-currency EM index tests the currency channel.</li>
 <li>EM ex-IT is backed out from EM and EM IT returns with the IT weight w<sub>IT</sub> = EM IT / EM market value at the previous month end.</li>
-<li>Crisis months. <b>Fin</b> = MSCI World more than 10% below its running peak (134 months). <b>Geo</b> = GPR or TPU in its
+<li>Crisis months (Question 2). <b>Fin</b> = MSCI World more than 10% below its running peak (134 months). <b>Geo</b> = GPR or TPU in its
 top decile over 2001–2026, i.e. GPR ≥ 157.8 or TPU ≥ 168.0 (53 months). <b>Current</b> = from January 2018.</li>
-<li>For the optimizer (Step 4): S&amp;P 500 total return and the Bloomberg US Aggregate bond index, plus MSCI country indices for the eight
-largest EM markets (Taiwan, Korea, China, India, Brazil, South Africa, Mexico, Saudi Arabia).</li>
-<li>All series are aligned by calendar date. Returns are log returns in %. Regressions use Newey–West standard errors (5 lags).</li>
+<li>Question 1 (Modules A, A3, B, C): monthly data 2001-01 to 2026-08. Series are built in simple returns with last month's weights
+(EM ex-IT, EM ex-Taiwan &amp; Korea) and converted to log returns for correlations, betas and tests. The optimizer uses the S&amp;P 500 total
+return, the Bloomberg US Aggregate and MSCI country indices for the eight largest EM markets.</li>
+<li>Question 2: monthly data 2001-01 to 2026-09, log returns in %, Newey–West standard errors (5 lags).</li>
 </ul>
 </section>
-{figure("data_em_it_weight", "The IT weight in MSCI EM rose from 18% (2001) to 42% (Aug 2026). The drop in Dec 2018 is the GICS "
-       "reclassification that moved Tencent, Alibaba and similar names out of IT, not a real fall in tech exposure.")}
+{figure("a_fig1_tech_share", "Module A, Fig 1. IT share of MSCI EM. The Dec 2018 drop is the GICS reclassification that moved internet firms out of IT; "
+       "the dashed line rescales the earlier values to the post-2018 definition (approximation).")}
 
 <section id="q1">
-<h2><span class="q">Question 1 · Steps 1 and 2</span>Is EM more like the US, and is technology the cause?</h2>
+<h2><span class="q">Question 1 · Modules A, B and C</span>Is EM more like the US, and is technology the cause?</h2>
+{figure("b_weekly_dcc", "Module B. Full-sample weekly DCC-GARCH correlations (log returns; EM Small Cap price index).")}
 <div class="col">
-<p>The DCC-GARCH(1,1) model (a = 0.026, b = 0.951) tracks weekly correlations. EM's correlation with the US moves between
-about 0.45 and 0.75. It peaked in 2009–10 and in 2020, and was 0.57–0.58 on average in 2025–26. Correlation with US IT is lower than with
-the US as a whole, which does not fit the idea of EM tracking US tech. EM Small Cap moves the same way at a slightly lower level.</p>
+<ul class="tight">
+<li><b>EM's link to the U.S. changed, and this is well supported.</b> The sequential, UDmax and WDmax tests all reject no break, in all 12
+re-searches, with or without the GFC. BIC picks one break; LWZ, the most conservative, picks none.</li>
+<li><b>The date is a range.</b> Oct 2009 is the joint model's point estimate (90% CI 2008-07…2011-01), inside a post-GFC transition.
+α moved first and β later (exploratory).</li>
+<li><b>Non-tech EM's sensitivity to the U.S. fell</b> (β 1.27 → 0.80, Holm p = 0.008), for break dates from 2009-10 to 2012-12 but not at 2007-10.</li>
+<li><b>EM's link to U.S. tech shows no significant change between regimes</b>, and EM IT stays strongly linked (β ≈ 0.9).
+Whether non-tech fell more than tech, and whether Taiwan &amp; Korea raised EM's sensitivity, is not established after Holm.</li>
+<li><b>Correlations fell for every index</b>, but no single change is significant. A lower β is not the same as a lower correlation.</li>
+<li><b>Taiwan and Korea in 2021–26.</b> Removing both lowers EM's correlation with U.S. tech by 0.25 (Holm p = 0.004), against 0.02–0.03 in every
+earlier block (Module A tests).</li>
+</ul>
 </div>
-{figure("step1_dcc_correlations", "Weekly DCC-GARCH(1,1) correlations, 2001–2026.")}
-<div class="col">
-<p>The Bai–Perron test finds one significant break in EM's relation to US returns: the last month of the old regime is
-<b>October 2009</b> (supF = 17.2 against a 5% critical value of 11.47; the BIC also picks one break). In equation (1),
-δ is negative, not positive. EM's beta to the US was 1.30 before the break and 0.85 after it (δ = −0.45, t = −3.6).
-EM ex-IT and EM Small Cap show the same fall. Replacing Post with the lagged IT weight also gives a negative δ. In non-crisis
-months it is not significant. So the growing tech weight did not make EM more sensitive to US returns.</p>
-</div>
-{q1_table()}
-<p class="note">Equation (1): r<sub>EM</sub> = α + β r<sub>US</sub> + δ (interaction × r<sub>US</sub>). w<sub>IT,t−1</sub> is a fraction,
-so δ is the change in beta per 100 percentage points of IT weight. Non-crisis months: Fin = 0 and Geo = 0 (140 months).
-* 10%, ** 5%, *** 1%.</p>
+<div class="col"><h3>Structural breaks (Module C)</h3></div>
+{q1_breaks_table()}
+<div class="col"><h3>Primary tests H1–H3 (Module C)</h3></div>
+{q1_primary_table()}
+<p class="note">Regime regression with Newey–West SEs; δ = β(last regime) − β(first regime); one-sided p-values, Holm over the six tests;
+conditional on the break date. H1: EM ex-IT; H2: spread EM IT − EM ex-IT; H3: spread EM − EM ex-Taiwan &amp; Korea.</p>
+<div class="col"><h3>β on the U.S. by five-year block (correlation in brackets)</h3></div>
+{q1_blocks_table()}
+{figure("c_fig4_step_vs_blocks", "Module C, Fig C4. β of EM and EM ex-IT on the U.S. market: step model at the break vs Module A's five-year blocks.")}
 </section>
 
 <section id="q2">
@@ -403,48 +421,33 @@ mainly on the dollar: today's shocks have come with a stronger dollar and weaker
 </section>
 
 <section id="portfolio">
-<h2><span class="q">Step 4 · Questions 1 and 2</span>Mean-variance optimizer: does EM still earn a place?</h2>
+<h2><span class="q">Modules A3, B and C · Questions 1 and 2</span>Mean-variance optimizer: does EM still earn a place?</h2>
 <div class="col">
-<p>Following Markowitz, we build long-only efficient frontiers from the S&amp;P 500 (total return) and the Bloomberg US Aggregate bond index,
-then add EM, EM ex-IT or the eight largest EM countries and see what the optimizer does. Each window uses its own average returns,
-volatilities and correlations (monthly returns, annualized). Two points on each frontier are compared: the <b>max-Sharpe</b> portfolio
-(risk-free rate = the window's average 3-month T-bill), and the <b>highest return at the risk of a 60/40</b> S&amp;P 500 / US Agg portfolio.
-We also force the optimizer to hold exactly <b>10% EM</b>.</p>
+<p>A U.S. investor holds the S&amp;P 500 and the U.S. Aggregate. The optimizer adds MSCI EM or EM ex-IT at fixed shares of 0–100%
+(Module A3, rolling 5- and 10-year windows ending each August), lets eight EM countries enter freely (A3, from 2015-04), and runs the same
+optimizer out of sample with a 60-month lookback (Module B). Module C tests whether the gains are beyond chance.</p>
 </div>
-{figure("step4_mvo_frontiers", "Long-only efficient frontiers in each 5-year window. Dashed: S&P 500 + US Agg only. From 2011 the EM and EM ex-IT "
-        "frontiers lie on top of the stock-bond frontier, so the optimizer holds no EM. Only the country frontier still moves out.")}
-{figure("step4_mvo_gains", "Change in max Sharpe ratio (top) and in return at 60/40 risk (bottom) from adding EM, by 5-year window. Left: the optimizer "
-        "chooses how much EM to hold. Right: EM is forced to 10%.")}
+{figure("a3_fig2_sharpe_gain_5y", "Module A3, Fig 2. Sharpe gain over the stock-bond portfolio for each EM share, 5-year windows by window end.")}
 <div class="col">
 <ul class="tight">
-<li><b>In the past EM really helped.</b> In 2001–2005 and 2006–2010 the optimizer put 36–44% in EM at 60/40 risk and raised the return at that risk
-by 4–7 percentage points a year. Even a forced 10% added 1.0–1.5 points.</li>
-<li><b>Since 2011 the optimizer says "don't bother".</b> In 2011–2015, 2016–2020 and 2021–2026 it holds 0% EM, and the EM frontier is the
-stock-bond frontier. Forcing 10% EM costs 0.1–1.8 points of return at 60/40 risk.</li>
-<li><b>EM ex-IT does not help now either.</b> It also gets 0%, and forced to 10% it costs more than broad EM (−0.40 vs −0.26 points in 2021–2026).
-Removing tech removed the part of EM that did well.</li>
-<li><b>Letting the optimizer pick countries still adds a little.</b> In 2016–2020 and 2021–2026 it holds 38–43% in a few countries at 60/40 risk
-(Taiwan, Saudi Arabia, Mexico, some India), adding about 1.5 points. With the countries together held at 10%, the gain is about 0.7 points.
-These choices are made with hindsight, so the country results are an upper bound.</li>
+<li><b>EM's gain is significant only in the early 2000s.</b> In 2001–05 the gain is 0.43 (GRS p = 0.005, Holm 0.036), and even a fixed 10%
+adds 0.38.</li>
+<li><b>Since then the optimizer gives EM 0%</b> in every 5-year window from 2007-09…2012-08 onward, including EM ex-IT today. A forced 10% costs
+little: −0.024 for EM and −0.046 for EM ex-IT in 2021–26.</li>
+<li><b>Out of sample</b>, adding broad EM does not reliably improve the stock-bond portfolio.</li>
+<li><b>Countries.</b> The optimizer's country gains are not distinguishable from chance in any window, and the choice is unstable across
+bootstrap samples (Module A tests, O2).</li>
 </ul>
 </div>
-<div class="col"><h3>5-year windows</h3></div>
-{mvo_table("step4_mvo_5y.csv")}
-<p class="note">Change = difference from S&amp;P 500 + US Agg in the same window. EM weight = EM asset(s) in that portfolio. "+ EM countries" uses the
-countries with data for the whole window (four countries before 2011). Long-only, fully invested, sample means and covariances: an in-sample
-(hindsight) exercise, not an investable strategy.</p>
-<div class="col"><h3>Countries chosen at 60/40 risk (%)</h3></div>
-{mvo_country_table()}
-<div class="col"><h3>10-year windows</h3></div>
-{mvo_table("step4_mvo_10y.csv")}
+<div class="col"><h3>Is the Sharpe gain beyond chance? A's five-year blocks (Module C)</h3></div>
+{q1_sharpe_table()}
+<div class="col"><h3>Out-of-sample backtest (Module B)</h3></div>
+{q1_oos_table()}
 </section>
 
 <section id="robust" class="col">
 <h2>Robustness</h2>
 <ul class="tight">
-<li><b>EM Small Cap net returns, post-2010.</b> Results with the net index are almost identical to the price index: the mean DCC correlation
-with the US is 0.602 in both. Equation (1) post-2010 (w<sub>IT</sub> version) is also nearly unchanged. The Post version cannot be estimated after
-2010 because Post = 1 throughout.</li>
 <li><b>Local-currency EM.</b> See Table 1b, columns 9–10: γ<sub>3</sub> and γ<sub>4</sub> stay insignificant, and the dollar effect disappears.</li>
 <li><b>Current period from 2022.</b> See Table 1b, columns 11–14: γ<sub>4</sub> becomes positive (1.32, t = 1.52) but is not significant at 10%.</li>
 </ul>
@@ -452,7 +455,7 @@ with the US is 0.602 in both. Equation (1) post-2010 (w<sub>IT</sub> version) is
 
 <footer>
 Produced from <span class="mono">python run_all.py</span> and <span class="mono">python make_report.py</span> in the project repository.
-Settings are in <span class="mono">analysis/config.py</span>; every table here has a CSV in <span class="mono">output/tables/</span>.
+Question 1 results are in <span class="mono">output/q1/</span> (one folder per module); Question 2 tables are in <span class="mono">output/tables/</span>.
 </footer>
 </div>
 </body>

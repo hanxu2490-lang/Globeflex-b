@@ -114,14 +114,6 @@ def build_monthly(raw):
     return m
 
 
-def build_weekly(raw, cols=("EM", "EMSC", "US", "US_IT", "EMSC_NET")):
-    """Weekly (Friday) log returns (%)."""
-    lv = pd.DataFrame({k: raw[k].resample("W-FRI").last() for k in cols})
-    w = _log_ret(lv)
-    start = pd.Period(C.SAMPLE_START, "M").start_time
-    return w.loc[w.index >= start]
-
-
 def build_daily(raw, cols=("EM", "WORLD")):
     """Daily log returns (%) on the dates where all requested series are quoted."""
     lv = pd.concat({k: raw[k] for k in cols}, axis=1, join="inner")

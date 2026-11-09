@@ -47,7 +47,8 @@ def to_markdown(df, floatfmt="{:.3f}", index=True):
         if isinstance(v, (float, np.floating)):
             return "" if np.isnan(v) else floatfmt.format(v)
         return str(v)
-    head = "| " + " | ".join(map(str, d.columns)) + " |"
+    cols = [" ".join(str(x) for x in c if str(x)) if isinstance(c, tuple) else str(c) for c in d.columns]
+    head = "| " + " | ".join(cols) + " |"
     sep = "|" + "|".join("---" for _ in d.columns) + "|"
     rows = ["| " + " | ".join(fmt(v) for v in row) + " |" for row in d.itertuples(index=False)]
     return "\n".join([head, sep, *rows])
