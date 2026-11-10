@@ -119,6 +119,20 @@ def write_summary(data_tab, qa, qa3, qat, qb, qc, r3, rob, m):
         "",
         "![Event study](q2/step3_event_study.png)",
         "",
+        "## Diagnostics of equation (2) (Module C, section 4b)",
+        "Columns (1)-(14) as in the regression table; coefficients with Newey-West t, fit, joint Wald test of the four crisis terms, "
+        "residual diagnostics (p-values) and the largest VIF.",
+        "",
+        U.to_markdown(rc["C4b_p6_regression"], "{:.3f}"),
+        "",
+        "Is there an intercept break inside equation (2)? (crisis terms fixed)",
+        "",
+        U.to_markdown(rc["C4b_p6_break_in_equation"], "{:.3f}"),
+        "",
+        "Sensitivity to the Post date:",
+        "",
+        U.to_markdown(rc["C4b_p6_post_date"], "{:.3f}"),
+        "",
         "## Robustness (Question 2)",
         "### Local-currency EM returns",
         crisis_md(rob["local_ccy"]),
@@ -139,12 +153,12 @@ def main(fast=False):
     qa3 = q1_module_a3.run(); print("Module A3 done")
     qat = q1_module_a_tests.run(); print("Module A tests done")
     qb = q1_module_b.run(); print("Module B done")
-    qc = q1_module_c.run(fast=fast); print(f"Module C done (break: {qc['BREAKS_C']})")
-
-    # ---------------------------------------------------------------- Question 2
-    raw = q2_data_prep.load_raw()
+    raw = q2_data_prep.load_raw()                            # Question 2 data: Module C's section 4b checks equation (2) on it
     m = q2_data_prep.build_monthly(raw)
     daily = q2_data_prep.build_daily(raw)
+    qc = q1_module_c.run(fast=fast, q2_monthly=m.copy()); print(f"Module C done (break: {qc['BREAKS_C']})")
+
+    # ---------------------------------------------------------------- Question 2
     data_tab = describe_data(raw, m, daily)
     break_month = pd.Period(qc["BREAKS_C"][0], "M")
     m["Post"] = (m.index > break_month).astype(int)          # Post_t = 1 after Module C's break

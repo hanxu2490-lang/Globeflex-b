@@ -166,6 +166,34 @@ def event_table():
     return t.replace("<tr><td><i>Average", '<tr class="avg"><td><i>Average')
 
 
+def q2_diagnostics_table():
+    """Module C, section 4b: fit and residual diagnostics of equation (2), columns (1)-(8)."""
+    f = Q1 / "module_C" / "module_C_results_v2.xlsx"
+    d = pd.read_excel(f, sheet_name="C4b_p6_regression", index_col=[0, 1])
+    cols = list(d.columns[:8])
+    show = [(("fit", "R²"), "R²", 3), (("fit", "adj R²"), "Adjusted R²", 3),
+            (("fit", "Wald: all four crisis terms = 0, p"), "Wald test γ<sub>1</sub>–γ<sub>4</sub> = 0, p", 3),
+            (("diagnostics", "DW"), "Durbin–Watson", 2), (("diagnostics", "Ljung–Box(12) p"), "Ljung–Box (12 lags), p", 3),
+            (("diagnostics", "ARCH(12) p"), "ARCH LM (12 lags), p", 3), (("diagnostics", "Breusch–Pagan p"), "Breusch–Pagan, p", 3),
+            (("diagnostics", "Jarque–Bera p"), "Jarque–Bera, p", 3), (("diagnostics", "RESET p"), "RESET, p", 3),
+            (("diagnostics", "max VIF"), "Largest VIF", 2), (("diagnostics", "BIC"), "BIC", 1)]
+    rows = [[f'<span class="rl">{lab}</span>', *[num(d.loc[key, c], dec) for c in cols]] for key, lab, dec in show]
+    head = ["", *[c.replace(") ", ")<br>") for c in cols]]
+    th_top = ('<tr class="panel"><th></th><th colspan="4">Panel A · with Post</th><th colspan="4">Panel B · without Post</th></tr>')
+    return table(head, rows, "num t1").replace("<thead>", "<thead>" + th_top, 1)
+
+
+def q2_break_table():
+    """Module C, section 4b: is there an intercept break inside equation (2)?"""
+    f = Q1 / "module_C" / "module_C_results_v2.xlsx"
+    d = pd.read_excel(f, sheet_name="C4b_p6_break_in_equation", index_col=0)
+    lm_at = [c for c in d.columns if c.startswith("LM at")][0]
+    rows = [[html.escape(i), num(r["sup LM"]), r["at (LM peak)"], num(r["5% cv"]), "yes" if r["reject 5%"] else "no",
+             num(r[lm_at]), r["90% CI"], r["SSR within 1% of minimum"]] for i, r in d.iterrows()]
+    return table(["Dependent", "sup LM", "Peak", "5% critical value", "Reject no break", lm_at.replace("LM at", "LM at"),
+                  "90% CI of the date", "SSR within 1% of minimum"], rows, "num")
+
+
 def placebo_table():
     d = pd.read_csv(T / "step3_placebo_summary.csv", index_col=0, encoding="utf-8-sig")
     rows = [[k, int(r["n events"]), num(r["observed mean"], sign=True), num(r["placebo mean"], sign=True),

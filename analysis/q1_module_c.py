@@ -20,7 +20,8 @@
 Break rule (fixed before running): EM on the U.S., alpha and beta both allowed to break, sequential sup-F(l+1|l) at 5%
 with a heteroskedasticity-robust sup-LM statistic and simulated critical values, trimming 15%, at most 5 breaks;
 a break date is the last month of the earlier regime. Monthly data 2001-01 to 2026-08, log returns ln(1 + r).
-Section 4b (the crisis regression of Question 2) belongs to the Question 2 code.
+Section 4b checks the crisis regression of Question 2 (equation (2)) on the Question 2 monthly panel: estimates,
+the usual diagnostics, a break test inside that equation and sensitivity to the Post date.
 """
 import warnings
 
@@ -57,7 +58,7 @@ def display(*args, **kwargs):                 # notebook display calls are not n
     return None
 
 
-def run(fast=False):
+def run(fast=False, q2_monthly=None):
     """Run Module C. fast=True cuts the Monte Carlo and bootstrap draws (for testing only; the formal status
     checks need the full counts)."""
     warnings.filterwarnings('ignore', category=FutureWarning)
@@ -716,6 +717,109 @@ def run(fast=False):
             o = delta_row(logr, r_.dependent, r_.benchmark, [b_], r_.H1); rows[(b_, 'δ', i)] = o['δ = last − first']; rows[(b_, 'p', i)] = o['p one-sided']
     across = pd.Series(rows).unstack(2)[PRIMARY.index]; results['C4_across_break_dates'] = across
     across.astype(float).round(3)
+
+    # --------------------------------------------------------------------------------
+    # 4b. The regression on p. 6 of the progress update
+    # --------------------------------------------------------------------------------
+    # r_EM,t − r_World,t = α + γ1 Fin + γ2 Geo + γ3 (Fin × Current) + γ4 (Geo × Current) + θ Post + φ′X + ε  (Module D's equation).
+    # Flags, returns and controls come from the Question 2 monthly panel (q2_data_prep): Fin = World more than 10% below its
+    # running peak; Geo = GPR or TPU in its top decile; Current = from 2018; Post = after BREAKS_C; X = ΔVIX and ΔDXY.
+    # Log returns in percent, Newey–West lags. The code first rebuilds all 14 of D's columns and stops if any coefficient,
+    # t-statistic or R² differs from D's table. Then it adds diagnostics, the test for a break inside this equation
+    # (crisis terms fixed, intercept breaks), and sensitivity to the Post date.
+    from statsmodels.stats.outliers_influence import variance_inflation_factor
+    from .q2_data_prep import build_monthly as q2_build_monthly, load_raw as q2_load_raw
+    from .report_q2 import table1 as q2_table1
+    q2 = q2_monthly if q2_monthly is not None else q2_build_monthly(q2_load_raw())
+    p6_panel = q2
+    Fin, Geo = q2['Fin'] * 1.0, q2['Geo'] * 1.0
+    Xctl = pd.DataFrame({'ΔVIX': q2['dVIX'], 'ΔDXY': q2['dDXY']})
+    DEPV = {'EM': q2['EM'] - q2['WORLD'], 'EM ex-IT': q2['EM_EXIT'] - q2['WORLD'], 'EM local ccy': q2['EM_LC'] - q2['WORLD']}
+
+    def p6_design(cur='2018-01', post=BREAKS_C[0], controls=False, extra=None):
+        cur_ = pd.Series((p6_panel.index >= pd.Period(cur, 'M')) * 1.0, index=p6_panel.index)
+        X = pd.DataFrame({'α': 1.0, 'γ1 Fin': Fin, 'γ2 Geo': Geo, 'γ3 Fin × Current': Fin * cur_, 'γ4 Geo × Current': Geo * cur_}, index=p6_panel.index)
+        if post: X['θ Post'] = (p6_panel.index > pd.Period(post, 'M')) * 1.0
+        if controls: X = X.join(Xctl.rename(columns={'ΔVIX': 'φ ΔVIX', 'ΔDXY': 'φ ΔDXY'}))
+        if extra == 'Current': X['Current'] = cur_
+        return X
+
+    def p6_fit(dep, **kw):
+        X = p6_design(**kw); y = DEPV[dep].reindex(p6_panel.index); L = nw_lags(len(y))
+        return y, X, sm.OLS(y, X).fit(cov_type='HAC', cov_kwds={'maxlags': L})
+
+    P6_SPECS = {'(1) EM': ('EM', {}), '(2) EM + X': ('EM', dict(controls=True)), '(3) EM ex-IT': ('EM ex-IT', {}), '(4) EM ex-IT + X': ('EM ex-IT', dict(controls=True)),
+                '(5) EM': ('EM', dict(post=None)), '(6) EM + X': ('EM', dict(post=None, controls=True)), '(7) EM ex-IT': ('EM ex-IT', dict(post=None)), '(8) EM ex-IT + X': ('EM ex-IT', dict(post=None, controls=True)),
+                '(9) EM local ccy': ('EM local ccy', {}), '(10) EM local ccy + X': ('EM local ccy', dict(controls=True)),
+                '(11) EM, from 2022': ('EM', dict(cur='2022-01')), '(12) EM, from 2022 + X': ('EM', dict(cur='2022-01', controls=True)),
+                '(13) EM ex-IT, from 2022': ('EM ex-IT', dict(cur='2022-01')), '(14) EM ex-IT, from 2022 + X': ('EM ex-IT', dict(cur='2022-01', controls=True))}
+    FITS = {k: p6_fit(dep, **kw) for k, (dep, kw) in P6_SPECS.items()}
+
+    # Must match D's table (the Question 2 code, all 14 columns) exactly before anything else is reported
+    q2_post = q2.copy(); q2_post['Post'] = (q2.index > pd.Period(BREAKS_C[0], 'M')).astype(int)
+    d_table = q2_table1(q2_post)[0]; worst = 0.0
+    for k, (y, X, r) in FITS.items():
+        for name in r.params.index:
+            worst = max(worst, abs(r.params[name] - float(d_table.loc[name, k])), abs(r.tvalues[name] - float(d_table.loc['t ' + name, k])))
+        worst = max(worst, abs(r.rsquared - float(d_table.loc['R2', k])))
+    print(f"Largest gap to D's table across 14 columns (coefficients, t, R²): {worst:.2e}"); assert worst < 1e-6, "does not match D's table"
+
+    TERMS = ['γ1 Fin', 'γ2 Geo', 'γ3 Fin × Current', 'γ4 Geo × Current', 'θ Post', 'φ ΔVIX', 'φ ΔDXY', 'α']
+    rows = {}
+    for k, (y, X, r) in FITS.items():
+        c = {}
+        for t_ in TERMS:
+            c[(t_, 'coef')] = r.params.get(t_, np.nan); c[(t_, 't')] = r.tvalues.get(t_, np.nan)
+        terms = ['γ1 Fin', 'γ2 Geo', 'γ3 Fin × Current', 'γ4 Geo × Current']; R = np.zeros((4, len(r.params)))
+        for i, t_ in enumerate(terms): R[i, list(r.params.index).index(t_)] = 1
+        Xc = X.values
+        c |= {('fit', 'months'): int(r.nobs), ('fit', 'R²'): r.rsquared, ('fit', 'adj R²'): r.rsquared_adj,
+              ('fit', 'Wald: all four crisis terms = 0, p'): float(r.wald_test(R, scalar=True).pvalue)}
+        for lab, v in diagnostics(y, X).items():
+            if lab not in ('adj R²',): c[('diagnostics', lab)] = v
+        c[('diagnostics', 'max VIF')] = max(variance_inflation_factor(Xc, i) for i in range(1, Xc.shape[1]))
+        rows[k] = c
+    p6_table = pd.DataFrame(rows); results['C4b_p6_regression'] = p6_table
+    cur18 = p6_panel.index >= pd.Period('2018-01', 'M')
+    cells = pd.Series({'months': len(p6_panel), 'Fin months': int(Fin.sum()), 'Geo months': int(Geo.sum()), 'Fin and Geo': int((Fin * Geo).sum()),
+                       'Geo, past (before 2018)': int((Geo * ~cur18).sum()), 'Geo, current (from 2018)': int((Geo * cur18).sum()),
+                       'Fin, past': int((Fin * ~cur18).sum()), 'Fin, current': int((Fin * cur18).sum())}, name='count')
+    results['C4b_p6_cells'] = cells.to_frame()
+
+    # --- 4b, continued: is 2009-10 the break in *this* equation, and does the answer depend on it? ---
+    def sim_err_n(n, sig, rho_, a, b, df, r_, burn=100):
+        N = n + burn; z = r_.standard_normal(N) if df is None else r_.standard_t(df, N) / np.sqrt(df / (df - 2))
+        hh, e, u = np.ones(N), np.zeros(N), np.zeros(N)
+        for t in range(1, N):
+            hh[t] = (1 - a - b) + a * e[t - 1] ** 2 + b * hh[t - 1]; e[t] = np.sqrt(hh[t]) * z[t]; u[t] = rho_ * u[t - 1] + e[t]
+        return u[burn:] * np.sqrt(1 - rho_ ** 2) * sig
+
+    rows, r_mc = {}, np.random.default_rng(SEED + 2)
+    for lab, dep, ctl in [('EM − World', 'EM', False), ('EM − World + X', 'EM', True), ('EM ex-IT − World', 'EM ex-IT', False), ('EM ex-IT − World + X', 'EM ex-IT', True)]:
+        X = p6_design(post=None, controls=ctl); y = DEPV[dep].reindex(p6_panel.index); yv, Xv = y.values, X.values; n = len(yv); h = int(np.ceil(TRIM * n)); one = np.ones((n, 1))
+        lm, ssr = search_partial(yv, Xv, one, h); at = p6_panel.index.get_loc(pd.Period(BREAKS_C[0], 'M')); a, z = ci_partial(yv, Xv, one, int(ssr.idxmin()), nw_lags(n))
+        near = ssr[ssr <= ssr.min() * 1.01].index
+        rows[lab] = {'sup LM': lm.max(), 'at (LM peak)': str(p6_panel.index[lm.idxmax()]), 'min SSR at': str(p6_panel.index[ssr.idxmin()]), '5% cv': cv_seq(DIST[1], 0), 'reject 5%': lm.max() > cv_seq(DIST[1], 0),
+                     f'LM at {BREAKS_C[0]}': lm[at], '90% CI': f'{p6_panel.index[a]}…{p6_panel.index[z]}', 'SSR within 1% of minimum': f'{p6_panel.index[near.min()]}…{p6_panel.index[near.max()]}'}
+        if lab == 'EM − World':
+            b_ = np.linalg.lstsq(Xv, yv, rcond=None)[0]; u_ = yv - Xv @ b_; rho_ = np.corrcoef(u_[1:], u_[:-1])[0, 1]; p6_size = {}
+            for name, kw in DGP.items():
+                p6_size[name] = np.mean([search_partial(Xv @ b_ + sim_err_n(n, u_.std(), rho_, kw['a'], kw['b'], kw['df'], r_mc), Xv, one, h)[0].max() > cv_seq(DIST[1], 0) for _ in range(MC_PART)])
+    p6_break = pd.DataFrame(rows).T; results['C4b_p6_break_in_equation'] = p6_break; p6_size = pd.Series(p6_size, name='size of the test (nominal 5%)'); results['C4b_p6_break_size'] = p6_size.to_frame()
+    FORMAL['p.6 break test'] = bool(p6_size.between(.025, .075).all())
+
+    rows = {}
+    for dep in ['EM', 'EM ex-IT']:
+        for ctl in [False, True]:
+            for post in [None, '2007-10', '2009-10', '2010-09', '2012-12']:
+                y, X, r = p6_fit(dep, post=post, controls=ctl)
+                rows[(dep, 'with X' if ctl else 'no X', post or 'no Post')] = {'γ3': r.params['γ3 Fin × Current'], 't γ3': r.tvalues['γ3 Fin × Current'], 'γ4': r.params['γ4 Geo × Current'], 't γ4': r.tvalues['γ4 Geo × Current'],
+                                                                         'θ Post': r.params.get('θ Post', np.nan), 't θ': r.tvalues.get('θ Post', np.nan), 'R²': r.rsquared}
+    p6_dates = pd.DataFrame(rows).T; p6_dates.index.names = ['dependent', 'controls', 'Post from']; results['C4b_p6_post_date'] = p6_dates
+
+    r_cur = {k: p6_fit(k, extra='Current')[2] for k in ['EM', 'EM ex-IT']}
+    p6_cur = pd.DataFrame({k: {'γ4': r.params['γ4 Geo × Current'], 't γ4': r.tvalues['γ4 Geo × Current'], 'γ3': r.params['γ3 Fin × Current'], 't γ3': r.tvalues['γ3 Fin × Current'], 'Current': r.params['Current'], 't Current': r.tvalues['Current'], 'θ Post': r.params['θ Post'], 't θ': r.tvalues['θ Post']} for k, r in r_cur.items()}).T
+    results['C4b_p6_current_main_effect'] = p6_cur
 
     # --------------------------------------------------------------------------------
     # 4c. Is the Sharpe gain from adding EM beyond chance? (exploratory, added in v2)

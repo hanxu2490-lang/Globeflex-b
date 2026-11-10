@@ -94,9 +94,9 @@ def panel():
 
 
 def weekly_log():
-    """Weekly (Friday) log returns over each series' full daily history, as Module B builds them."""
+    """Weekly (Friday) log returns for Module B, weeks ending 2001-01 to 2026-08 (5 Jan 2001 to 28 Aug 2026)."""
     lv = pd.concat([load("MSCI_EM_Returns_daily.xlsx").rename("EM"), load("MSCI_USA__net_total_return.xlsx").rename("USA"),
                     load("MSCI_USA_IT.xlsx").rename("USA_IT"),
                     load("EMSC.xlsx", "EMSC_Price_MXEFSC").rename("EM Small Cap Price")], axis=1).sort_index()
     w = lv.resample("W-FRI").last().pct_change(fill_method=None)
-    return np.log1p(w).replace([np.inf, -np.inf], np.nan)
+    return np.log1p(w).replace([np.inf, -np.inf], np.nan).loc[START:END]

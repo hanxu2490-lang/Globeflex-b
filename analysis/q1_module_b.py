@@ -477,7 +477,7 @@ def run():
         ax.legend(frameon=False, fontsize=7, ncol=2)
     _savefig(fig, "B_06_Country_Joint_OOS_Weights.png")
 
-    # ---------------------------------------------------------------- 5. GARCH: weekly (daily levels -> Friday) and monthly (A's log returns)
+    # ---------------------------------------------------------------- 5. GARCH: weekly (daily levels -> Friday, weeks 2001-01 to 2026-08) and monthly (A's log returns)
     weekly_log_ = weekly_log()
     monthly_garch_log = monthly_log[[c for c in ["EM", "EM_exIT", "EM_exTWKR", "USA", "USA_IT"] if c in monthly_log]].copy()
     weekly_std, weekly_diag, weekly_candidates, weekly_fits = fit_garch_panel(weekly_log_, "Weekly")
