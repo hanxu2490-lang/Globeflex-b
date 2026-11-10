@@ -378,7 +378,7 @@ adds 0.38.</li>
 <li><b>Since then the optimizer gives EM 0%</b> in every 5-year window from 2007-09…2012-08 onward, including EM ex-IT today. A forced 10% costs
 little: −0.024 for EM and −0.046 for EM ex-IT in 2021–26.</li>
 <li><b>Out of sample</b> the result depends on the window. With 60 months, a fixed 10% or 20% MSCI EM raises the Sharpe ratio a little
-(max Sharpe 0.59 → 0.62 and 0.61; min variance 0.37 → 0.42 and 0.43). With 120 months it lowers the max-Sharpe portfolio (0.70 → 0.60 and 0.59).
+(max Sharpe 0.59 → 0.62 and 0.61; min variance 0.36 → 0.42 and 0.43). With 120 months it lowers the max-Sharpe portfolio (0.70 → 0.60 and 0.59).
 Free-weight EM is at or below the stock-bond portfolio in every case. The country portfolio (2020-04 to 2026-08) has a Sharpe ratio of 0.41
 (max Sharpe) and −0.31 (min variance). All optimizations converged.</li>
 <li><b>Countries.</b> The optimizer's country gains are not distinguishable from chance in any window, and the choice is unstable across

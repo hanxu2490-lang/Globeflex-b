@@ -1,0 +1,1541 @@
+Date,Objective,Asset,Weight,Converged,Status
+2020-04-30,sharpe,S&P 500,0.0951236051627734,True,Optimization terminated successfully
+2020-04-30,sharpe,US Agg,0.8606543453844561,True,Optimization terminated successfully
+2020-04-30,sharpe,Taiwan,8.393687934808777e-14,True,Optimization terminated successfully
+2020-04-30,sharpe,Korea,2.6078623502883473e-15,True,Optimization terminated successfully
+2020-04-30,sharpe,China,6.255990568004681e-14,True,Optimization terminated successfully
+2020-04-30,sharpe,India,0.0,True,Optimization terminated successfully
+2020-04-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2020-04-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2020-04-30,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2020-04-30,sharpe,Saudi Arabia,0.044222049453084854,True,Optimization terminated successfully
+2020-04-30,minvar,S&P 500,0.03096117752774114,True,Optimization terminated successfully
+2020-04-30,minvar,US Agg,0.9226958778644284,True,Optimization terminated successfully
+2020-04-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2020-04-30,minvar,Korea,1.6157356201149563e-18,True,Optimization terminated successfully
+2020-04-30,minvar,China,9.921076126989776e-19,True,Optimization terminated successfully
+2020-04-30,minvar,India,0.0,True,Optimization terminated successfully
+2020-04-30,minvar,Brazil,2.6584963722812242e-18,True,Optimization terminated successfully
+2020-04-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2020-04-30,minvar,Mexico,0.0,True,Optimization terminated successfully
+2020-04-30,minvar,Saudi Arabia,0.04634294460783046,True,Optimization terminated successfully
+2020-05-31,sharpe,S&P 500,0.12165648423102432,True,Optimization terminated successfully
+2020-05-31,sharpe,US Agg,0.8674910659706451,True,Optimization terminated successfully
+2020-05-31,sharpe,Taiwan,9.496272960427554e-15,True,Optimization terminated successfully
+2020-05-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2020-05-31,sharpe,China,2.3545712843725472e-15,True,Optimization terminated successfully
+2020-05-31,sharpe,India,0.0,True,Optimization terminated successfully
+2020-05-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2020-05-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2020-05-31,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2020-05-31,sharpe,Saudi Arabia,0.010852449798371917,True,Optimization terminated successfully
+2020-05-31,minvar,S&P 500,0.00832664256663632,True,Optimization terminated successfully
+2020-05-31,minvar,US Agg,0.9431646331178353,True,Optimization terminated successfully
+2020-05-31,minvar,Taiwan,3.006644844204817e-18,True,Optimization terminated successfully
+2020-05-31,minvar,Korea,2.2590514373679165e-19,True,Optimization terminated successfully
+2020-05-31,minvar,China,0.0,True,Optimization terminated successfully
+2020-05-31,minvar,India,1.291002761416051e-18,True,Optimization terminated successfully
+2020-05-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2020-05-31,minvar,South Africa,8.382404992338083e-19,True,Optimization terminated successfully
+2020-05-31,minvar,Mexico,1.9606286197135987e-18,True,Optimization terminated successfully
+2020-05-31,minvar,Saudi Arabia,0.048508724315528357,True,Optimization terminated successfully
+2020-06-30,sharpe,S&P 500,0.11866955257639568,True,Optimization terminated successfully
+2020-06-30,sharpe,US Agg,0.8669580086104561,True,Optimization terminated successfully
+2020-06-30,sharpe,Taiwan,3.2716139492450376e-16,True,Optimization terminated successfully
+2020-06-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2020-06-30,sharpe,China,4.538867494206193e-16,True,Optimization terminated successfully
+2020-06-30,sharpe,India,0.0,True,Optimization terminated successfully
+2020-06-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2020-06-30,sharpe,South Africa,1.7833111407617746e-15,True,Optimization terminated successfully
+2020-06-30,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2020-06-30,sharpe,Saudi Arabia,0.014372438813151886,True,Optimization terminated successfully
+2020-06-30,minvar,S&P 500,0.00607950314890344,True,Optimization terminated successfully
+2020-06-30,minvar,US Agg,0.9440178017396146,True,Optimization terminated successfully
+2020-06-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2020-06-30,minvar,Korea,6.083699301238203e-20,True,Optimization terminated successfully
+2020-06-30,minvar,China,9.281987310007855e-19,True,Optimization terminated successfully
+2020-06-30,minvar,India,0.0,True,Optimization terminated successfully
+2020-06-30,minvar,Brazil,0.0,True,Optimization terminated successfully
+2020-06-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2020-06-30,minvar,Mexico,0.0,True,Optimization terminated successfully
+2020-06-30,minvar,Saudi Arabia,0.04990269511148201,True,Optimization terminated successfully
+2020-07-31,sharpe,S&P 500,0.12573467881679357,True,Optimization terminated successfully
+2020-07-31,sharpe,US Agg,0.8742653211831893,True,Optimization terminated successfully
+2020-07-31,sharpe,Taiwan,0.0,True,Optimization terminated successfully
+2020-07-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2020-07-31,sharpe,China,0.0,True,Optimization terminated successfully
+2020-07-31,sharpe,India,7.155928661941963e-15,True,Optimization terminated successfully
+2020-07-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2020-07-31,sharpe,South Africa,2.131313250261421e-14,True,Optimization terminated successfully
+2020-07-31,sharpe,Mexico,2.4036529150904425e-14,True,Optimization terminated successfully
+2020-07-31,sharpe,Saudi Arabia,0.0,True,Optimization terminated successfully
+2020-07-31,minvar,S&P 500,0.011812078630780605,True,Optimization terminated successfully
+2020-07-31,minvar,US Agg,0.9440851099104604,True,Optimization terminated successfully
+2020-07-31,minvar,Taiwan,5.073228671967815e-20,True,Optimization terminated successfully
+2020-07-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2020-07-31,minvar,China,9.180940247080817e-19,True,Optimization terminated successfully
+2020-07-31,minvar,India,2.509883085071585e-18,True,Optimization terminated successfully
+2020-07-31,minvar,Brazil,2.272977873347429e-19,True,Optimization terminated successfully
+2020-07-31,minvar,South Africa,7.005976502031757e-19,True,Optimization terminated successfully
+2020-07-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2020-07-31,minvar,Saudi Arabia,0.044102811458759134,True,Optimization terminated successfully
+2020-08-31,sharpe,S&P 500,0.12049972000270451,True,Optimization terminated successfully
+2020-08-31,sharpe,US Agg,0.8717864918238046,True,Optimization terminated successfully
+2020-08-31,sharpe,Taiwan,0.007713788173491069,True,Optimization terminated successfully
+2020-08-31,sharpe,Korea,1.0209330894946794e-15,True,Optimization terminated successfully
+2020-08-31,sharpe,China,1.853600357963547e-15,True,Optimization terminated successfully
+2020-08-31,sharpe,India,0.0,True,Optimization terminated successfully
+2020-08-31,sharpe,Brazil,1.2429776944193068e-15,True,Optimization terminated successfully
+2020-08-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2020-08-31,sharpe,Mexico,9.654219382630177e-16,True,Optimization terminated successfully
+2020-08-31,sharpe,Saudi Arabia,3.040090521890308e-16,True,Optimization terminated successfully
+2020-08-31,minvar,S&P 500,0.006490632651579145,True,Optimization terminated successfully
+2020-08-31,minvar,US Agg,0.9468751660214916,True,Optimization terminated successfully
+2020-08-31,minvar,Taiwan,7.532748200261339e-19,True,Optimization terminated successfully
+2020-08-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2020-08-31,minvar,China,1.760163247061174e-18,True,Optimization terminated successfully
+2020-08-31,minvar,India,0.0,True,Optimization terminated successfully
+2020-08-31,minvar,Brazil,9.827987597185404e-19,True,Optimization terminated successfully
+2020-08-31,minvar,South Africa,2.3704724745714067e-18,True,Optimization terminated successfully
+2020-08-31,minvar,Mexico,1.1535988030344962e-18,True,Optimization terminated successfully
+2020-08-31,minvar,Saudi Arabia,0.04663420132692929,True,Optimization terminated successfully
+2020-09-30,sharpe,S&P 500,0.13593902800252716,True,Optimization terminated successfully
+2020-09-30,sharpe,US Agg,0.8340986882739343,True,Optimization terminated successfully
+2020-09-30,sharpe,Taiwan,0.0,True,Optimization terminated successfully
+2020-09-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2020-09-30,sharpe,China,0.005123568967505722,True,Optimization terminated successfully
+2020-09-30,sharpe,India,3.0017724876665565e-16,True,Optimization terminated successfully
+2020-09-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2020-09-30,sharpe,South Africa,1.1048926244848366e-15,True,Optimization terminated successfully
+2020-09-30,sharpe,Mexico,9.856755320079059e-16,True,Optimization terminated successfully
+2020-09-30,sharpe,Saudi Arabia,0.024838714765587442,True,Optimization terminated successfully
+2020-09-30,minvar,S&P 500,0.012781791389566696,True,Optimization terminated successfully
+2020-09-30,minvar,US Agg,0.9321490949910934,True,Optimization terminated successfully
+2020-09-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2020-09-30,minvar,Korea,4.189559978161288e-19,True,Optimization terminated successfully
+2020-09-30,minvar,China,8.174389662876502e-18,True,Optimization terminated successfully
+2020-09-30,minvar,India,0.0,True,Optimization terminated successfully
+2020-09-30,minvar,Brazil,0.0,True,Optimization terminated successfully
+2020-09-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2020-09-30,minvar,Mexico,7.145535313191733e-20,True,Optimization terminated successfully
+2020-09-30,minvar,Saudi Arabia,0.05506911361933985,True,Optimization terminated successfully
+2020-10-31,sharpe,S&P 500,0.11823592660987679,True,Optimization terminated successfully
+2020-10-31,sharpe,US Agg,0.8237404268632467,True,Optimization terminated successfully
+2020-10-31,sharpe,Taiwan,0.021596182242618434,True,Optimization terminated successfully
+2020-10-31,sharpe,Korea,2.507696397629298e-16,True,Optimization terminated successfully
+2020-10-31,sharpe,China,1.0384019969886954e-15,True,Optimization terminated successfully
+2020-10-31,sharpe,India,3.223108510231896e-24,True,Optimization terminated successfully
+2020-10-31,sharpe,Brazil,5.706417867021419e-21,True,Optimization terminated successfully
+2020-10-31,sharpe,South Africa,6.728213978742796e-22,True,Optimization terminated successfully
+2020-10-31,sharpe,Mexico,1.132124944177832e-23,True,Optimization terminated successfully
+2020-10-31,sharpe,Saudi Arabia,0.03642746428802763,True,Optimization terminated successfully
+2020-10-31,minvar,S&P 500,0.010070413395293881,True,Optimization terminated successfully
+2020-10-31,minvar,US Agg,0.9335673438406905,True,Optimization terminated successfully
+2020-10-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2020-10-31,minvar,Korea,1.8943620965099224e-19,True,Optimization terminated successfully
+2020-10-31,minvar,China,0.0,True,Optimization terminated successfully
+2020-10-31,minvar,India,0.0,True,Optimization terminated successfully
+2020-10-31,minvar,Brazil,1.6789054064708241e-18,True,Optimization terminated successfully
+2020-10-31,minvar,South Africa,1.0669623430064474e-18,True,Optimization terminated successfully
+2020-10-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2020-10-31,minvar,Saudi Arabia,0.056362242764015545,True,Optimization terminated successfully
+2020-11-30,sharpe,S&P 500,0.06927186802326829,True,Optimization terminated successfully
+2020-11-30,sharpe,US Agg,0.8323020267634548,True,Optimization terminated successfully
+2020-11-30,sharpe,Taiwan,0.03395320841526009,True,Optimization terminated successfully
+2020-11-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2020-11-30,sharpe,China,0.020281216635891046,True,Optimization terminated successfully
+2020-11-30,sharpe,India,0.0,True,Optimization terminated successfully
+2020-11-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2020-11-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2020-11-30,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2020-11-30,sharpe,Saudi Arabia,0.04419168016284172,True,Optimization terminated successfully
+2020-11-30,minvar,S&P 500,0.002669791220313648,True,Optimization terminated successfully
+2020-11-30,minvar,US Agg,0.9378459475193618,True,Optimization terminated successfully
+2020-11-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2020-11-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2020-11-30,minvar,China,0.0016666553926700362,True,Optimization terminated successfully
+2020-11-30,minvar,India,0.0,True,Optimization terminated successfully
+2020-11-30,minvar,Brazil,1.3163668816103678e-18,True,Optimization terminated successfully
+2020-11-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2020-11-30,minvar,Mexico,0.0,True,Optimization terminated successfully
+2020-11-30,minvar,Saudi Arabia,0.05781760586765461,True,Optimization terminated successfully
+2020-12-31,sharpe,S&P 500,0.06522753063926706,True,Optimization terminated successfully
+2020-12-31,sharpe,US Agg,0.8289526278854275,True,Optimization terminated successfully
+2020-12-31,sharpe,Taiwan,0.04527332883107668,True,Optimization terminated successfully
+2020-12-31,sharpe,Korea,3.2056690257871095e-14,True,Optimization terminated successfully
+2020-12-31,sharpe,China,0.02189499959782012,True,Optimization terminated successfully
+2020-12-31,sharpe,India,3.930445383925699e-14,True,Optimization terminated successfully
+2020-12-31,sharpe,Brazil,8.455316963579449e-15,True,Optimization terminated successfully
+2020-12-31,sharpe,South Africa,4.938237956995545e-14,True,Optimization terminated successfully
+2020-12-31,sharpe,Mexico,4.632116117925245e-14,True,Optimization terminated successfully
+2020-12-31,sharpe,Saudi Arabia,0.03865151304623308,True,Optimization terminated successfully
+2020-12-31,minvar,S&P 500,3.411105469868897e-18,True,Optimization terminated successfully
+2020-12-31,minvar,US Agg,0.9419603973931528,True,Optimization terminated successfully
+2020-12-31,minvar,Taiwan,1.2342307954253451e-18,True,Optimization terminated successfully
+2020-12-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2020-12-31,minvar,China,0.005757667516916302,True,Optimization terminated successfully
+2020-12-31,minvar,India,0.0,True,Optimization terminated successfully
+2020-12-31,minvar,Brazil,2.4179314226068993e-19,True,Optimization terminated successfully
+2020-12-31,minvar,South Africa,4.3354921586129454e-19,True,Optimization terminated successfully
+2020-12-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2020-12-31,minvar,Saudi Arabia,0.05228193508993091,True,Optimization terminated successfully
+2021-01-31,sharpe,S&P 500,0.06145285575502662,True,Optimization terminated successfully
+2021-01-31,sharpe,US Agg,0.8196181764044063,True,Optimization terminated successfully
+2021-01-31,sharpe,Taiwan,0.06028156094008012,True,Optimization terminated successfully
+2021-01-31,sharpe,Korea,2.1975903287378592e-14,True,Optimization terminated successfully
+2021-01-31,sharpe,China,0.01336061017811739,True,Optimization terminated successfully
+2021-01-31,sharpe,India,2.9120043210499055e-14,True,Optimization terminated successfully
+2021-01-31,sharpe,Brazil,1.1842371396420656e-16,True,Optimization terminated successfully
+2021-01-31,sharpe,South Africa,3.5270348285768395e-14,True,Optimization terminated successfully
+2021-01-31,sharpe,Mexico,4.1770717572698715e-14,True,Optimization terminated successfully
+2021-01-31,sharpe,Saudi Arabia,0.04528679672224127,True,Optimization terminated successfully
+2021-01-31,minvar,S&P 500,4.886469482930682e-18,True,Optimization terminated successfully
+2021-01-31,minvar,US Agg,0.9393231303815748,True,Optimization terminated successfully
+2021-01-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2021-01-31,minvar,Korea,1.586939281995447e-18,True,Optimization terminated successfully
+2021-01-31,minvar,China,0.006017788712429017,True,Optimization terminated successfully
+2021-01-31,minvar,India,0.0,True,Optimization terminated successfully
+2021-01-31,minvar,Brazil,9.173224515752093e-19,True,Optimization terminated successfully
+2021-01-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2021-01-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2021-01-31,minvar,Saudi Arabia,0.05465908090599623,True,Optimization terminated successfully
+2021-02-28,sharpe,S&P 500,0.010892280446733444,True,Optimization terminated successfully
+2021-02-28,sharpe,US Agg,0.766723913925457,True,Optimization terminated successfully
+2021-02-28,sharpe,Taiwan,0.07210996976257016,True,Optimization terminated successfully
+2021-02-28,sharpe,Korea,1.3153776047999186e-14,True,Optimization terminated successfully
+2021-02-28,sharpe,China,0.06867258637714267,True,Optimization terminated successfully
+2021-02-28,sharpe,India,1.8062696214740066e-14,True,Optimization terminated successfully
+2021-02-28,sharpe,Brazil,6.787965088844599e-16,True,Optimization terminated successfully
+2021-02-28,sharpe,South Africa,2.5594013313172416e-14,True,Optimization terminated successfully
+2021-02-28,sharpe,Mexico,2.7594982207005055e-14,True,Optimization terminated successfully
+2021-02-28,sharpe,Saudi Arabia,0.0816012494880117,True,Optimization terminated successfully
+2021-02-28,minvar,S&P 500,5.147269477378152e-18,True,Optimization terminated successfully
+2021-02-28,minvar,US Agg,0.9369504056165606,True,Optimization terminated successfully
+2021-02-28,minvar,Taiwan,1.4130193625646504e-18,True,Optimization terminated successfully
+2021-02-28,minvar,Korea,0.0,True,Optimization terminated successfully
+2021-02-28,minvar,China,0.00930529857420795,True,Optimization terminated successfully
+2021-02-28,minvar,India,0.0,True,Optimization terminated successfully
+2021-02-28,minvar,Brazil,0.0,True,Optimization terminated successfully
+2021-02-28,minvar,South Africa,6.909315750986568e-20,True,Optimization terminated successfully
+2021-02-28,minvar,Mexico,1.9995896785382532e-18,True,Optimization terminated successfully
+2021-02-28,minvar,Saudi Arabia,0.05374429580923138,True,Optimization terminated successfully
+2021-03-31,sharpe,S&P 500,0.029117515459564883,True,Optimization terminated successfully
+2021-03-31,sharpe,US Agg,0.7194658163920772,True,Optimization terminated successfully
+2021-03-31,sharpe,Taiwan,0.09690394267070439,True,Optimization terminated successfully
+2021-03-31,sharpe,Korea,4.067165502985829e-15,True,Optimization terminated successfully
+2021-03-31,sharpe,China,0.06779419545689123,True,Optimization terminated successfully
+2021-03-31,sharpe,India,4.767177674344502e-15,True,Optimization terminated successfully
+2021-03-31,sharpe,Brazil,1.3809930221671364e-15,True,Optimization terminated successfully
+2021-03-31,sharpe,South Africa,5.85960246217887e-15,True,Optimization terminated successfully
+2021-03-31,sharpe,Mexico,9.499113258137022e-15,True,Optimization terminated successfully
+2021-03-31,sharpe,Saudi Arabia,0.08671853002073686,True,Optimization terminated successfully
+2021-03-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2021-03-31,minvar,US Agg,0.9345412689908604,True,Optimization terminated successfully
+2021-03-31,minvar,Taiwan,2.799060586431175e-18,True,Optimization terminated successfully
+2021-03-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2021-03-31,minvar,China,0.004737988560485323,True,Optimization terminated successfully
+2021-03-31,minvar,India,0.0,True,Optimization terminated successfully
+2021-03-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2021-03-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2021-03-31,minvar,Mexico,2.5238465720771415e-19,True,Optimization terminated successfully
+2021-03-31,minvar,Saudi Arabia,0.06072074244865436,True,Optimization terminated successfully
+2021-04-30,sharpe,S&P 500,0.058699752753744575,True,Optimization terminated successfully
+2021-04-30,sharpe,US Agg,0.6880848568294937,True,Optimization terminated successfully
+2021-04-30,sharpe,Taiwan,0.11531719254321011,True,Optimization terminated successfully
+2021-04-30,sharpe,Korea,5.926909712972891e-15,True,Optimization terminated successfully
+2021-04-30,sharpe,China,0.025977202651957368,True,Optimization terminated successfully
+2021-04-30,sharpe,India,5.923797952152695e-15,True,Optimization terminated successfully
+2021-04-30,sharpe,Brazil,4.851404610091998e-15,True,Optimization terminated successfully
+2021-04-30,sharpe,South Africa,6.671799354164489e-15,True,Optimization terminated successfully
+2021-04-30,sharpe,Mexico,8.661332787048492e-15,True,Optimization terminated successfully
+2021-04-30,sharpe,Saudi Arabia,0.11192099522156222,True,Optimization terminated successfully
+2021-04-30,minvar,S&P 500,1.5106166580211332e-18,True,Optimization terminated successfully
+2021-04-30,minvar,US Agg,0.9311005459164523,True,Optimization terminated successfully
+2021-04-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2021-04-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2021-04-30,minvar,China,0.003219324183511001,True,Optimization terminated successfully
+2021-04-30,minvar,India,3.629259772144525e-18,True,Optimization terminated successfully
+2021-04-30,minvar,Brazil,2.3149141492354735e-18,True,Optimization terminated successfully
+2021-04-30,minvar,South Africa,7.919489100722413e-19,True,Optimization terminated successfully
+2021-04-30,minvar,Mexico,0.0,True,Optimization terminated successfully
+2021-04-30,minvar,Saudi Arabia,0.0656801299000367,True,Optimization terminated successfully
+2021-05-31,sharpe,S&P 500,0.07578661291107101,True,Optimization terminated successfully
+2021-05-31,sharpe,US Agg,0.6656083626700633,True,Optimization terminated successfully
+2021-05-31,sharpe,Taiwan,0.16753577983739132,True,Optimization terminated successfully
+2021-05-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2021-05-31,sharpe,China,0.004469247558080476,True,Optimization terminated successfully
+2021-05-31,sharpe,India,0.0,True,Optimization terminated successfully
+2021-05-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2021-05-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2021-05-31,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2021-05-31,sharpe,Saudi Arabia,0.08659999702354043,True,Optimization terminated successfully
+2021-05-31,minvar,S&P 500,8.270702536981136e-19,True,Optimization terminated successfully
+2021-05-31,minvar,US Agg,0.9303301824159473,True,Optimization terminated successfully
+2021-05-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2021-05-31,minvar,Korea,6.163492813378735e-19,True,Optimization terminated successfully
+2021-05-31,minvar,China,0.0021715912152614858,True,Optimization terminated successfully
+2021-05-31,minvar,India,0.0,True,Optimization terminated successfully
+2021-05-31,minvar,Brazil,2.104395938157598e-18,True,Optimization terminated successfully
+2021-05-31,minvar,South Africa,2.276898423975554e-18,True,Optimization terminated successfully
+2021-05-31,minvar,Mexico,2.373540657147652e-18,True,Optimization terminated successfully
+2021-05-31,minvar,Saudi Arabia,0.06749822636879105,True,Optimization terminated successfully
+2021-06-30,sharpe,S&P 500,0.05574057408673568,True,Optimization terminated successfully
+2021-06-30,sharpe,US Agg,0.6857494891229612,True,Optimization terminated successfully
+2021-06-30,sharpe,Taiwan,0.1329803657894183,True,Optimization terminated successfully
+2021-06-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2021-06-30,sharpe,China,0.02372620990385191,True,Optimization terminated successfully
+2021-06-30,sharpe,India,0.0,True,Optimization terminated successfully
+2021-06-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2021-06-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2021-06-30,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2021-06-30,sharpe,Saudi Arabia,0.10180336109707434,True,Optimization terminated successfully
+2021-06-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2021-06-30,minvar,US Agg,0.9288007451785439,True,Optimization terminated successfully
+2021-06-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2021-06-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2021-06-30,minvar,China,0.002403552333911816,True,Optimization terminated successfully
+2021-06-30,minvar,India,4.450148582757416e-18,True,Optimization terminated successfully
+2021-06-30,minvar,Brazil,1.1892974342912065e-18,True,Optimization terminated successfully
+2021-06-30,minvar,South Africa,4.452409184336989e-19,True,Optimization terminated successfully
+2021-06-30,minvar,Mexico,5.8875107468790735e-19,True,Optimization terminated successfully
+2021-06-30,minvar,Saudi Arabia,0.06879570248754432,True,Optimization terminated successfully
+2021-07-31,sharpe,S&P 500,0.07075799658020367,True,Optimization terminated successfully
+2021-07-31,sharpe,US Agg,0.6769243343792887,True,Optimization terminated successfully
+2021-07-31,sharpe,Taiwan,0.12176294970927504,True,Optimization terminated successfully
+2021-07-31,sharpe,Korea,9.272379358625076e-15,True,Optimization terminated successfully
+2021-07-31,sharpe,China,0.024446010747305607,True,Optimization terminated successfully
+2021-07-31,sharpe,India,0.0,True,Optimization terminated successfully
+2021-07-31,sharpe,Brazil,5.568662760180052e-15,True,Optimization terminated successfully
+2021-07-31,sharpe,South Africa,1.5337450523985615e-14,True,Optimization terminated successfully
+2021-07-31,sharpe,Mexico,1.3631260946314044e-14,True,Optimization terminated successfully
+2021-07-31,sharpe,Saudi Arabia,0.10610870858389668,True,Optimization terminated successfully
+2021-07-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2021-07-31,minvar,US Agg,0.9310804947179594,True,Optimization terminated successfully
+2021-07-31,minvar,Taiwan,1.869166149801271e-18,True,Optimization terminated successfully
+2021-07-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2021-07-31,minvar,China,0.0019700650637828714,True,Optimization terminated successfully
+2021-07-31,minvar,India,0.0,True,Optimization terminated successfully
+2021-07-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2021-07-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2021-07-31,minvar,Mexico,3.1630089767322147e-18,True,Optimization terminated successfully
+2021-07-31,minvar,Saudi Arabia,0.06694944021825766,True,Optimization terminated successfully
+2021-08-31,sharpe,S&P 500,0.08606679601890847,True,Optimization terminated successfully
+2021-08-31,sharpe,US Agg,0.7048104346661708,True,Optimization terminated successfully
+2021-08-31,sharpe,Taiwan,0.10015734960649852,True,Optimization terminated successfully
+2021-08-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2021-08-31,sharpe,China,0.0,True,Optimization terminated successfully
+2021-08-31,sharpe,India,0.0,True,Optimization terminated successfully
+2021-08-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2021-08-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2021-08-31,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2021-08-31,sharpe,Saudi Arabia,0.10896541970854515,True,Optimization terminated successfully
+2021-08-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2021-08-31,minvar,US Agg,0.9260173147980556,True,Optimization terminated successfully
+2021-08-31,minvar,Taiwan,1.7444715695779196e-18,True,Optimization terminated successfully
+2021-08-31,minvar,Korea,7.08112416341795e-19,True,Optimization terminated successfully
+2021-08-31,minvar,China,0.008633438229613153,True,Optimization terminated successfully
+2021-08-31,minvar,India,1.0815363481605035e-18,True,Optimization terminated successfully
+2021-08-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2021-08-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2021-08-31,minvar,Mexico,2.7964864900677606e-18,True,Optimization terminated successfully
+2021-08-31,minvar,Saudi Arabia,0.06534924697233124,True,Optimization terminated successfully
+2021-09-30,sharpe,S&P 500,0.0837355338560832,True,Optimization terminated successfully
+2021-09-30,sharpe,US Agg,0.7032228622571957,True,Optimization terminated successfully
+2021-09-30,sharpe,Taiwan,0.09522100648739369,True,Optimization terminated successfully
+2021-09-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2021-09-30,sharpe,China,0.0,True,Optimization terminated successfully
+2021-09-30,sharpe,India,0.0,True,Optimization terminated successfully
+2021-09-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2021-09-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2021-09-30,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2021-09-30,sharpe,Saudi Arabia,0.11782059739934617,True,Optimization terminated successfully
+2021-09-30,minvar,S&P 500,1.2850515261422029e-18,True,Optimization terminated successfully
+2021-09-30,minvar,US Agg,0.926591685051518,True,Optimization terminated successfully
+2021-09-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2021-09-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2021-09-30,minvar,China,0.00642009996540826,True,Optimization terminated successfully
+2021-09-30,minvar,India,0.0,True,Optimization terminated successfully
+2021-09-30,minvar,Brazil,4.586051821205685e-19,True,Optimization terminated successfully
+2021-09-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2021-09-30,minvar,Mexico,0.0,True,Optimization terminated successfully
+2021-09-30,minvar,Saudi Arabia,0.06698821498307374,True,Optimization terminated successfully
+2021-10-31,sharpe,S&P 500,0.045519533358523316,True,Optimization terminated successfully
+2021-10-31,sharpe,US Agg,0.712674004044535,True,Optimization terminated successfully
+2021-10-31,sharpe,Taiwan,0.07819676157316265,True,Optimization terminated successfully
+2021-10-31,sharpe,Korea,2.4871135981166167e-15,True,Optimization terminated successfully
+2021-10-31,sharpe,China,1.305576960529267e-15,True,Optimization terminated successfully
+2021-10-31,sharpe,India,1.2255677271828958e-15,True,Optimization terminated successfully
+2021-10-31,sharpe,Brazil,3.1883567697367238e-15,True,Optimization terminated successfully
+2021-10-31,sharpe,South Africa,1.8268834789067934e-15,True,Optimization terminated successfully
+2021-10-31,sharpe,Mexico,5.573079057262192e-15,True,Optimization terminated successfully
+2021-10-31,sharpe,Saudi Arabia,0.1636097010237635,True,Optimization terminated successfully
+2021-10-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2021-10-31,minvar,US Agg,0.9261275815661663,True,Optimization terminated successfully
+2021-10-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2021-10-31,minvar,Korea,4.917640103493598e-19,True,Optimization terminated successfully
+2021-10-31,minvar,China,0.0015119303667440194,True,Optimization terminated successfully
+2021-10-31,minvar,India,8.79916858428643e-19,True,Optimization terminated successfully
+2021-10-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2021-10-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2021-10-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2021-10-31,minvar,Saudi Arabia,0.07236048806708979,True,Optimization terminated successfully
+2021-11-30,sharpe,S&P 500,0.10522083780471922,True,Optimization terminated successfully
+2021-11-30,sharpe,US Agg,0.7117783796495624,True,Optimization terminated successfully
+2021-11-30,sharpe,Taiwan,0.054262089886055416,True,Optimization terminated successfully
+2021-11-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2021-11-30,sharpe,China,0.0,True,Optimization terminated successfully
+2021-11-30,sharpe,India,0.0,True,Optimization terminated successfully
+2021-11-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2021-11-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2021-11-30,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2021-11-30,sharpe,Saudi Arabia,0.12873869266017493,True,Optimization terminated successfully
+2021-11-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2021-11-30,minvar,US Agg,0.9270946261284168,True,Optimization terminated successfully
+2021-11-30,minvar,Taiwan,3.7497458150472105e-18,True,Optimization terminated successfully
+2021-11-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2021-11-30,minvar,China,0.0028071133275084557,True,Optimization terminated successfully
+2021-11-30,minvar,India,4.324472073729484e-18,True,Optimization terminated successfully
+2021-11-30,minvar,Brazil,1.989187834179147e-18,True,Optimization terminated successfully
+2021-11-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2021-11-30,minvar,Mexico,1.0667689546192142e-18,True,Optimization terminated successfully
+2021-11-30,minvar,Saudi Arabia,0.07009826054407481,True,Optimization terminated successfully
+2021-12-31,sharpe,S&P 500,0.09998345503859901,True,Optimization terminated successfully
+2021-12-31,sharpe,US Agg,0.7645359429789114,True,Optimization terminated successfully
+2021-12-31,sharpe,Taiwan,0.07885898699287745,True,Optimization terminated successfully
+2021-12-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2021-12-31,sharpe,China,0.0,True,Optimization terminated successfully
+2021-12-31,sharpe,India,0.0,True,Optimization terminated successfully
+2021-12-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2021-12-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2021-12-31,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2021-12-31,sharpe,Saudi Arabia,0.0566216149901614,True,Optimization terminated successfully
+2021-12-31,minvar,S&P 500,7.004564111541659e-18,True,Optimization terminated successfully
+2021-12-31,minvar,US Agg,0.9429388081215699,True,Optimization terminated successfully
+2021-12-31,minvar,Taiwan,3.0048607087280343e-18,True,Optimization terminated successfully
+2021-12-31,minvar,Korea,1.3362058026370626e-18,True,Optimization terminated successfully
+2021-12-31,minvar,China,0.006251121503327508,True,Optimization terminated successfully
+2021-12-31,minvar,India,1.21721149942665e-18,True,Optimization terminated successfully
+2021-12-31,minvar,Brazil,8.754198793307232e-19,True,Optimization terminated successfully
+2021-12-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2021-12-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2021-12-31,minvar,Saudi Arabia,0.0508100703751026,True,Optimization terminated successfully
+2022-01-31,sharpe,S&P 500,0.09312293174540168,True,Optimization terminated successfully
+2022-01-31,sharpe,US Agg,0.7514355265516204,True,Optimization terminated successfully
+2022-01-31,sharpe,Taiwan,0.09573580403221299,True,Optimization terminated successfully
+2022-01-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2022-01-31,sharpe,China,0.0,True,Optimization terminated successfully
+2022-01-31,sharpe,India,0.0,True,Optimization terminated successfully
+2022-01-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2022-01-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2022-01-31,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2022-01-31,sharpe,Saudi Arabia,0.05970573767111784,True,Optimization terminated successfully
+2022-01-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2022-01-31,minvar,US Agg,0.9424388196796817,True,Optimization terminated successfully
+2022-01-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2022-01-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2022-01-31,minvar,China,0.0056483320914184326,True,Optimization terminated successfully
+2022-01-31,minvar,India,0.0,True,Optimization terminated successfully
+2022-01-31,minvar,Brazil,8.191464823631781e-19,True,Optimization terminated successfully
+2022-01-31,minvar,South Africa,1.8193177309461463e-18,True,Optimization terminated successfully
+2022-01-31,minvar,Mexico,3.166523633554111e-18,True,Optimization terminated successfully
+2022-01-31,minvar,Saudi Arabia,0.05191284822889999,True,Optimization terminated successfully
+2022-02-28,sharpe,S&P 500,0.043960007005221104,True,Optimization terminated successfully
+2022-02-28,sharpe,US Agg,0.7131459729487507,True,Optimization terminated successfully
+2022-02-28,sharpe,Taiwan,0.11347521620427378,True,Optimization terminated successfully
+2022-02-28,sharpe,Korea,0.0,True,Optimization terminated successfully
+2022-02-28,sharpe,China,0.0,True,Optimization terminated successfully
+2022-02-28,sharpe,India,0.0,True,Optimization terminated successfully
+2022-02-28,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2022-02-28,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2022-02-28,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2022-02-28,sharpe,Saudi Arabia,0.12941880384202395,True,Optimization terminated successfully
+2022-02-28,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2022-02-28,minvar,US Agg,0.9348659858342315,True,Optimization terminated successfully
+2022-02-28,minvar,Taiwan,2.8092623069002475e-18,True,Optimization terminated successfully
+2022-02-28,minvar,Korea,0.0,True,Optimization terminated successfully
+2022-02-28,minvar,China,0.0,True,Optimization terminated successfully
+2022-02-28,minvar,India,0.0,True,Optimization terminated successfully
+2022-02-28,minvar,Brazil,8.959952441888408e-19,True,Optimization terminated successfully
+2022-02-28,minvar,South Africa,9.875687568648636e-20,True,Optimization terminated successfully
+2022-02-28,minvar,Mexico,2.0503207861603944e-18,True,Optimization terminated successfully
+2022-02-28,minvar,Saudi Arabia,0.06513401416576856,True,Optimization terminated successfully
+2022-03-31,sharpe,S&P 500,0.015345298902315915,True,Optimization terminated successfully
+2022-03-31,sharpe,US Agg,0.6932177745727873,True,Optimization terminated successfully
+2022-03-31,sharpe,Taiwan,0.12000721038726547,True,Optimization terminated successfully
+2022-03-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2022-03-31,sharpe,China,0.0,True,Optimization terminated successfully
+2022-03-31,sharpe,India,0.0,True,Optimization terminated successfully
+2022-03-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2022-03-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2022-03-31,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2022-03-31,sharpe,Saudi Arabia,0.17142971613763983,True,Optimization terminated successfully
+2022-03-31,minvar,S&P 500,2.645702819867347e-18,True,Optimization terminated successfully
+2022-03-31,minvar,US Agg,0.9333407263240368,True,Optimization terminated successfully
+2022-03-31,minvar,Taiwan,3.6400462272175897e-19,True,Optimization terminated successfully
+2022-03-31,minvar,Korea,2.098728098698566e-18,True,Optimization terminated successfully
+2022-03-31,minvar,China,2.9660898366869696e-18,True,Optimization terminated successfully
+2022-03-31,minvar,India,0.0,True,Optimization terminated successfully
+2022-03-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2022-03-31,minvar,South Africa,1.1820298870119166e-18,True,Optimization terminated successfully
+2022-03-31,minvar,Mexico,2.9660898366869696e-18,True,Optimization terminated successfully
+2022-03-31,minvar,Saudi Arabia,0.06665927367596335,True,Optimization terminated successfully
+2022-04-30,sharpe,S&P 500,0.08357652094757201,True,Optimization terminated successfully
+2022-04-30,sharpe,US Agg,0.5746800711000976,True,Optimization terminated successfully
+2022-04-30,sharpe,Taiwan,0.12567074867189026,True,Optimization terminated successfully
+2022-04-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2022-04-30,sharpe,China,0.0,True,Optimization terminated successfully
+2022-04-30,sharpe,India,3.176108151404471e-16,True,Optimization terminated successfully
+2022-04-30,sharpe,Brazil,7.072362331358104e-16,True,Optimization terminated successfully
+2022-04-30,sharpe,South Africa,1.0666245827431067e-15,True,Optimization terminated successfully
+2022-04-30,sharpe,Mexico,3.8338189990402164e-16,True,Optimization terminated successfully
+2022-04-30,sharpe,Saudi Arabia,0.21607265928043815,True,Optimization terminated successfully
+2022-04-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2022-04-30,minvar,US Agg,0.9247360515925709,True,Optimization terminated successfully
+2022-04-30,minvar,Taiwan,1.3890034307594523e-18,True,Optimization terminated successfully
+2022-04-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2022-04-30,minvar,China,1.1352263253536837e-18,True,Optimization terminated successfully
+2022-04-30,minvar,India,2.741200793347837e-18,True,Optimization terminated successfully
+2022-04-30,minvar,Brazil,2.4075953305314263e-19,True,Optimization terminated successfully
+2022-04-30,minvar,South Africa,0.0007367020511196388,True,Optimization terminated successfully
+2022-04-30,minvar,Mexico,1.1891036552074374e-18,True,Optimization terminated successfully
+2022-04-30,minvar,Saudi Arabia,0.0745272463563095,True,Optimization terminated successfully
+2022-05-31,sharpe,S&P 500,0.046559936636758496,True,Optimization terminated successfully
+2022-05-31,sharpe,US Agg,0.33057971289007176,True,Optimization terminated successfully
+2022-05-31,sharpe,Taiwan,0.19119785067024944,True,Optimization terminated successfully
+2022-05-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2022-05-31,sharpe,China,0.0,True,Optimization terminated successfully
+2022-05-31,sharpe,India,0.0,True,Optimization terminated successfully
+2022-05-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2022-05-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2022-05-31,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2022-05-31,sharpe,Saudi Arabia,0.431662499802927,True,Optimization terminated successfully
+2022-05-31,minvar,S&P 500,3.646043736154185e-18,True,Optimization terminated successfully
+2022-05-31,minvar,US Agg,0.9107613432909593,True,Optimization terminated successfully
+2022-05-31,minvar,Taiwan,2.345001129171579e-18,True,Optimization terminated successfully
+2022-05-31,minvar,Korea,6.782723716159191e-19,True,Optimization terminated successfully
+2022-05-31,minvar,China,2.345001129171579e-18,True,Optimization terminated successfully
+2022-05-31,minvar,India,0.0,True,Optimization terminated successfully
+2022-05-31,minvar,Brazil,4.5134054741425884e-18,True,Optimization terminated successfully
+2022-05-31,minvar,South Africa,1.0439585221889738e-18,True,Optimization terminated successfully
+2022-05-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2022-05-31,minvar,Saudi Arabia,0.08923865670904084,True,Optimization terminated successfully
+2022-06-30,sharpe,S&P 500,0.07185933078675573,True,Optimization terminated successfully
+2022-06-30,sharpe,US Agg,0.21538878987808205,True,Optimization terminated successfully
+2022-06-30,sharpe,Taiwan,0.28551605485493103,True,Optimization terminated successfully
+2022-06-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2022-06-30,sharpe,China,0.0,True,Optimization terminated successfully
+2022-06-30,sharpe,India,0.0,True,Optimization terminated successfully
+2022-06-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2022-06-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2022-06-30,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2022-06-30,sharpe,Saudi Arabia,0.4272358244802351,True,Optimization terminated successfully
+2022-06-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2022-06-30,minvar,US Agg,0.9124762463306112,True,Optimization terminated successfully
+2022-06-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2022-06-30,minvar,Korea,1.0647475877788757e-18,True,Optimization terminated successfully
+2022-06-30,minvar,China,1.0647475877788757e-18,True,Optimization terminated successfully
+2022-06-30,minvar,India,1.0647475877788757e-18,True,Optimization terminated successfully
+2022-06-30,minvar,Brazil,4.84295008655036e-18,True,Optimization terminated successfully
+2022-06-30,minvar,South Africa,1.1566627000996446e-18,True,Optimization terminated successfully
+2022-06-30,minvar,Mexico,2.19130142728726e-18,True,Optimization terminated successfully
+2022-06-30,minvar,Saudi Arabia,0.08752375366938886,True,Optimization terminated successfully
+2022-07-31,sharpe,S&P 500,0.3217656135538085,True,Optimization terminated successfully
+2022-07-31,sharpe,US Agg,1.502670006378699e-16,True,Optimization terminated successfully
+2022-07-31,sharpe,Taiwan,0.23505434892323546,True,Optimization terminated successfully
+2022-07-31,sharpe,Korea,1.7032535882753848e-15,True,Optimization terminated successfully
+2022-07-31,sharpe,China,1.4504219170917531e-15,True,Optimization terminated successfully
+2022-07-31,sharpe,India,0.0,True,Optimization terminated successfully
+2022-07-31,sharpe,Brazil,1.9590846434004956e-15,True,Optimization terminated successfully
+2022-07-31,sharpe,South Africa,2.945767105910917e-15,True,Optimization terminated successfully
+2022-07-31,sharpe,Mexico,1.5944920570243417e-15,True,Optimization terminated successfully
+2022-07-31,sharpe,Saudi Arabia,0.4431800375229477,True,Optimization terminated successfully
+2022-07-31,minvar,S&P 500,8.94072218013909e-18,True,Optimization terminated successfully
+2022-07-31,minvar,US Agg,0.9229451351682397,True,Optimization terminated successfully
+2022-07-31,minvar,Taiwan,2.8761748587822954e-18,True,Optimization terminated successfully
+2022-07-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2022-07-31,minvar,China,0.0,True,Optimization terminated successfully
+2022-07-31,minvar,India,2.3852130069305583e-18,True,Optimization terminated successfully
+2022-07-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2022-07-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2022-07-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2022-07-31,minvar,Saudi Arabia,0.07705486483176031,True,Optimization terminated successfully
+2022-08-31,sharpe,S&P 500,0.3231297343533393,True,Optimization terminated successfully
+2022-08-31,sharpe,US Agg,0.07331038031090621,True,Optimization terminated successfully
+2022-08-31,sharpe,Taiwan,0.11962207041200683,True,Optimization terminated successfully
+2022-08-31,sharpe,Korea,8.867946363623432e-15,True,Optimization terminated successfully
+2022-08-31,sharpe,China,4.745167876673465e-15,True,Optimization terminated successfully
+2022-08-31,sharpe,India,1.115186781577539e-15,True,Optimization terminated successfully
+2022-08-31,sharpe,Brazil,8.62117452270331e-15,True,Optimization terminated successfully
+2022-08-31,sharpe,South Africa,9.219164763554165e-15,True,Optimization terminated successfully
+2022-08-31,sharpe,Mexico,8.2630373608253e-15,True,Optimization terminated successfully
+2022-08-31,sharpe,Saudi Arabia,0.4839378149237067,True,Optimization terminated successfully
+2022-08-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2022-08-31,minvar,US Agg,0.9150953212665107,True,Optimization terminated successfully
+2022-08-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2022-08-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2022-08-31,minvar,China,0.014085708973718416,True,Optimization terminated successfully
+2022-08-31,minvar,India,2.5035772310325516e-19,True,Optimization terminated successfully
+2022-08-31,minvar,Brazil,2.7687822530010245e-18,True,Optimization terminated successfully
+2022-08-31,minvar,South Africa,1.5761598632669698e-18,True,Optimization terminated successfully
+2022-08-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2022-08-31,minvar,Saudi Arabia,0.0708189697597709,True,Optimization terminated successfully
+2022-09-30,sharpe,S&P 500,0.2784148391615108,True,Optimization terminated successfully
+2022-09-30,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2022-09-30,sharpe,Taiwan,0.15523553098161985,True,Optimization terminated successfully
+2022-09-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2022-09-30,sharpe,China,0.0,True,Optimization terminated successfully
+2022-09-30,sharpe,India,8.61589373389276e-15,True,Optimization terminated successfully
+2022-09-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2022-09-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2022-09-30,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2022-09-30,sharpe,Saudi Arabia,0.5663496298568936,True,Optimization terminated successfully
+2022-09-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2022-09-30,minvar,US Agg,0.906454936836462,True,Optimization terminated successfully
+2022-09-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2022-09-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2022-09-30,minvar,China,0.01865171649216221,True,Optimization terminated successfully
+2022-09-30,minvar,India,0.0,True,Optimization terminated successfully
+2022-09-30,minvar,Brazil,4.4953766001943035e-18,True,Optimization terminated successfully
+2022-09-30,minvar,South Africa,3.5195946449573495e-18,True,Optimization terminated successfully
+2022-09-30,minvar,Mexico,4.8477423062520925e-18,True,Optimization terminated successfully
+2022-09-30,minvar,Saudi Arabia,0.07489334667137565,True,Optimization terminated successfully
+2022-10-31,sharpe,S&P 500,0.2435447020221344,True,Optimization terminated successfully
+2022-10-31,sharpe,US Agg,1.895795787372739e-15,True,Optimization terminated successfully
+2022-10-31,sharpe,Taiwan,0.04743520193378117,True,Optimization terminated successfully
+2022-10-31,sharpe,Korea,7.604383917453312e-15,True,Optimization terminated successfully
+2022-10-31,sharpe,China,4.68161028265217e-15,True,Optimization terminated successfully
+2022-10-31,sharpe,India,0.019476869260052952,True,Optimization terminated successfully
+2022-10-31,sharpe,Brazil,7.967392645432911e-15,True,Optimization terminated successfully
+2022-10-31,sharpe,South Africa,9.59835627943696e-15,True,Optimization terminated successfully
+2022-10-31,sharpe,Mexico,6.940125115986084e-15,True,Optimization terminated successfully
+2022-10-31,sharpe,Saudi Arabia,0.6895432267839928,True,Optimization terminated successfully
+2022-10-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2022-10-31,minvar,US Agg,0.9304444913007722,True,Optimization terminated successfully
+2022-10-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2022-10-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2022-10-31,minvar,China,0.0,True,Optimization terminated successfully
+2022-10-31,minvar,India,1.1311904507412373e-18,True,Optimization terminated successfully
+2022-10-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2022-10-31,minvar,South Africa,9.143500162441364e-19,True,Optimization terminated successfully
+2022-10-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2022-10-31,minvar,Saudi Arabia,0.06955550869922779,True,Optimization terminated successfully
+2022-11-30,sharpe,S&P 500,0.27107239446504533,True,Optimization terminated successfully
+2022-11-30,sharpe,US Agg,7.599204978294493e-17,True,Optimization terminated successfully
+2022-11-30,sharpe,Taiwan,0.0,True,Optimization terminated successfully
+2022-11-30,sharpe,Korea,8.002746903680057e-16,True,Optimization terminated successfully
+2022-11-30,sharpe,China,6.752433099908512e-16,True,Optimization terminated successfully
+2022-11-30,sharpe,India,0.0,True,Optimization terminated successfully
+2022-11-30,sharpe,Brazil,9.443820997502742e-16,True,Optimization terminated successfully
+2022-11-30,sharpe,South Africa,1.3487103125067991e-15,True,Optimization terminated successfully
+2022-11-30,sharpe,Mexico,1.2035212420508867e-15,True,Optimization terminated successfully
+2022-11-30,sharpe,Saudi Arabia,0.7289276055349521,True,Optimization terminated successfully
+2022-11-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2022-11-30,minvar,US Agg,0.9278351725314402,True,Optimization terminated successfully
+2022-11-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2022-11-30,minvar,Korea,1.1795050313488253e-18,True,Optimization terminated successfully
+2022-11-30,minvar,China,1.613185900343027e-18,True,Optimization terminated successfully
+2022-11-30,minvar,India,0.0,True,Optimization terminated successfully
+2022-11-30,minvar,Brazil,6.562909453113535e-19,True,Optimization terminated successfully
+2022-11-30,minvar,South Africa,1.999855653362976e-18,True,Optimization terminated successfully
+2022-11-30,minvar,Mexico,3.842999346588334e-18,True,Optimization terminated successfully
+2022-11-30,minvar,Saudi Arabia,0.07216482746855986,True,Optimization terminated successfully
+2022-12-31,sharpe,S&P 500,0.2736699966959295,True,Optimization terminated successfully
+2022-12-31,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2022-12-31,sharpe,Taiwan,0.1942707518965849,True,Optimization terminated successfully
+2022-12-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2022-12-31,sharpe,China,0.0,True,Optimization terminated successfully
+2022-12-31,sharpe,India,1.7848738729690775e-14,True,Optimization terminated successfully
+2022-12-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2022-12-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2022-12-31,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2022-12-31,sharpe,Saudi Arabia,0.5320592514075274,True,Optimization terminated successfully
+2022-12-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2022-12-31,minvar,US Agg,0.9115973120704691,True,Optimization terminated successfully
+2022-12-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2022-12-31,minvar,Korea,2.066048690386954e-18,True,Optimization terminated successfully
+2022-12-31,minvar,China,0.0,True,Optimization terminated successfully
+2022-12-31,minvar,India,0.0,True,Optimization terminated successfully
+2022-12-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2022-12-31,minvar,South Africa,3.313252144101469e-19,True,Optimization terminated successfully
+2022-12-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2022-12-31,minvar,Saudi Arabia,0.08840268792953089,True,Optimization terminated successfully
+2023-01-31,sharpe,S&P 500,0.21488820347978696,True,Optimization terminated successfully
+2023-01-31,sharpe,US Agg,2.4903211504125975e-15,True,Optimization terminated successfully
+2023-01-31,sharpe,Taiwan,0.20735401254295455,True,Optimization terminated successfully
+2023-01-31,sharpe,Korea,1.0004890832525844e-14,True,Optimization terminated successfully
+2023-01-31,sharpe,China,5.745079131555136e-15,True,Optimization terminated successfully
+2023-01-31,sharpe,India,0.0,True,Optimization terminated successfully
+2023-01-31,sharpe,Brazil,9.830173770012173e-15,True,Optimization terminated successfully
+2023-01-31,sharpe,South Africa,9.923255914651843e-15,True,Optimization terminated successfully
+2023-01-31,sharpe,Mexico,7.801550190128858e-15,True,Optimization terminated successfully
+2023-01-31,sharpe,Saudi Arabia,0.5777577839772227,True,Optimization terminated successfully
+2023-01-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2023-01-31,minvar,US Agg,0.9130310857524471,True,Optimization terminated successfully
+2023-01-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2023-01-31,minvar,Korea,2.6955129881758046e-18,True,Optimization terminated successfully
+2023-01-31,minvar,China,1.1668297465534093e-18,True,Optimization terminated successfully
+2023-01-31,minvar,India,0.0,True,Optimization terminated successfully
+2023-01-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2023-01-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2023-01-31,minvar,Mexico,7.748023392524047e-18,True,Optimization terminated successfully
+2023-01-31,minvar,Saudi Arabia,0.08696891424755313,True,Optimization terminated successfully
+2023-02-28,sharpe,S&P 500,0.21665417935277154,True,Optimization terminated successfully
+2023-02-28,sharpe,US Agg,9.469784835919378e-16,True,Optimization terminated successfully
+2023-02-28,sharpe,Taiwan,0.27444798086584465,True,Optimization terminated successfully
+2023-02-28,sharpe,Korea,5.480595596465847e-15,True,Optimization terminated successfully
+2023-02-28,sharpe,China,4.7416770875661384e-15,True,Optimization terminated successfully
+2023-02-28,sharpe,India,0.0,True,Optimization terminated successfully
+2023-02-28,sharpe,Brazil,4.301043772140873e-15,True,Optimization terminated successfully
+2023-02-28,sharpe,South Africa,6.2558349840229386e-15,True,Optimization terminated successfully
+2023-02-28,sharpe,Mexico,4.359733943902295e-15,True,Optimization terminated successfully
+2023-02-28,sharpe,Saudi Arabia,0.5088978397813582,True,Optimization terminated successfully
+2023-02-28,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2023-02-28,minvar,US Agg,0.9124726309777795,True,Optimization terminated successfully
+2023-02-28,minvar,Taiwan,3.1966101786471325e-18,True,Optimization terminated successfully
+2023-02-28,minvar,Korea,4.9313336546239396e-18,True,Optimization terminated successfully
+2023-02-28,minvar,China,0.0,True,Optimization terminated successfully
+2023-02-28,minvar,India,0.0,True,Optimization terminated successfully
+2023-02-28,minvar,Brazil,0.0,True,Optimization terminated successfully
+2023-02-28,minvar,South Africa,6.666057130600747e-18,True,Optimization terminated successfully
+2023-02-28,minvar,Mexico,4.497652785629738e-18,True,Optimization terminated successfully
+2023-02-28,minvar,Saudi Arabia,0.08752736902222068,True,Optimization terminated successfully
+2023-03-31,sharpe,S&P 500,0.3121568732750244,True,Optimization terminated successfully
+2023-03-31,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2023-03-31,sharpe,Taiwan,0.29369757301780425,True,Optimization terminated successfully
+2023-03-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2023-03-31,sharpe,China,0.0,True,Optimization terminated successfully
+2023-03-31,sharpe,India,3.8268742843496195e-15,True,Optimization terminated successfully
+2023-03-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2023-03-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2023-03-31,sharpe,Mexico,1.1415122280346833e-14,True,Optimization terminated successfully
+2023-03-31,sharpe,Saudi Arabia,0.39414555370727533,True,Optimization terminated successfully
+2023-03-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2023-03-31,minvar,US Agg,0.9194464314972024,True,Optimization terminated successfully
+2023-03-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2023-03-31,minvar,Korea,3.2796603625533606e-18,True,Optimization terminated successfully
+2023-03-31,minvar,China,0.0,True,Optimization terminated successfully
+2023-03-31,minvar,India,4.2442096417553173e-19,True,Optimization terminated successfully
+2023-03-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2023-03-31,minvar,South Africa,6.775751485881499e-19,True,Optimization terminated successfully
+2023-03-31,minvar,Mexico,5.881745576518571e-18,True,Optimization terminated successfully
+2023-03-31,minvar,Saudi Arabia,0.08055356850279771,True,Optimization terminated successfully
+2023-04-30,sharpe,S&P 500,0.5480638398357423,True,Optimization terminated successfully
+2023-04-30,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2023-04-30,sharpe,Taiwan,0.21219077833042538,True,Optimization terminated successfully
+2023-04-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2023-04-30,sharpe,China,0.0,True,Optimization terminated successfully
+2023-04-30,sharpe,India,4.262029663683874e-15,True,Optimization terminated successfully
+2023-04-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2023-04-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2023-04-30,sharpe,Mexico,1.3419968686813696e-15,True,Optimization terminated successfully
+2023-04-30,sharpe,Saudi Arabia,0.23974538183385208,True,Optimization terminated successfully
+2023-04-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2023-04-30,minvar,US Agg,0.9183996441669753,True,Optimization terminated successfully
+2023-04-30,minvar,Taiwan,7.885063434418477e-18,True,Optimization terminated successfully
+2023-04-30,minvar,Korea,9.535743260415851e-19,True,Optimization terminated successfully
+2023-04-30,minvar,China,0.0,True,Optimization terminated successfully
+2023-04-30,minvar,India,0.0,True,Optimization terminated successfully
+2023-04-30,minvar,Brazil,0.0,True,Optimization terminated successfully
+2023-04-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2023-04-30,minvar,Mexico,1.8209360640299902e-18,True,Optimization terminated successfully
+2023-04-30,minvar,Saudi Arabia,0.0816003558330248,True,Optimization terminated successfully
+2023-05-31,sharpe,S&P 500,0.5587647750338558,True,Optimization terminated successfully
+2023-05-31,sharpe,US Agg,9.639989204244021e-16,True,Optimization terminated successfully
+2023-05-31,sharpe,Taiwan,0.19974540473014604,True,Optimization terminated successfully
+2023-05-31,sharpe,Korea,4.405439363251764e-15,True,Optimization terminated successfully
+2023-05-31,sharpe,China,3.3861652307886168e-15,True,Optimization terminated successfully
+2023-05-31,sharpe,India,0.0,True,Optimization terminated successfully
+2023-05-31,sharpe,Brazil,3.557834033483356e-15,True,Optimization terminated successfully
+2023-05-31,sharpe,South Africa,4.7157194179710475e-15,True,Optimization terminated successfully
+2023-05-31,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2023-05-31,sharpe,Saudi Arabia,0.241489820235985,True,Optimization terminated successfully
+2023-05-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2023-05-31,minvar,US Agg,0.9215233173448948,True,Optimization terminated successfully
+2023-05-31,minvar,Taiwan,4.362281038768029e-18,True,Optimization terminated successfully
+2023-05-31,minvar,Korea,2.058779915164377e-18,True,Optimization terminated successfully
+2023-05-31,minvar,China,0.0,True,Optimization terminated successfully
+2023-05-31,minvar,India,0.0,True,Optimization terminated successfully
+2023-05-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2023-05-31,minvar,South Africa,1.1914181771759735e-18,True,Optimization terminated successfully
+2023-05-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2023-05-31,minvar,Saudi Arabia,0.07847668265510532,True,Optimization terminated successfully
+2023-06-30,sharpe,S&P 500,0.4622651980166663,True,Optimization terminated successfully
+2023-06-30,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2023-06-30,sharpe,Taiwan,0.3654254811568848,True,Optimization terminated successfully
+2023-06-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2023-06-30,sharpe,China,0.0,True,Optimization terminated successfully
+2023-06-30,sharpe,India,2.541222568371551e-16,True,Optimization terminated successfully
+2023-06-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2023-06-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2023-06-30,sharpe,Mexico,4.889275268590946e-16,True,Optimization terminated successfully
+2023-06-30,sharpe,Saudi Arabia,0.17230932082645206,True,Optimization terminated successfully
+2023-06-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2023-06-30,minvar,US Agg,0.9228820225474375,True,Optimization terminated successfully
+2023-06-30,minvar,Taiwan,6.074701257646869e-18,True,Optimization terminated successfully
+2023-06-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2023-06-30,minvar,China,0.0,True,Optimization terminated successfully
+2023-06-30,minvar,India,0.0,True,Optimization terminated successfully
+2023-06-30,minvar,Brazil,0.0,True,Optimization terminated successfully
+2023-06-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2023-06-30,minvar,Mexico,0.0,True,Optimization terminated successfully
+2023-06-30,minvar,Saudi Arabia,0.07711797745256271,True,Optimization terminated successfully
+2023-07-31,sharpe,S&P 500,0.5596209724026764,True,Optimization terminated successfully
+2023-07-31,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2023-07-31,sharpe,Taiwan,0.3179979327654807,True,Optimization terminated successfully
+2023-07-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2023-07-31,sharpe,China,0.0,True,Optimization terminated successfully
+2023-07-31,sharpe,India,0.0,True,Optimization terminated successfully
+2023-07-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2023-07-31,sharpe,South Africa,1.4461106169658567e-16,True,Optimization terminated successfully
+2023-07-31,sharpe,Mexico,1.726115231618145e-16,True,Optimization terminated successfully
+2023-07-31,sharpe,Saudi Arabia,0.12238109483184346,True,Optimization terminated successfully
+2023-07-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2023-07-31,minvar,US Agg,0.9226443174908284,True,Optimization terminated successfully
+2023-07-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2023-07-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2023-07-31,minvar,China,0.0,True,Optimization terminated successfully
+2023-07-31,minvar,India,0.0,True,Optimization terminated successfully
+2023-07-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2023-07-31,minvar,South Africa,1.76331023804977e-19,True,Optimization terminated successfully
+2023-07-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2023-07-31,minvar,Saudi Arabia,0.07735568250917173,True,Optimization terminated successfully
+2023-08-31,sharpe,S&P 500,0.5918273214467722,True,Optimization terminated successfully
+2023-08-31,sharpe,US Agg,8.935089590768927e-18,True,Optimization terminated successfully
+2023-08-31,sharpe,Taiwan,0.26077209269416635,True,Optimization terminated successfully
+2023-08-31,sharpe,Korea,2.252382636161128e-15,True,Optimization terminated successfully
+2023-08-31,sharpe,China,1.141480926386984e-15,True,Optimization terminated successfully
+2023-08-31,sharpe,India,0.0,True,Optimization terminated successfully
+2023-08-31,sharpe,Brazil,6.392962677835904e-16,True,Optimization terminated successfully
+2023-08-31,sharpe,South Africa,2.395627024849263e-15,True,Optimization terminated successfully
+2023-08-31,sharpe,Mexico,6.32502517994969e-16,True,Optimization terminated successfully
+2023-08-31,sharpe,Saudi Arabia,0.14740058585905594,True,Optimization terminated successfully
+2023-08-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2023-08-31,minvar,US Agg,0.9226232795080997,True,Optimization terminated successfully
+2023-08-31,minvar,Taiwan,9.743117696889256e-18,True,Optimization terminated successfully
+2023-08-31,minvar,Korea,6.917581256989118e-18,True,Optimization terminated successfully
+2023-08-31,minvar,China,0.0,True,Optimization terminated successfully
+2023-08-31,minvar,India,3.237904661976229e-18,True,Optimization terminated successfully
+2023-08-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2023-08-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2023-08-31,minvar,Mexico,2.523046571078742e-19,True,Optimization terminated successfully
+2023-08-31,minvar,Saudi Arabia,0.07737672049190036,True,Optimization terminated successfully
+2023-09-30,sharpe,S&P 500,0.5014673741159923,True,Optimization terminated successfully
+2023-09-30,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2023-09-30,sharpe,Taiwan,0.25316610424719005,True,Optimization terminated successfully
+2023-09-30,sharpe,Korea,4.092735190018914e-16,True,Optimization terminated successfully
+2023-09-30,sharpe,China,4.258314778734961e-16,True,Optimization terminated successfully
+2023-09-30,sharpe,India,0.0,True,Optimization terminated successfully
+2023-09-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2023-09-30,sharpe,South Africa,7.403476755019042e-16,True,Optimization terminated successfully
+2023-09-30,sharpe,Mexico,9.389459212090904e-17,True,Optimization terminated successfully
+2023-09-30,sharpe,Saudi Arabia,0.24536652163681696,True,Optimization terminated successfully
+2023-09-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2023-09-30,minvar,US Agg,0.9241196183967123,True,Optimization terminated successfully
+2023-09-30,minvar,Taiwan,4.548393890028809e-18,True,Optimization terminated successfully
+2023-09-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2023-09-30,minvar,China,0.0,True,Optimization terminated successfully
+2023-09-30,minvar,India,0.0,True,Optimization terminated successfully
+2023-09-30,minvar,Brazil,8.499473544933137e-19,True,Optimization terminated successfully
+2023-09-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2023-09-30,minvar,Mexico,5.790215901146235e-20,True,Optimization terminated successfully
+2023-09-30,minvar,Saudi Arabia,0.0758803816032878,True,Optimization terminated successfully
+2023-10-31,sharpe,S&P 500,0.3588552394258183,True,Optimization terminated successfully
+2023-10-31,sharpe,US Agg,3.3322380964486086e-16,True,Optimization terminated successfully
+2023-10-31,sharpe,Taiwan,0.2080400260448498,True,Optimization terminated successfully
+2023-10-31,sharpe,Korea,1.9235876721793543e-15,True,Optimization terminated successfully
+2023-10-31,sharpe,China,1.3215482052482828e-15,True,Optimization terminated successfully
+2023-10-31,sharpe,India,0.279180962504759,True,Optimization terminated successfully
+2023-10-31,sharpe,Brazil,3.275008315367372e-16,True,Optimization terminated successfully
+2023-10-31,sharpe,South Africa,1.3156670437372594e-15,True,Optimization terminated successfully
+2023-10-31,sharpe,Mexico,1.8048061244035156e-15,True,Optimization terminated successfully
+2023-10-31,sharpe,Saudi Arabia,0.15392377202456578,True,Optimization terminated successfully
+2023-10-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2023-10-31,minvar,US Agg,0.9273983499815899,True,Optimization terminated successfully
+2023-10-31,minvar,Taiwan,2.280204734975939e-18,True,Optimization terminated successfully
+2023-10-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2023-10-31,minvar,China,5.4995985370005666e-18,True,Optimization terminated successfully
+2023-10-31,minvar,India,2.3710477227095324e-18,True,Optimization terminated successfully
+2023-10-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2023-10-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2023-10-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2023-10-31,minvar,Saudi Arabia,0.07260165001841007,True,Optimization terminated successfully
+2023-11-30,sharpe,S&P 500,0.40284707155641797,True,Optimization terminated successfully
+2023-11-30,sharpe,US Agg,3.612087829225808e-16,True,Optimization terminated successfully
+2023-11-30,sharpe,Taiwan,0.31332570370718565,True,Optimization terminated successfully
+2023-11-30,sharpe,Korea,8.857394644639357e-16,True,Optimization terminated successfully
+2023-11-30,sharpe,China,4.293111432244465e-16,True,Optimization terminated successfully
+2023-11-30,sharpe,India,0.2838272247363945,True,Optimization terminated successfully
+2023-11-30,sharpe,Brazil,1.0069655964963406e-15,True,Optimization terminated successfully
+2023-11-30,sharpe,South Africa,8.038877449381917e-16,True,Optimization terminated successfully
+2023-11-30,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2023-11-30,sharpe,Saudi Arabia,0.0,True,Optimization terminated successfully
+2023-11-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2023-11-30,minvar,US Agg,0.9293907611138064,True,Optimization terminated successfully
+2023-11-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2023-11-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2023-11-30,minvar,China,3.5380921363754065e-18,True,Optimization terminated successfully
+2023-11-30,minvar,India,0.0,True,Optimization terminated successfully
+2023-11-30,minvar,Brazil,0.0,True,Optimization terminated successfully
+2023-11-30,minvar,South Africa,2.702728300072822e-18,True,Optimization terminated successfully
+2023-11-30,minvar,Mexico,0.0,True,Optimization terminated successfully
+2023-11-30,minvar,Saudi Arabia,0.07060923888619358,True,Optimization terminated successfully
+2023-12-31,sharpe,S&P 500,0.3653739012875428,True,Optimization terminated successfully
+2023-12-31,sharpe,US Agg,2.7975091357311687e-16,True,Optimization terminated successfully
+2023-12-31,sharpe,Taiwan,0.4749446798082919,True,Optimization terminated successfully
+2023-12-31,sharpe,Korea,5.225835069687816e-16,True,Optimization terminated successfully
+2023-12-31,sharpe,China,2.3191441023957504e-16,True,Optimization terminated successfully
+2023-12-31,sharpe,India,0.0,True,Optimization terminated successfully
+2023-12-31,sharpe,Brazil,6.906559136485978e-16,True,Optimization terminated successfully
+2023-12-31,sharpe,South Africa,5.74009909873117e-16,True,Optimization terminated successfully
+2023-12-31,sharpe,Mexico,0.017849328200364657,True,Optimization terminated successfully
+2023-12-31,sharpe,Saudi Arabia,0.14183209070379849,True,Optimization terminated successfully
+2023-12-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2023-12-31,minvar,US Agg,0.9288387728298576,True,Optimization terminated successfully
+2023-12-31,minvar,Taiwan,1.088168504410446e-17,True,Optimization terminated successfully
+2023-12-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2023-12-31,minvar,China,0.0,True,Optimization terminated successfully
+2023-12-31,minvar,India,0.0,True,Optimization terminated successfully
+2023-12-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2023-12-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2023-12-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2023-12-31,minvar,Saudi Arabia,0.07116122717014249,True,Optimization terminated successfully
+2024-01-31,sharpe,S&P 500,0.7128119683788634,True,Optimization terminated successfully
+2024-01-31,sharpe,US Agg,4.4585362134568546e-17,True,Optimization terminated successfully
+2024-01-31,sharpe,Taiwan,0.28712754706313504,True,Optimization terminated successfully
+2024-01-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2024-01-31,sharpe,China,0.0,True,Optimization terminated successfully
+2024-01-31,sharpe,India,6.048455800306886e-05,True,Optimization terminated successfully
+2024-01-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2024-01-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2024-01-31,sharpe,Mexico,2.45795190179091e-16,True,Optimization terminated successfully
+2024-01-31,sharpe,Saudi Arabia,5.12973901598221e-16,True,Optimization terminated successfully
+2024-01-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2024-01-31,minvar,US Agg,0.9337292740389609,True,Optimization terminated successfully
+2024-01-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2024-01-31,minvar,Korea,3.714192376277246e-18,True,Optimization terminated successfully
+2024-01-31,minvar,China,0.0,True,Optimization terminated successfully
+2024-01-31,minvar,India,0.0,True,Optimization terminated successfully
+2024-01-31,minvar,Brazil,1.979468900300439e-18,True,Optimization terminated successfully
+2024-01-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2024-01-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2024-01-31,minvar,Saudi Arabia,0.06627072596103914,True,Optimization terminated successfully
+2024-02-29,sharpe,S&P 500,0.5576892942904627,True,Optimization terminated successfully
+2024-02-29,sharpe,US Agg,9.834009536328783e-17,True,Optimization terminated successfully
+2024-02-29,sharpe,Taiwan,0.2941522128397773,True,Optimization terminated successfully
+2024-02-29,sharpe,Korea,0.0,True,Optimization terminated successfully
+2024-02-29,sharpe,China,0.0,True,Optimization terminated successfully
+2024-02-29,sharpe,India,0.14815849286976407,True,Optimization terminated successfully
+2024-02-29,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2024-02-29,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2024-02-29,sharpe,Mexico,2.2347581892088044e-15,True,Optimization terminated successfully
+2024-02-29,sharpe,Saudi Arabia,6.898867544184179e-17,True,Optimization terminated successfully
+2024-02-29,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2024-02-29,minvar,US Agg,0.9271896934924074,True,Optimization terminated successfully
+2024-02-29,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2024-02-29,minvar,Korea,6.592752396994996e-18,True,Optimization terminated successfully
+2024-02-29,minvar,China,0.0,True,Optimization terminated successfully
+2024-02-29,minvar,India,0.0,True,Optimization terminated successfully
+2024-02-29,minvar,Brazil,0.0,True,Optimization terminated successfully
+2024-02-29,minvar,South Africa,1.600982157110934e-18,True,Optimization terminated successfully
+2024-02-29,minvar,Mexico,0.0,True,Optimization terminated successfully
+2024-02-29,minvar,Saudi Arabia,0.07281030650759274,True,Optimization terminated successfully
+2024-03-31,sharpe,S&P 500,0.5656757174023636,True,Optimization terminated successfully
+2024-03-31,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2024-03-31,sharpe,Taiwan,0.26305970352759284,True,Optimization terminated successfully
+2024-03-31,sharpe,Korea,2.855555271392295e-15,True,Optimization terminated successfully
+2024-03-31,sharpe,China,1.2404512286456907e-15,True,Optimization terminated successfully
+2024-03-31,sharpe,India,0.17126457907004144,True,Optimization terminated successfully
+2024-03-31,sharpe,Brazil,1.7929090933150226e-15,True,Optimization terminated successfully
+2024-03-31,sharpe,South Africa,2.368920171036179e-15,True,Optimization terminated successfully
+2024-03-31,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2024-03-31,sharpe,Saudi Arabia,0.0,True,Optimization terminated successfully
+2024-03-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2024-03-31,minvar,US Agg,0.923591617422366,True,Optimization terminated successfully
+2024-03-31,minvar,Taiwan,1.2510361007271812e-17,True,Optimization terminated successfully
+2024-03-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2024-03-31,minvar,China,4.2733661954173895e-18,True,Optimization terminated successfully
+2024-03-31,minvar,India,6.658610974885498e-18,True,Optimization terminated successfully
+2024-03-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2024-03-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2024-03-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2024-03-31,minvar,Saudi Arabia,0.07640838257763408,True,Optimization terminated successfully
+2024-04-30,sharpe,S&P 500,0.6363396402536875,True,Optimization terminated successfully
+2024-04-30,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2024-04-30,sharpe,Taiwan,0.3636603597463137,True,Optimization terminated successfully
+2024-04-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2024-04-30,sharpe,China,0.0,True,Optimization terminated successfully
+2024-04-30,sharpe,India,0.0,True,Optimization terminated successfully
+2024-04-30,sharpe,Brazil,3.231361087501606e-17,True,Optimization terminated successfully
+2024-04-30,sharpe,South Africa,3.468054124179787e-16,True,Optimization terminated successfully
+2024-04-30,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2024-04-30,sharpe,Saudi Arabia,0.0,True,Optimization terminated successfully
+2024-04-30,minvar,S&P 500,3.634577459413128e-18,True,Optimization terminated successfully
+2024-04-30,minvar,US Agg,0.9211846848034886,True,Optimization terminated successfully
+2024-04-30,minvar,Taiwan,1.0679886936717694e-17,True,Optimization terminated successfully
+2024-04-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2024-04-30,minvar,China,5.369300935389935e-18,True,Optimization terminated successfully
+2024-04-30,minvar,India,3.634577459413128e-18,True,Optimization terminated successfully
+2024-04-30,minvar,Brazil,0.0,True,Optimization terminated successfully
+2024-04-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2024-04-30,minvar,Mexico,9.81252519872929e-18,True,Optimization terminated successfully
+2024-04-30,minvar,Saudi Arabia,0.0788153151965115,True,Optimization terminated successfully
+2024-05-31,sharpe,S&P 500,0.44305254495349417,True,Optimization terminated successfully
+2024-05-31,sharpe,US Agg,3.559315448254455e-16,True,Optimization terminated successfully
+2024-05-31,sharpe,Taiwan,0.39366193612981604,True,Optimization terminated successfully
+2024-05-31,sharpe,Korea,1.6549039920697403e-15,True,Optimization terminated successfully
+2024-05-31,sharpe,China,7.558306871800288e-16,True,Optimization terminated successfully
+2024-05-31,sharpe,India,0.1632855189166854,True,Optimization terminated successfully
+2024-05-31,sharpe,Brazil,1.3913579344213837e-15,True,Optimization terminated successfully
+2024-05-31,sharpe,South Africa,1.1746513506786492e-15,True,Optimization terminated successfully
+2024-05-31,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2024-05-31,sharpe,Saudi Arabia,0.0,True,Optimization terminated successfully
+2024-05-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2024-05-31,minvar,US Agg,0.9198929086588641,True,Optimization terminated successfully
+2024-05-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2024-05-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2024-05-31,minvar,China,0.0,True,Optimization terminated successfully
+2024-05-31,minvar,India,0.0,True,Optimization terminated successfully
+2024-05-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2024-05-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2024-05-31,minvar,Mexico,1.472517912124808e-18,True,Optimization terminated successfully
+2024-05-31,minvar,Saudi Arabia,0.08010709134113599,True,Optimization terminated successfully
+2024-06-30,sharpe,S&P 500,0.5881538181570981,True,Optimization terminated successfully
+2024-06-30,sharpe,US Agg,2.0042693690705982e-16,True,Optimization terminated successfully
+2024-06-30,sharpe,Taiwan,0.41184618184289984,True,Optimization terminated successfully
+2024-06-30,sharpe,Korea,5.228170554662801e-16,True,Optimization terminated successfully
+2024-06-30,sharpe,China,1.6237691839676823e-16,True,Optimization terminated successfully
+2024-06-30,sharpe,India,7.947073334121376e-17,True,Optimization terminated successfully
+2024-06-30,sharpe,Brazil,6.924091634960719e-16,True,Optimization terminated successfully
+2024-06-30,sharpe,South Africa,4.170698550579954e-16,True,Optimization terminated successfully
+2024-06-30,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2024-06-30,sharpe,Saudi Arabia,5.152091197446153e-16,True,Optimization terminated successfully
+2024-06-30,minvar,S&P 500,1.104937172570438e-17,True,Optimization terminated successfully
+2024-06-30,minvar,US Agg,0.9203557433685396,True,Optimization terminated successfully
+2024-06-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2024-06-30,minvar,Korea,1.1381215928573662e-17,True,Optimization terminated successfully
+2024-06-30,minvar,China,1.62535421536348e-17,True,Optimization terminated successfully
+2024-06-30,minvar,India,3.533550038937968e-17,True,Optimization terminated successfully
+2024-06-30,minvar,Brazil,0.0,True,Optimization terminated successfully
+2024-06-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2024-06-30,minvar,Mexico,0.0,True,Optimization terminated successfully
+2024-06-30,minvar,Saudi Arabia,0.07964425663146026,True,Optimization terminated successfully
+2024-07-31,sharpe,S&P 500,0.42063423173704173,True,Optimization terminated successfully
+2024-07-31,sharpe,US Agg,2.9548651628718e-16,True,Optimization terminated successfully
+2024-07-31,sharpe,Taiwan,0.5167283876355618,True,Optimization terminated successfully
+2024-07-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2024-07-31,sharpe,China,0.0,True,Optimization terminated successfully
+2024-07-31,sharpe,India,0.06263738062739653,True,Optimization terminated successfully
+2024-07-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2024-07-31,sharpe,South Africa,1.9157405761023886e-16,True,Optimization terminated successfully
+2024-07-31,sharpe,Mexico,1.700380731227974e-16,True,Optimization terminated successfully
+2024-07-31,sharpe,Saudi Arabia,0.0,True,Optimization terminated successfully
+2024-07-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2024-07-31,minvar,US Agg,0.9200246994592283,True,Optimization terminated successfully
+2024-07-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2024-07-31,minvar,Korea,1.2116699786377135e-17,True,Optimization terminated successfully
+2024-07-31,minvar,China,0.0,True,Optimization terminated successfully
+2024-07-31,minvar,India,0.0,True,Optimization terminated successfully
+2024-07-31,minvar,Brazil,3.009401537498897e-18,True,Optimization terminated successfully
+2024-07-31,minvar,South Africa,1.2746780615220885e-18,True,Optimization terminated successfully
+2024-07-31,minvar,Mexico,7.136946401612052e-19,True,Optimization terminated successfully
+2024-07-31,minvar,Saudi Arabia,0.07997530054077168,True,Optimization terminated successfully
+2024-08-31,sharpe,S&P 500,0.3578080657975422,True,Optimization terminated successfully
+2024-08-31,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2024-08-31,sharpe,Taiwan,0.3400009716830753,True,Optimization terminated successfully
+2024-08-31,sharpe,Korea,5.328722000511572e-16,True,Optimization terminated successfully
+2024-08-31,sharpe,China,1.0561923278225804e-16,True,Optimization terminated successfully
+2024-08-31,sharpe,India,0.3021909625193808,True,Optimization terminated successfully
+2024-08-31,sharpe,Brazil,7.437412510421564e-16,True,Optimization terminated successfully
+2024-08-31,sharpe,South Africa,3.459810345540137e-16,True,Optimization terminated successfully
+2024-08-31,sharpe,Mexico,4.900306672305918e-16,True,Optimization terminated successfully
+2024-08-31,sharpe,Saudi Arabia,0.0,True,Optimization terminated successfully
+2024-08-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2024-08-31,minvar,US Agg,0.9209157314089268,True,Optimization terminated successfully
+2024-08-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2024-08-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2024-08-31,minvar,China,0.0,True,Optimization terminated successfully
+2024-08-31,minvar,India,0.0,True,Optimization terminated successfully
+2024-08-31,minvar,Brazil,3.9054007602566455e-18,True,Optimization terminated successfully
+2024-08-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2024-08-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2024-08-31,minvar,Saudi Arabia,0.07908426859107325,True,Optimization terminated successfully
+2024-09-30,sharpe,S&P 500,0.3576162803363993,True,Optimization terminated successfully
+2024-09-30,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2024-09-30,sharpe,Taiwan,0.3429105924150911,True,Optimization terminated successfully
+2024-09-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2024-09-30,sharpe,China,0.0,True,Optimization terminated successfully
+2024-09-30,sharpe,India,0.29947312724851066,True,Optimization terminated successfully
+2024-09-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2024-09-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2024-09-30,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2024-09-30,sharpe,Saudi Arabia,0.0,True,Optimization terminated successfully
+2024-09-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2024-09-30,minvar,US Agg,0.9306614631990654,True,Optimization terminated successfully
+2024-09-30,minvar,Taiwan,8.03580031233721e-18,True,Optimization terminated successfully
+2024-09-30,minvar,Korea,6.3010768363604025e-18,True,Optimization terminated successfully
+2024-09-30,minvar,China,0.0,True,Optimization terminated successfully
+2024-09-30,minvar,India,0.0,True,Optimization terminated successfully
+2024-09-30,minvar,Brazil,2.665879270806956e-18,True,Optimization terminated successfully
+2024-09-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2024-09-30,minvar,Mexico,1.1505247264290824e-17,True,Optimization terminated successfully
+2024-09-30,minvar,Saudi Arabia,0.0693385368009346,True,Optimization terminated successfully
+2024-10-31,sharpe,S&P 500,0.4003159885016733,True,Optimization terminated successfully
+2024-10-31,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2024-10-31,sharpe,Taiwan,0.3107444074572618,True,Optimization terminated successfully
+2024-10-31,sharpe,Korea,1.0390082363230408e-15,True,Optimization terminated successfully
+2024-10-31,sharpe,China,1.9697853016046722e-16,True,Optimization terminated successfully
+2024-10-31,sharpe,India,0.28893960404106256,True,Optimization terminated successfully
+2024-10-31,sharpe,Brazil,4.539142221033989e-16,True,Optimization terminated successfully
+2024-10-31,sharpe,South Africa,4.641335600892269e-16,True,Optimization terminated successfully
+2024-10-31,sharpe,Mexico,2.5735632971417003e-16,True,Optimization terminated successfully
+2024-10-31,sharpe,Saudi Arabia,6.24702119667721e-16,True,Optimization terminated successfully
+2024-10-31,minvar,S&P 500,3.256893017777431e-17,True,Optimization terminated successfully
+2024-10-31,minvar,US Agg,0.9297017157098459,True,Optimization terminated successfully
+2024-10-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2024-10-31,minvar,Korea,3.5914549561021325e-19,True,Optimization terminated successfully
+2024-10-31,minvar,China,1.4909493889835577e-17,True,Optimization terminated successfully
+2024-10-31,minvar,India,0.0,True,Optimization terminated successfully
+2024-10-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2024-10-31,minvar,South Africa,2.7630435220612188e-18,True,Optimization terminated successfully
+2024-10-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2024-10-31,minvar,Saudi Arabia,0.07029828429015421,True,Optimization terminated successfully
+2024-11-30,sharpe,S&P 500,0.4924579082404601,True,Optimization terminated successfully
+2024-11-30,sharpe,US Agg,2.1526428247353509e-16,True,Optimization terminated successfully
+2024-11-30,sharpe,Taiwan,0.38299051225304737,True,Optimization terminated successfully
+2024-11-30,sharpe,Korea,9.856496418472673e-16,True,Optimization terminated successfully
+2024-11-30,sharpe,China,2.2442012629820284e-16,True,Optimization terminated successfully
+2024-11-30,sharpe,India,0.0564427457805294,True,Optimization terminated successfully
+2024-11-30,sharpe,Brazil,2.6231680387483386e-16,True,Optimization terminated successfully
+2024-11-30,sharpe,South Africa,4.1384549242447104e-16,True,Optimization terminated successfully
+2024-11-30,sharpe,Mexico,3.5545972312846893e-16,True,Optimization terminated successfully
+2024-11-30,sharpe,Saudi Arabia,0.0681088337259606,True,Optimization terminated successfully
+2024-11-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2024-11-30,minvar,US Agg,0.9293241216181247,True,Optimization terminated successfully
+2024-11-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2024-11-30,minvar,Korea,1.119917553485902e-18,True,Optimization terminated successfully
+2024-11-30,minvar,China,2.759773339370227e-18,True,Optimization terminated successfully
+2024-11-30,minvar,India,4.716687904371923e-18,True,Optimization terminated successfully
+2024-11-30,minvar,Brazil,1.3638630422951405e-18,True,Optimization terminated successfully
+2024-11-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2024-11-30,minvar,Mexico,0.0,True,Optimization terminated successfully
+2024-11-30,minvar,Saudi Arabia,0.07067587838187542,True,Optimization terminated successfully
+2024-12-31,sharpe,S&P 500,0.6540602598948861,True,Optimization terminated successfully
+2024-12-31,sharpe,US Agg,4.2343730343682106e-16,True,Optimization terminated successfully
+2024-12-31,sharpe,Taiwan,0.26569121707621085,True,Optimization terminated successfully
+2024-12-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2024-12-31,sharpe,China,0.0,True,Optimization terminated successfully
+2024-12-31,sharpe,India,0.08024852302890467,True,Optimization terminated successfully
+2024-12-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2024-12-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2024-12-31,sharpe,Mexico,1.6500057642089697e-16,True,Optimization terminated successfully
+2024-12-31,sharpe,Saudi Arabia,0.0,True,Optimization terminated successfully
+2024-12-31,minvar,S&P 500,1.0893916497994616e-17,True,Optimization terminated successfully
+2024-12-31,minvar,US Agg,0.9274002904451653,True,Optimization terminated successfully
+2024-12-31,minvar,Taiwan,3.3506175947957117e-18,True,Optimization terminated successfully
+2024-12-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2024-12-31,minvar,China,1.2728966386795325e-17,True,Optimization terminated successfully
+2024-12-31,minvar,India,9.592873891012011e-18,True,Optimization terminated successfully
+2024-12-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2024-12-31,minvar,South Africa,1.608661347465444e-18,True,Optimization terminated successfully
+2024-12-31,minvar,Mexico,9.422149760714537e-18,True,Optimization terminated successfully
+2024-12-31,minvar,Saudi Arabia,0.07259970955483483,True,Optimization terminated successfully
+2025-01-31,sharpe,S&P 500,0.60370741398075,True,Optimization terminated successfully
+2025-01-31,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2025-01-31,sharpe,Taiwan,0.3307136028159652,True,Optimization terminated successfully
+2025-01-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2025-01-31,sharpe,China,0.0,True,Optimization terminated successfully
+2025-01-31,sharpe,India,0.0655789832032881,True,Optimization terminated successfully
+2025-01-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2025-01-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2025-01-31,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2025-01-31,sharpe,Saudi Arabia,0.0,True,Optimization terminated successfully
+2025-01-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2025-01-31,minvar,US Agg,0.9234761504543222,True,Optimization terminated successfully
+2025-01-31,minvar,Taiwan,4.0478384406169206e-18,True,Optimization terminated successfully
+2025-01-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2025-01-31,minvar,China,1.1271277945454456e-17,True,Optimization terminated successfully
+2025-01-31,minvar,India,9.500189522092852e-18,True,Optimization terminated successfully
+2025-01-31,minvar,Brazil,1.499116302328731e-18,True,Optimization terminated successfully
+2025-01-31,minvar,South Africa,9.628938530075505e-18,True,Optimization terminated successfully
+2025-01-31,minvar,Mexico,2.744197265445414e-18,True,Optimization terminated successfully
+2025-01-31,minvar,Saudi Arabia,0.07652384954567792,True,Optimization terminated successfully
+2025-02-28,sharpe,S&P 500,0.5047077700146616,True,Optimization terminated successfully
+2025-02-28,sharpe,US Agg,3.148834504195946e-16,True,Optimization terminated successfully
+2025-02-28,sharpe,Taiwan,0.4048140557026298,True,Optimization terminated successfully
+2025-02-28,sharpe,Korea,0.0,True,Optimization terminated successfully
+2025-02-28,sharpe,China,0.0,True,Optimization terminated successfully
+2025-02-28,sharpe,India,0.0,True,Optimization terminated successfully
+2025-02-28,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2025-02-28,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2025-02-28,sharpe,Mexico,0.0,True,Optimization terminated successfully
+2025-02-28,sharpe,Saudi Arabia,0.09047817428271253,True,Optimization terminated successfully
+2025-02-28,minvar,S&P 500,1.3719410665610012e-17,True,Optimization terminated successfully
+2025-02-28,minvar,US Agg,0.9292774940755157,True,Optimization terminated successfully
+2025-02-28,minvar,Taiwan,9.424576263099244e-18,True,Optimization terminated successfully
+2025-02-28,minvar,Korea,0.0,True,Optimization terminated successfully
+2025-02-28,minvar,China,1.2259972897490852e-17,True,Optimization terminated successfully
+2025-02-28,minvar,India,7.170151917439761e-18,True,Optimization terminated successfully
+2025-02-28,minvar,Brazil,0.0,True,Optimization terminated successfully
+2025-02-28,minvar,South Africa,0.0,True,Optimization terminated successfully
+2025-02-28,minvar,Mexico,0.0,True,Optimization terminated successfully
+2025-02-28,minvar,Saudi Arabia,0.07072250592448409,True,Optimization terminated successfully
+2025-03-31,sharpe,S&P 500,0.639477815012793,True,Optimization terminated successfully
+2025-03-31,sharpe,US Agg,4.290206228570583e-17,True,Optimization terminated successfully
+2025-03-31,sharpe,Taiwan,0.22503233083524402,True,Optimization terminated successfully
+2025-03-31,sharpe,Korea,8.6940762885744275e-16,True,Optimization terminated successfully
+2025-03-31,sharpe,China,0.0,True,Optimization terminated successfully
+2025-03-31,sharpe,India,1.0185421786946489e-16,True,Optimization terminated successfully
+2025-03-31,sharpe,Brazil,4.2123921381824994e-16,True,Optimization terminated successfully
+2025-03-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2025-03-31,sharpe,Mexico,9.326286895885471e-17,True,Optimization terminated successfully
+2025-03-31,sharpe,Saudi Arabia,0.13548985415196194,True,Optimization terminated successfully
+2025-03-31,minvar,S&P 500,3.697989797980754e-18,True,Optimization terminated successfully
+2025-03-31,minvar,US Agg,0.9309307495572234,True,Optimization terminated successfully
+2025-03-31,minvar,Taiwan,7.010540820079285e-18,True,Optimization terminated successfully
+2025-03-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2025-03-31,minvar,China,1.4106330653841597e-17,True,Optimization terminated successfully
+2025-03-31,minvar,India,0.0,True,Optimization terminated successfully
+2025-03-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2025-03-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2025-03-31,minvar,Mexico,2.4188939925408996e-19,True,Optimization terminated successfully
+2025-03-31,minvar,Saudi Arabia,0.06906925044277668,True,Optimization terminated successfully
+2025-04-30,sharpe,S&P 500,0.3355348453875076,True,Optimization terminated successfully
+2025-04-30,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2025-04-30,sharpe,Taiwan,0.0587398199249459,True,Optimization terminated successfully
+2025-04-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2025-04-30,sharpe,China,3.382556261438984e-16,True,Optimization terminated successfully
+2025-04-30,sharpe,India,0.4295384109375761,True,Optimization terminated successfully
+2025-04-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2025-04-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2025-04-30,sharpe,Mexico,0.016835133668322653,True,Optimization terminated successfully
+2025-04-30,sharpe,Saudi Arabia,0.15935179008165026,True,Optimization terminated successfully
+2025-04-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2025-04-30,minvar,US Agg,0.9144599613433777,True,Optimization terminated successfully
+2025-04-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2025-04-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2025-04-30,minvar,China,0.0,True,Optimization terminated successfully
+2025-04-30,minvar,India,0.0,True,Optimization terminated successfully
+2025-04-30,minvar,Brazil,0.0,True,Optimization terminated successfully
+2025-04-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2025-04-30,minvar,Mexico,8.394502612630906e-18,True,Optimization terminated successfully
+2025-04-30,minvar,Saudi Arabia,0.08554003865662255,True,Optimization terminated successfully
+2025-05-31,sharpe,S&P 500,0.22352983058360518,True,Optimization terminated successfully
+2025-05-31,sharpe,US Agg,6.196936776637965e-16,True,Optimization terminated successfully
+2025-05-31,sharpe,Taiwan,0.069135426482682,True,Optimization terminated successfully
+2025-05-31,sharpe,Korea,1.9155751414798908e-15,True,Optimization terminated successfully
+2025-05-31,sharpe,China,0.0,True,Optimization terminated successfully
+2025-05-31,sharpe,India,0.4869532252404924,True,Optimization terminated successfully
+2025-05-31,sharpe,Brazil,6.845549896551094e-16,True,Optimization terminated successfully
+2025-05-31,sharpe,South Africa,4.769832131833393e-16,True,Optimization terminated successfully
+2025-05-31,sharpe,Mexico,0.11470302372955911,True,Optimization terminated successfully
+2025-05-31,sharpe,Saudi Arabia,0.10567849396365776,True,Optimization terminated successfully
+2025-05-31,minvar,S&P 500,8.720759837895902e-18,True,Optimization terminated successfully
+2025-05-31,minvar,US Agg,0.8995040926152247,True,Optimization terminated successfully
+2025-05-31,minvar,Taiwan,4.71424580118668e-20,True,Optimization terminated successfully
+2025-05-31,minvar,Korea,1.0905611241288957e-17,True,Optimization terminated successfully
+2025-05-31,minvar,China,1.781865933988674e-18,True,Optimization terminated successfully
+2025-05-31,minvar,India,0.0,True,Optimization terminated successfully
+2025-05-31,minvar,Brazil,1.8447344797015493e-18,True,Optimization terminated successfully
+2025-05-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2025-05-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2025-05-31,minvar,Saudi Arabia,0.10049590738477537,True,Optimization terminated successfully
+2025-06-30,sharpe,S&P 500,0.15765844353583855,True,Optimization terminated successfully
+2025-06-30,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2025-06-30,sharpe,Taiwan,0.16010199993844199,True,Optimization terminated successfully
+2025-06-30,sharpe,Korea,0.0,True,Optimization terminated successfully
+2025-06-30,sharpe,China,1.6605126899248477e-16,True,Optimization terminated successfully
+2025-06-30,sharpe,India,0.5431333308059488,True,Optimization terminated successfully
+2025-06-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2025-06-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2025-06-30,sharpe,Mexico,0.0891666016222068,True,Optimization terminated successfully
+2025-06-30,sharpe,Saudi Arabia,0.049939624097567116,True,Optimization terminated successfully
+2025-06-30,minvar,S&P 500,1.5880222807247187e-17,True,Optimization terminated successfully
+2025-06-30,minvar,US Agg,0.9041203826690508,True,Optimization terminated successfully
+2025-06-30,minvar,Taiwan,3.737158475409537e-18,True,Optimization terminated successfully
+2025-06-30,minvar,Korea,3.92617298391059e-18,True,Optimization terminated successfully
+2025-06-30,minvar,China,5.471881951386344e-18,True,Optimization terminated successfully
+2025-06-30,minvar,India,0.0,True,Optimization terminated successfully
+2025-06-30,minvar,Brazil,0.0,True,Optimization terminated successfully
+2025-06-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2025-06-30,minvar,Mexico,0.0,True,Optimization terminated successfully
+2025-06-30,minvar,Saudi Arabia,0.09587961733094924,True,Optimization terminated successfully
+2025-07-31,sharpe,S&P 500,0.21243466431654082,True,Optimization terminated successfully
+2025-07-31,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2025-07-31,sharpe,Taiwan,0.15236333173223202,True,Optimization terminated successfully
+2025-07-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2025-07-31,sharpe,China,1.8080059047056218e-16,True,Optimization terminated successfully
+2025-07-31,sharpe,India,0.4972176716210678,True,Optimization terminated successfully
+2025-07-31,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2025-07-31,sharpe,South Africa,3.371861313577324e-17,True,Optimization terminated successfully
+2025-07-31,sharpe,Mexico,0.0905134832437473,True,Optimization terminated successfully
+2025-07-31,sharpe,Saudi Arabia,0.04747084908641242,True,Optimization terminated successfully
+2025-07-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2025-07-31,minvar,US Agg,0.9031284169290721,True,Optimization terminated successfully
+2025-07-31,minvar,Taiwan,1.0002000885291766e-19,True,Optimization terminated successfully
+2025-07-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2025-07-31,minvar,China,1.8347434848297248e-18,True,Optimization terminated successfully
+2025-07-31,minvar,India,8.289316663289893e-18,True,Optimization terminated successfully
+2025-07-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2025-07-31,minvar,South Africa,7.038913912760146e-18,True,Optimization terminated successfully
+2025-07-31,minvar,Mexico,5.304190436783339e-18,True,Optimization terminated successfully
+2025-07-31,minvar,Saudi Arabia,0.09687158307092783,True,Optimization terminated successfully
+2025-08-31,sharpe,S&P 500,0.29289070324880195,True,Optimization terminated successfully
+2025-08-31,sharpe,US Agg,4.0826330155458713e-16,True,Optimization terminated successfully
+2025-08-31,sharpe,Taiwan,0.16409763981855532,True,Optimization terminated successfully
+2025-08-31,sharpe,Korea,7.328125515036633e-16,True,Optimization terminated successfully
+2025-08-31,sharpe,China,0.0,True,Optimization terminated successfully
+2025-08-31,sharpe,India,0.3758719278506101,True,Optimization terminated successfully
+2025-08-31,sharpe,Brazil,1.2909511478114916e-15,True,Optimization terminated successfully
+2025-08-31,sharpe,South Africa,7.602018912487231e-16,True,Optimization terminated successfully
+2025-08-31,sharpe,Mexico,0.10080876779940684,True,Optimization terminated successfully
+2025-08-31,sharpe,Saudi Arabia,0.06633096128262275,True,Optimization terminated successfully
+2025-08-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2025-08-31,minvar,US Agg,0.9045321926391485,True,Optimization terminated successfully
+2025-08-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2025-08-31,minvar,Korea,6.772206377086762e-19,True,Optimization terminated successfully
+2025-08-31,minvar,China,4.120310040553283e-18,True,Optimization terminated successfully
+2025-08-31,minvar,India,1.539601263440253e-17,True,Optimization terminated successfully
+2025-08-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2025-08-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2025-08-31,minvar,Mexico,2.155043378839335e-19,True,Optimization terminated successfully
+2025-08-31,minvar,Saudi Arabia,0.09546780736085166,True,Optimization terminated successfully
+2025-09-30,sharpe,S&P 500,0.21490397646386183,True,Optimization terminated successfully
+2025-09-30,sharpe,US Agg,1.613117161583762e-16,True,Optimization terminated successfully
+2025-09-30,sharpe,Taiwan,0.22567784297926627,True,Optimization terminated successfully
+2025-09-30,sharpe,Korea,4.970609918913627e-18,True,Optimization terminated successfully
+2025-09-30,sharpe,China,0.0,True,Optimization terminated successfully
+2025-09-30,sharpe,India,0.33715756486799997,True,Optimization terminated successfully
+2025-09-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2025-09-30,sharpe,South Africa,2.711989944715711e-16,True,Optimization terminated successfully
+2025-09-30,sharpe,Mexico,0.18444546376072488,True,Optimization terminated successfully
+2025-09-30,sharpe,Saudi Arabia,0.037815151928146905,True,Optimization terminated successfully
+2025-09-30,minvar,S&P 500,1.707810718789559e-17,True,Optimization terminated successfully
+2025-09-30,minvar,US Agg,0.9034430798170554,True,Optimization terminated successfully
+2025-09-30,minvar,Taiwan,3.6340002490753344e-18,True,Optimization terminated successfully
+2025-09-30,minvar,Korea,1.1684771634762818e-18,True,Optimization terminated successfully
+2025-09-30,minvar,China,2.0972374445427268e-19,True,Optimization terminated successfully
+2025-09-30,minvar,India,0.0,True,Optimization terminated successfully
+2025-09-30,minvar,Brazil,0.0,True,Optimization terminated successfully
+2025-09-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2025-09-30,minvar,Mexico,0.0,True,Optimization terminated successfully
+2025-09-30,minvar,Saudi Arabia,0.09655692018294464,True,Optimization terminated successfully
+2025-10-31,sharpe,S&P 500,0.3113569652799181,True,Optimization terminated successfully
+2025-10-31,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2025-10-31,sharpe,Taiwan,0.19625834813011925,True,Optimization terminated successfully
+2025-10-31,sharpe,Korea,6.991431198016537e-16,True,Optimization terminated successfully
+2025-10-31,sharpe,China,1.2671637560221837e-16,True,Optimization terminated successfully
+2025-10-31,sharpe,India,0.253542426366881,True,Optimization terminated successfully
+2025-10-31,sharpe,Brazil,1.9225938979331105e-16,True,Optimization terminated successfully
+2025-10-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2025-10-31,sharpe,Mexico,0.175265292595455,True,Optimization terminated successfully
+2025-10-31,sharpe,Saudi Arabia,0.06357696762762569,True,Optimization terminated successfully
+2025-10-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2025-10-31,minvar,US Agg,0.9116860607636285,True,Optimization terminated successfully
+2025-10-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2025-10-31,minvar,Korea,2.351374118053546e-18,True,Optimization terminated successfully
+2025-10-31,minvar,China,0.0,True,Optimization terminated successfully
+2025-10-31,minvar,India,1.139915808699719e-17,True,Optimization terminated successfully
+2025-10-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2025-10-31,minvar,South Africa,1.9530466592172317e-18,True,Optimization terminated successfully
+2025-10-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2025-10-31,minvar,Saudi Arabia,0.08831393923637162,True,Optimization terminated successfully
+2025-11-30,sharpe,S&P 500,0.37345494890224723,True,Optimization terminated successfully
+2025-11-30,sharpe,US Agg,3.0841503798461125e-16,True,Optimization terminated successfully
+2025-11-30,sharpe,Taiwan,0.20102925207625177,True,Optimization terminated successfully
+2025-11-30,sharpe,Korea,9.06273973804509e-16,True,Optimization terminated successfully
+2025-11-30,sharpe,China,2.4955111858988404e-16,True,Optimization terminated successfully
+2025-11-30,sharpe,India,0.2358647891548321,True,Optimization terminated successfully
+2025-11-30,sharpe,Brazil,9.572146503903058e-17,True,Optimization terminated successfully
+2025-11-30,sharpe,South Africa,2.5555533077321686e-16,True,Optimization terminated successfully
+2025-11-30,sharpe,Mexico,0.09824046432583271,True,Optimization terminated successfully
+2025-11-30,sharpe,Saudi Arabia,0.09141054554083432,True,Optimization terminated successfully
+2025-11-30,minvar,S&P 500,1.266890131553043e-17,True,Optimization terminated successfully
+2025-11-30,minvar,US Agg,0.9099300873759794,True,Optimization terminated successfully
+2025-11-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2025-11-30,minvar,Korea,2.558716057103102e-18,True,Optimization terminated successfully
+2025-11-30,minvar,China,6.88467309565607e-19,True,Optimization terminated successfully
+2025-11-30,minvar,India,7.075618492116889e-18,True,Optimization terminated successfully
+2025-11-30,minvar,Brazil,0.0,True,Optimization terminated successfully
+2025-11-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2025-11-30,minvar,Mexico,7.78999153934566e-18,True,Optimization terminated successfully
+2025-11-30,minvar,Saudi Arabia,0.09006991262402055,True,Optimization terminated successfully
+2025-12-31,sharpe,S&P 500,0.45292141182054074,True,Optimization terminated successfully
+2025-12-31,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2025-12-31,sharpe,Taiwan,0.15569777353613354,True,Optimization terminated successfully
+2025-12-31,sharpe,Korea,9.55979976792121e-16,True,Optimization terminated successfully
+2025-12-31,sharpe,China,3.092173031238956e-16,True,Optimization terminated successfully
+2025-12-31,sharpe,India,0.28367489826356374,True,Optimization terminated successfully
+2025-12-31,sharpe,Brazil,2.965577662593858e-16,True,Optimization terminated successfully
+2025-12-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2025-12-31,sharpe,Mexico,0.10770591637976051,True,Optimization terminated successfully
+2025-12-31,sharpe,Saudi Arabia,8.699810718194047e-17,True,Optimization terminated successfully
+2025-12-31,minvar,S&P 500,1.4586803367694385e-17,True,Optimization terminated successfully
+2025-12-31,minvar,US Agg,0.9011767132008529,True,Optimization terminated successfully
+2025-12-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2025-12-31,minvar,Korea,2.6936498272971144e-17,True,Optimization terminated successfully
+2025-12-31,minvar,China,1.0348205033942926e-17,True,Optimization terminated successfully
+2025-12-31,minvar,India,0.0011858788424807276,True,Optimization terminated successfully
+2025-12-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2025-12-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2025-12-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2025-12-31,minvar,Saudi Arabia,0.09763740795666641,True,Optimization terminated successfully
+2026-01-31,sharpe,S&P 500,0.47786479947658755,True,Optimization terminated successfully
+2026-01-31,sharpe,US Agg,4.272895125365826e-16,True,Optimization terminated successfully
+2026-01-31,sharpe,Taiwan,0.169011361687222,True,Optimization terminated successfully
+2026-01-31,sharpe,Korea,4.732739565277912e-16,True,Optimization terminated successfully
+2026-01-31,sharpe,China,0.0,True,Optimization terminated successfully
+2026-01-31,sharpe,India,0.18173847756502115,True,Optimization terminated successfully
+2026-01-31,sharpe,Brazil,2.443255083327483e-16,True,Optimization terminated successfully
+2026-01-31,sharpe,South Africa,0.061644856113191475,True,Optimization terminated successfully
+2026-01-31,sharpe,Mexico,0.10974050515797673,True,Optimization terminated successfully
+2026-01-31,sharpe,Saudi Arabia,3.11612649464893e-17,True,Optimization terminated successfully
+2026-01-31,minvar,S&P 500,1.8342500623230187e-17,True,Optimization terminated successfully
+2026-01-31,minvar,US Agg,0.9012714301618227,True,Optimization terminated successfully
+2026-01-31,minvar,Taiwan,1.6457871669534176e-18,True,Optimization terminated successfully
+2026-01-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2026-01-31,minvar,China,0.0,True,Optimization terminated successfully
+2026-01-31,minvar,India,0.0013517624430495713,True,Optimization terminated successfully
+2026-01-31,minvar,Brazil,6.849957594883839e-18,True,Optimization terminated successfully
+2026-01-31,minvar,South Africa,2.729989339438922e-18,True,Optimization terminated successfully
+2026-01-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2026-01-31,minvar,Saudi Arabia,0.09737680739512787,True,Optimization terminated successfully
+2026-02-28,sharpe,S&P 500,0.4141943159601185,True,Optimization terminated successfully
+2026-02-28,sharpe,US Agg,2.836434489178484e-17,True,Optimization terminated successfully
+2026-02-28,sharpe,Taiwan,0.17018972998273693,True,Optimization terminated successfully
+2026-02-28,sharpe,Korea,6.122065795005185e-16,True,Optimization terminated successfully
+2026-02-28,sharpe,China,5.653854007181459e-17,True,Optimization terminated successfully
+2026-02-28,sharpe,India,0.11250938190018828,True,Optimization terminated successfully
+2026-02-28,sharpe,Brazil,2.1696491268566417e-16,True,Optimization terminated successfully
+2026-02-28,sharpe,South Africa,0.03530604613776744,True,Optimization terminated successfully
+2026-02-28,sharpe,Mexico,0.2194817148564455,True,Optimization terminated successfully
+2026-02-28,sharpe,Saudi Arabia,0.04831881116274251,True,Optimization terminated successfully
+2026-02-28,minvar,S&P 500,4.58106579314699e-18,True,Optimization terminated successfully
+2026-02-28,minvar,US Agg,0.9005070367183731,True,Optimization terminated successfully
+2026-02-28,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2026-02-28,minvar,Korea,0.0,True,Optimization terminated successfully
+2026-02-28,minvar,China,0.0,True,Optimization terminated successfully
+2026-02-28,minvar,India,0.012729540504901861,True,Optimization terminated successfully
+2026-02-28,minvar,Brazil,2.4804240839563254e-18,True,Optimization terminated successfully
+2026-02-28,minvar,South Africa,1.043597192596718e-17,True,Optimization terminated successfully
+2026-02-28,minvar,Mexico,8.880021431182408e-19,True,Optimization terminated successfully
+2026-02-28,minvar,Saudi Arabia,0.08676342277672511,True,Optimization terminated successfully
+2026-03-31,sharpe,S&P 500,0.27372470230152895,True,Optimization terminated successfully
+2026-03-31,sharpe,US Agg,8.519081947425665e-17,True,Optimization terminated successfully
+2026-03-31,sharpe,Taiwan,0.2677607550694286,True,Optimization terminated successfully
+2026-03-31,sharpe,Korea,4.567336027799236e-17,True,Optimization terminated successfully
+2026-03-31,sharpe,China,5.91405513294028e-17,True,Optimization terminated successfully
+2026-03-31,sharpe,India,0.08585387966058282,True,Optimization terminated successfully
+2026-03-31,sharpe,Brazil,1.3297561548001047e-16,True,Optimization terminated successfully
+2026-03-31,sharpe,South Africa,0.05855765515367693,True,Optimization terminated successfully
+2026-03-31,sharpe,Mexico,0.3141030078147822,True,Optimization terminated successfully
+2026-03-31,sharpe,Saudi Arabia,1.0742910206590606e-16,True,Optimization terminated successfully
+2026-03-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2026-03-31,minvar,US Agg,0.9028834360389267,True,Optimization terminated successfully
+2026-03-31,minvar,Taiwan,6.159023167416243e-18,True,Optimization terminated successfully
+2026-03-31,minvar,Korea,5.892419547267952e-18,True,Optimization terminated successfully
+2026-03-31,minvar,China,1.7854430586629997e-17,True,Optimization terminated successfully
+2026-03-31,minvar,India,0.007659939250035316,True,Optimization terminated successfully
+2026-03-31,minvar,Brazil,2.415772815262677e-18,True,Optimization terminated successfully
+2026-03-31,minvar,South Africa,2.2826106783013574e-18,True,Optimization terminated successfully
+2026-03-31,minvar,Mexico,1.0484430706564748e-17,True,Optimization terminated successfully
+2026-03-31,minvar,Saudi Arabia,0.08945662471103794,True,Optimization terminated successfully
+2026-04-30,sharpe,S&P 500,0.35153587735276287,True,Optimization terminated successfully
+2026-04-30,sharpe,US Agg,4.178093805367114e-18,True,Optimization terminated successfully
+2026-04-30,sharpe,Taiwan,0.2955269103284016,True,Optimization terminated successfully
+2026-04-30,sharpe,Korea,1.1861568798929547e-16,True,Optimization terminated successfully
+2026-04-30,sharpe,China,0.0,True,Optimization terminated successfully
+2026-04-30,sharpe,India,1.0851608426327599e-16,True,Optimization terminated successfully
+2026-04-30,sharpe,Brazil,0.07987366848960123,True,Optimization terminated successfully
+2026-04-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2026-04-30,sharpe,Mexico,0.2730635438292344,True,Optimization terminated successfully
+2026-04-30,sharpe,Saudi Arabia,0.0,True,Optimization terminated successfully
+2026-04-30,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2026-04-30,minvar,US Agg,0.9060249177657487,True,Optimization terminated successfully
+2026-04-30,minvar,Taiwan,7.80847363723065e-18,True,Optimization terminated successfully
+2026-04-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2026-04-30,minvar,China,7.80847363723065e-18,True,Optimization terminated successfully
+2026-04-30,minvar,India,2.247567197167099e-17,True,Optimization terminated successfully
+2026-04-30,minvar,Brazil,4.555867119774136e-18,True,Optimization terminated successfully
+2026-04-30,minvar,South Africa,4.772707554271237e-18,True,Optimization terminated successfully
+2026-04-30,minvar,Mexico,8.675835375219053e-18,True,Optimization terminated successfully
+2026-04-30,minvar,Saudi Arabia,0.09397508223425137,True,Optimization terminated successfully
+2026-05-31,sharpe,S&P 500,0.3117472521005122,True,Optimization terminated successfully
+2026-05-31,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2026-05-31,sharpe,Taiwan,0.37303183883284685,True,Optimization terminated successfully
+2026-05-31,sharpe,Korea,4.882903840999572e-17,True,Optimization terminated successfully
+2026-05-31,sharpe,China,0.0,True,Optimization terminated successfully
+2026-05-31,sharpe,India,1.5048952762275442e-17,True,Optimization terminated successfully
+2026-05-31,sharpe,Brazil,0.050991669889418195,True,Optimization terminated successfully
+2026-05-31,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2026-05-31,sharpe,Mexico,0.2642292391772231,True,Optimization terminated successfully
+2026-05-31,sharpe,Saudi Arabia,1.4571632604779533e-16,True,Optimization terminated successfully
+2026-05-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2026-05-31,minvar,US Agg,0.9020094347592716,True,Optimization terminated successfully
+2026-05-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2026-05-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2026-05-31,minvar,China,6.639871116772354e-18,True,Optimization terminated successfully
+2026-05-31,minvar,India,1.5020489801020468e-17,True,Optimization terminated successfully
+2026-05-31,minvar,Brazil,1.0976679806714372e-17,True,Optimization terminated successfully
+2026-05-31,minvar,South Africa,1.9973820660299444e-18,True,Optimization terminated successfully
+2026-05-31,minvar,Mexico,6.639871116772354e-18,True,Optimization terminated successfully
+2026-05-31,minvar,Saudi Arabia,0.09799056524072836,True,Optimization terminated successfully
+2026-06-30,sharpe,S&P 500,0.3320281831876273,True,Optimization terminated successfully
+2026-06-30,sharpe,US Agg,2.954570999100638e-17,True,Optimization terminated successfully
+2026-06-30,sharpe,Taiwan,0.48375017883335253,True,Optimization terminated successfully
+2026-06-30,sharpe,Korea,2.7273133937497944e-16,True,Optimization terminated successfully
+2026-06-30,sharpe,China,4.771314888536554e-19,True,Optimization terminated successfully
+2026-06-30,sharpe,India,3.177431685490881e-17,True,Optimization terminated successfully
+2026-06-30,sharpe,Brazil,0.0,True,Optimization terminated successfully
+2026-06-30,sharpe,South Africa,0.0,True,Optimization terminated successfully
+2026-06-30,sharpe,Mexico,0.18422163797902,True,Optimization terminated successfully
+2026-06-30,sharpe,Saudi Arabia,1.238732359808282e-16,True,Optimization terminated successfully
+2026-06-30,minvar,S&P 500,2.299276973217597e-17,True,Optimization terminated successfully
+2026-06-30,minvar,US Agg,0.9019922981968642,True,Optimization terminated successfully
+2026-06-30,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2026-06-30,minvar,Korea,0.0,True,Optimization terminated successfully
+2026-06-30,minvar,China,2.2559088863181767e-17,True,Optimization terminated successfully
+2026-06-30,minvar,India,4.193601170855276e-18,True,Optimization terminated successfully
+2026-06-30,minvar,Brazil,1.742407151460082e-18,True,Optimization terminated successfully
+2026-06-30,minvar,South Africa,0.0,True,Optimization terminated successfully
+2026-06-30,minvar,Mexico,6.512896710396301e-18,True,Optimization terminated successfully
+2026-06-30,minvar,Saudi Arabia,0.0980077018031359,True,Optimization terminated successfully
+2026-07-31,sharpe,S&P 500,0.19791834945842954,True,Optimization terminated successfully
+2026-07-31,sharpe,US Agg,6.467743818452249e-17,True,Optimization terminated successfully
+2026-07-31,sharpe,Taiwan,0.5863728911229761,True,Optimization terminated successfully
+2026-07-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2026-07-31,sharpe,China,0.0,True,Optimization terminated successfully
+2026-07-31,sharpe,India,1.0585697294605091e-16,True,Optimization terminated successfully
+2026-07-31,sharpe,Brazil,2.4288284044485325e-16,True,Optimization terminated successfully
+2026-07-31,sharpe,South Africa,2.702696549707792e-16,True,Optimization terminated successfully
+2026-07-31,sharpe,Mexico,0.21570875941859513,True,Optimization terminated successfully
+2026-07-31,sharpe,Saudi Arabia,2.8989325158154645e-17,True,Optimization terminated successfully
+2026-07-31,minvar,S&P 500,1.8661712619377714e-17,True,Optimization terminated successfully
+2026-07-31,minvar,US Agg,0.9004305392436105,True,Optimization terminated successfully
+2026-07-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2026-07-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2026-07-31,minvar,China,0.0,True,Optimization terminated successfully
+2026-07-31,minvar,India,4.783924811563259e-18,True,Optimization terminated successfully
+2026-07-31,minvar,Brazil,0.0,True,Optimization terminated successfully
+2026-07-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2026-07-31,minvar,Mexico,0.0,True,Optimization terminated successfully
+2026-07-31,minvar,Saudi Arabia,0.09956946075638963,True,Optimization terminated successfully
+2026-08-31,sharpe,S&P 500,0.13145157946384303,True,Optimization terminated successfully
+2026-08-31,sharpe,US Agg,0.0,True,Optimization terminated successfully
+2026-08-31,sharpe,Taiwan,0.6105774509933997,True,Optimization terminated successfully
+2026-08-31,sharpe,Korea,0.0,True,Optimization terminated successfully
+2026-08-31,sharpe,China,0.0,True,Optimization terminated successfully
+2026-08-31,sharpe,India,2.3997803190438484e-16,True,Optimization terminated successfully
+2026-08-31,sharpe,Brazil,4.038620152157982e-16,True,Optimization terminated successfully
+2026-08-31,sharpe,South Africa,3.2344390765612555e-16,True,Optimization terminated successfully
+2026-08-31,sharpe,Mexico,0.25797096954275767,True,Optimization terminated successfully
+2026-08-31,sharpe,Saudi Arabia,4.096760496704004e-17,True,Optimization terminated successfully
+2026-08-31,minvar,S&P 500,0.0,True,Optimization terminated successfully
+2026-08-31,minvar,US Agg,0.9005906213161745,True,Optimization terminated successfully
+2026-08-31,minvar,Taiwan,0.0,True,Optimization terminated successfully
+2026-08-31,minvar,Korea,0.0,True,Optimization terminated successfully
+2026-08-31,minvar,China,2.3952954056621787e-18,True,Optimization terminated successfully
+2026-08-31,minvar,India,1.0987932098024327e-17,True,Optimization terminated successfully
+2026-08-31,minvar,Brazil,1.1855293836012731e-17,True,Optimization terminated successfully
+2026-08-31,minvar,South Africa,0.0,True,Optimization terminated successfully
+2026-08-31,minvar,Mexico,8.681725522573832e-18,True,Optimization terminated successfully
+2026-08-31,minvar,Saudi Arabia,0.09940937868382553,True,Optimization terminated successfully
