@@ -13,7 +13,23 @@ python make_report.py        # report page in report/index.html
 ```
 
 Question 1 results go to `output/q1/<module>/` (each module's Excel workbook, figures and CSV files, as in the notebooks).
-Question 2 tables go to `output/tables/`, figures to `output/figures/`, and `output/results_summary.md` collects the key tables of both questions.
+Question 2 tables and figures go to `output/q2/`, and `output/results_summary.md` collects the key tables of both questions.
+
+## Data processing
+
+There are two data layers, one per question; every analysis file gets its data through one of them, so no module has its own reading or cleaning code.
+Both read the same raw files in `data/`, use the last observation of each calendar month and the same sample (2001-01 to 2026-08).
+
+- **Question 1 — `analysis/q1_data.py`.** `panel()` builds Module A's monthly panel once (it is cached) and Modules A, A3, A tests, B and C
+  all use it: month-end simple returns in decimals, EM ex-IT and EM ex-Taiwan & Korea backed out with last month's weights, log returns
+  ln(1 + r) for correlations, betas and tests, country weights, the 3-month T-bill, and the S&P 500 / U.S. Aggregate. `weekly_log()` gives
+  Module B's weekly (Friday) returns. Module C also reads a few extra series for its robustness sections (MSCI World, local-currency EM,
+  EM Small Cap) with the same `q1_data.load` reader.
+- **Question 2 — `analysis/q2_data_prep.py`.** Builds the monthly panel in log returns in % (100 · ln P<sub>t</sub>/P<sub>t−1</sub>), as the
+  methods page sets for equation (2), with EM ex-IT, the crisis flags (Fin, Geo, Current), ΔVIX, ΔDXY and the risk-free rate, plus the daily
+  EM and World returns for the event study. `q2_step3_crisis.py`, `q2_robustness.py` and `report_q2.py` all use it.
+- The two layers differ in units (Question 1 in decimal simple / log returns, Question 2 in log %) because each follows its own methods.
+  The only link between them is Post<sub>t</sub> in equation (2), which takes Module C's break date.
 
 ## Layout
 
@@ -23,13 +39,14 @@ Question 2 tables go to `output/tables/`, figures to `output/figures/`, and `out
 | `analysis/q1_module_a.py` | **Module A** — EM's composition (IT share, country weights), IT share of EM risk, performance by block, link to the U.S. and U.S. tech (rolling, by block, trend regression), country leave-one-out and Taiwan & Korea (T0–T7, Fig 1–7) |
 | `analysis/q1_module_a3.py` | **Module A3** — mean-variance optimizer: S&P 500 + U.S. Aggregate baseline, MSCI EM / EM ex-IT fixed at 0–100% in rolling 5- and 10-year windows, optimizer-chosen EM countries (T0–T6, Fig 1–4) |
 | `analysis/q1_module_a_tests.py` | **Module A tests** — block-bootstrap tests of Module A's latest-block findings (T1–T8, Holm) and of A3 (10% EM ex-IT vs EM; stability of the country choice) |
-| `analysis/q1_module_b.py` | **Module B** — A3 optimizer extended to EM ex-Taiwan & Korea, EM Small Cap net and an out-of-sample country sleeve; five-year blocks; 60-month out-of-sample backtests (free and fixed 10%); full-sample DCC-GARCH (model choice by diagnostics and BIC, bivariate DCC with a 0.998 persistence cap, weekly and monthly); rolling-correlation gaps |
+| `analysis/q1_module_b.py` | **Module B** — out-of-sample tests with A3's optimizer (MSCI EM and EM ex-IT; 60- and 120-month estimation windows; free, fixed 10% and fixed 20% EM; max Sharpe and min variance; by five-year block), joint S&P 500 + U.S. Aggregate + eight-country portfolio out of sample from 2020-04; GARCH models with `arch` (diagnostics, then BIC), weekly and monthly DCC with a 0.998 persistence cap and cap sensitivity; 36/60-month rolling-correlation gaps. A3's in-sample results are not repeated. |
 | `analysis/q1_module_c.py` | **Module C** — Bai–Perron break search (robust sup-LM, simulated critical values, Monte Carlo validation), full Bai–Perron table, α/β split, date robustness, primary tests H1–H3 with Holm, with/without the break, correlation bootstrap, robustness, Sharpe-gain tests (GRS and bootstrap), tech share, EM Small Cap, China |
-| `analysis/config.py` | Question 2 settings: sample, crisis rules, crisis list |
-| `analysis/data_prep.py` | Question 2 data: calendar-date alignment, log returns in %, EM ex-IT, Fin / Geo / Current, ΔVIX, ΔDXY |
-| `analysis/step3_crisis.py` | Question 2 — equation (2) with and without X and with and without Post (Post = after Module C's break); EM ex-IT. Module E event study: crisis selection (each crisis checked against the crisis rule), daily event windows (−5 to +20 days), crisis vs non-crisis placebo test |
-| `analysis/robustness.py` | Question 2 robustness — local-currency EM, current period from 2022 |
-| `analysis/q2_report.py` | Question 2 regression table in all versions (formatted) and the two-panel event figure |
+| `analysis/config.py` | Project paths (both questions); Question 2 settings: sample, crisis rules, crisis list, placebo settings |
+| `analysis/utils.py` | Shared helpers: saving tables and figures, chart style, Markdown tables, Newey–West OLS and linear combinations |
+| `analysis/q2_data_prep.py` | Question 2 data: calendar-date alignment, log returns in %, EM ex-IT, Fin / Geo / Current, ΔVIX, ΔDXY |
+| `analysis/q2_step3_crisis.py` | Question 2 — equation (2) with and without X and with and without Post (Post = after Module C's break); EM ex-IT. Module E event study: crisis selection (each crisis checked against the crisis rule), daily event windows (−5 to +20 days), crisis vs non-crisis placebo test |
+| `analysis/q2_robustness.py` | Question 2 robustness — local-currency EM, current period from 2022 |
+| `analysis/report_q2.py` | For the report page only: the Question 2 regression table in all versions (formatted) and the two-panel event figure |
 | `run_all.py` | Runs Question 1, then Question 2, and writes `output/results_summary.md` |
 | `make_report.py` | Builds the report page `report/index.html` |
 

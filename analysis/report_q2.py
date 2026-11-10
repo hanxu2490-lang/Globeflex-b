@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Question 2 report outputs (Step 3 results gathered for the write-up).
+"""Question 2 outputs prepared for the report page (make_report.py builds the page itself).
 
 Table 1: equation (2) in every version (EM, EM ex-IT, EM local currency; with / without X;
          Current from 2018 and from 2022), coefficients with Newey-West t-stats.
@@ -10,7 +10,7 @@ import pandas as pd
 
 from . import config as C
 from . import utils as U
-from .step3_crisis import crisis_regression
+from .q2_step3_crisis import crisis_regression
 
 ROWS = [("Fin", "γ1 Fin"), ("Geo", "γ2 Geo"), ("Fin_x_Current", "γ3 Fin × Current"),
         ("Geo_x_Current", "γ4 Geo × Current"), ("Post", "θ Post"), ("dVIX", "φ ΔVIX"),

@@ -6,4 +6,4 @@ xlrd>=2.0          # (2.0.2)  GPR .xls file
 statsmodels>=0.14  # (0.15.0)
 scipy>=1.11        # (1.18.1)
 matplotlib>=3.8    # (3.11.2)
-numba>=0.59        # (0.68.1)  optional: speeds up Module B's GARCH likelihoods; plain Python is used without it
+arch>=7.0          # (8.0.0)   Module B's GARCH models

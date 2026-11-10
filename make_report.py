@@ -11,13 +11,13 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parent
-T = ROOT / "output" / "tables"
-F = ROOT / "output" / "figures"
+T = ROOT / "output" / "q2"
+F = ROOT / "output" / "q2"
 OUT = ROOT / "report"
 Q1 = ROOT / "output" / "q1"
 FIGS = {"q2_event_paths": F / "q2_event_paths.png",
         "a_fig1_tech_share": Q1 / "module_A" / "fig1_tech_share.png",
-        "b_weekly_dcc": Q1 / "module_B" / "B_06_Weekly_DCC_FullSample.png",
+        "b_weekly_dcc": Q1 / "module_B" / "B_07_Weekly_DCC.png",
         "c_fig4_step_vs_blocks": Q1 / "module_C" / "figC4_step_vs_five_year_blocks_v2.png",
         "a3_fig2_sharpe_gain_5y": Q1 / "module_A3" / "fig2_sharpe_gain_5y.png"}
 
@@ -83,10 +83,23 @@ def q1_sharpe_table():
 
 
 def q1_oos_table():
-    d = pd.read_excel(Q1 / "module_B" / "B_Module_Results.xlsx", sheet_name="OOS_Performance", index_col=0)
-    rows = [[i, int(r["OOS months"]), num(r["Annualized return %"]), num(r["Annualized volatility %"]), num(r["Sharpe"]),
-             num(r["Max drawdown %"])] for i, r in d.iterrows()]
-    return table(["Portfolio (60-month lookback)", "Months", "Return %/yr", "Volatility %/yr", "Sharpe", "Max drawdown %"], rows, "num")
+    f = Q1 / "module_B" / "B_Module_Results.xlsx"
+    d = pd.read_excel(f, sheet_name="OOS_All_Periods")
+    d = d[d["Block"] == "All available OOS"]
+    order = [f"{e} | {k} | {o}" for e, ks in [("Benchmark", [None]), ("MSCI EM", ["Free", "Fixed 10%", "Fixed 20%"]),
+                                               ("EM ex-IT", ["Free", "Fixed 10%", "Fixed 20%"])] for k in ks for o in ["sharpe", "minvar"]]
+    order = [s.replace(" | None", "") for s in order]
+    cells = lambda r: [int(r["N months"]), num(r["Annual Return %"]), num(r["Annual Volatility %"]), num(r["Sharpe"]),
+                       num(r["Max Drawdown %"])]
+    rows = []
+    for lb in (60, 120):
+        g = d[d["Lookback"] == lb].set_index("Strategy")
+        rows.append(f"{lb}-month estimation window, first OOS month {g['First month'].min():%Y-%m}")
+        rows += [[s.replace("sharpe", "max Sharpe").replace("minvar", "min variance"), *cells(g.loc[s])] for s in order]
+    c = pd.read_excel(f, sheet_name="OOS_Country_Joint").set_index("Objective")
+    rows.append("S&amp;P 500 + U.S. Aggregate + eight countries, 60-month window, 2020-04 to 2026-08")
+    rows += [[f"Countries | {'max Sharpe' if o == 'sharpe' else 'min variance'}", *cells(c.loc[o])] for o in ["sharpe", "minvar"]]
+    return table(["Portfolio", "Months", "Return %/yr", "Volatility %/yr", "Sharpe", "Max drawdown %"], rows, "num")
 
 
 def q2_table1(panels, headers):
@@ -316,9 +329,11 @@ against 0.02–0.03 in every earlier block; removing China raises it by 0.10 (Ho
 <h2><span class="q">Question 1 · Module B</span>Time-varying correlations (DCC-GARCH)</h2>
 {figure("b_weekly_dcc", "Module B. Full-sample weekly DCC-GARCH correlations (log returns; EM Small Cap price index).")}
 <div class="col">
-<p>Each series gets the GARCH-type model that passes all three residual diagnostics with the lowest BIC; the bivariate DCC has its
-persistence capped at 0.998. The weekly conditional correlation of EM with the U.S. averages 0.60 in 2003, 0.70 in 2020, 0.55 in 2022 and
-0.58 in 2026; with U.S. tech it stays between 0.55 and 0.61 in the same years.</p>
+<p>Each series gets an AR(2)-GARCH-t or AR(2)-GJR-GARCH-t model (weekly U.S. IT also tries EGARCH, skewed-t and ARCH(10) versions),
+chosen by the lowest BIC among the models that pass all three residual diagnostics; the pairwise DCC has its persistence capped at 0.998.
+Weekly U.S. IT is the one series where no model passes all three diagnostics, and EM Small Cap vs U.S. IT ends at the cap
+(a + b = 0.998), so that pair is boundary-sensitive. The weekly conditional correlation of EM with the U.S. averages 0.62 in 2003,
+0.68 in 2020, 0.57 in 2022 and 0.60 in 2026; with U.S. tech it averages 0.58, 0.65, 0.49 and 0.53 in the same years.</p>
 </div>
 </section>
 
@@ -352,7 +367,8 @@ conditional on the break date. H1: EM ex-IT; H2: spread EM IT − EM ex-IT; H3: 
 <div class="col">
 <p>A U.S. investor holds the S&amp;P 500 and the U.S. Aggregate. The optimizer adds MSCI EM or EM ex-IT at fixed shares of 0–100%
 (Module A3, rolling 5- and 10-year windows ending each August), lets eight EM countries enter freely (A3, from 2015-04), and runs the same
-optimizer out of sample with a 60-month lookback (Module B). Module C tests whether the gains are beyond chance.</p>
+optimizer out of sample (Module B): each month, weights from the previous 60 or 120 months are applied to the next month, with EM free,
+fixed at 10% or 20%, or the eight countries chosen jointly. Module C tests whether the in-sample gains are beyond chance.</p>
 </div>
 {figure("a3_fig2_sharpe_gain_5y", "Module A3, Fig 2. Sharpe gain over the stock-bond portfolio for each EM share, 5-year windows by window end.")}
 <div class="col">
@@ -361,14 +377,17 @@ optimizer out of sample with a 60-month lookback (Module B). Module C tests whet
 adds 0.38.</li>
 <li><b>Since then the optimizer gives EM 0%</b> in every 5-year window from 2007-09…2012-08 onward, including EM ex-IT today. A forced 10% costs
 little: −0.024 for EM and −0.046 for EM ex-IT in 2021–26.</li>
-<li><b>Out of sample</b>, adding broad EM does not reliably improve the stock-bond portfolio.</li>
+<li><b>Out of sample</b> the result depends on the window. With 60 months, a fixed 10% or 20% MSCI EM raises the Sharpe ratio a little
+(max Sharpe 0.59 → 0.62 and 0.61; min variance 0.37 → 0.42 and 0.43). With 120 months it lowers the max-Sharpe portfolio (0.70 → 0.60 and 0.59).
+Free-weight EM is at or below the stock-bond portfolio in every case. The country portfolio (2020-04 to 2026-08) has a Sharpe ratio of 0.41
+(max Sharpe) and −0.31 (min variance). All optimizations converged.</li>
 <li><b>Countries.</b> The optimizer's country gains are not distinguishable from chance in any window, and the choice is unstable across
 bootstrap samples (Module A tests, O2).</li>
 </ul>
 </div>
 <div class="col"><h3>Is the Sharpe gain beyond chance? A's five-year blocks (Module C)</h3></div>
 {q1_sharpe_table()}
-<div class="col"><h3>Out-of-sample backtest (Module B)</h3></div>
+<div class="col"><h3>Out-of-sample tests (Module B)</h3></div>
 {q1_oos_table()}
 </section>
 
@@ -453,7 +472,7 @@ and normal months alike. <b>φ ΔDXY</b> = −0.43 (t = −3.9).</li>
 
 <footer>
 Produced from <span class="mono">python run_all.py</span> and <span class="mono">python make_report.py</span> in the project repository.
-Question 1 results are in <span class="mono">output/q1/</span> (one folder per module); Question 2 tables are in <span class="mono">output/tables/</span>.
+Question 1 results are in <span class="mono">output/q1/</span> (one folder per module); Question 2 tables and figures are in <span class="mono">output/q2/</span>.
 </footer>
 </div>
 </body>

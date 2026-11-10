@@ -1,4 +1,4 @@
-"""Settings for the Question 2 code (crisis regression and event study).
+"""Project paths (used by both questions) and the Question 2 settings (crisis regression and event study).
 
 Question 1 settings live at the top of each module (q1_data.py, q1_module_*.py), as in the teammates' notebooks.
 """
@@ -7,8 +7,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 OUT_DIR = ROOT / "output"
-TABLE_DIR = OUT_DIR / "tables"
-FIG_DIR = OUT_DIR / "figures"
+TABLE_DIR = OUT_DIR / "q2"               # Question 2 tables and figures
+FIG_DIR = OUT_DIR / "q2"
 
 # ---------------------------------------------------------------- sample
 SAMPLE_START = "2001-01"        # first monthly return (Jan 2001)

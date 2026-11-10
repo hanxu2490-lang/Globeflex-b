@@ -19,7 +19,7 @@ import pandas as pd
 
 from . import config as C
 from . import utils as U
-from .data_prep import LABELS
+from .q2_data_prep import LABELS
 
 COEF_NAMES = {"Fin": "g1 Fin", "Geo": "g2 Geo", "Fin_x_Current": "g3 Fin x Current",
               "Geo_x_Current": "g4 Geo x Current", "Post": "theta Post", "dVIX": "phi dVIX",
