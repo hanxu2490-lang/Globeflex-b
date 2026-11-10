@@ -301,7 +301,7 @@ def build():
   <nav class="toc" aria-label="Sections">
     <a href="#answers">Answers</a><a href="#data">Data</a><a href="#modA">Module A</a><a href="#modB">Module B</a>
     <a href="#modC">Module C</a><a href="#portfolio">Optimizer</a><a href="#selection">Crisis selection</a>
-    <a href="#events">Event study</a><a href="#placebo">Placebo test</a><a href="#regression">Crisis regression</a>
+    <a href="#events">Event study</a><a href="#placebo">Placebo test</a><a href="#regression">Crisis regression</a><a href="#diagnostics">Diagnostics</a>
   </nav>
 </header>
 
@@ -495,6 +495,36 @@ and normal months alike. <b>φ ΔDXY</b> = −0.43 (t = −3.9).</li>
 <li><b>Without Post</b>, γ<sub>1</sub> and γ<sub>2</sub> turn positive (0.54 and 0.85) and γ<sub>4</sub> is −0.93 (t = −0.86); none is significant.</li>
 <li><b>Robustness.</b> In local currency γ<sub>4</sub> is 0.38 (t = 0.32) and the dollar coefficient is 0.01 (t = 0.09). With Current from
 2022, γ<sub>4</sub> is 1.12 (t = 1.27).</li>
+</ul>
+<h3 id="diagnostics">Estimation diagnostics (Module C, section 4b)</h3>
+<p>Module C re-estimates all 14 columns on the same data; they match the table above exactly. It then adds the joint test of the
+crisis terms and the usual residual diagnostics, computed on the OLS residuals of each column.</p>
+</div>
+{q2_diagnostics_table()}
+<p class="note">p-values except Durbin–Watson, VIF and BIC. Wald test with Newey–West covariance. Ljung–Box and ARCH LM with 12 lags;
+Breusch–Pagan on the regressors; RESET with squared fitted values; largest variance inflation factor of the regressors.</p>
+<div class="col">
+<ul class="tight">
+<li><b>Joint test.</b> The four crisis terms are jointly insignificant with Post (Wald p = 0.99 in columns 1–4). Without Post, p is 0.39
+and 0.69 for EM, 0.041 for EM ex-IT without controls and 0.22 with them.</li>
+<li><b>Residuals, main column (1).</b> Durbin–Watson 2.00; Ljung–Box p = 0.069; ARCH p = 0.046; Breusch–Pagan p = 0.084; Jarque–Bera
+p = 0.027; RESET p = 0.52; largest VIF 3.4. With ΔVIX and ΔDXY (column 2), Breusch–Pagan p = 0.006 and Ljung–Box p = 0.042.</li>
+<li><b>Across the 14 columns.</b> Durbin–Watson is 1.95–2.12 and the largest VIF is at most 3.4. Breusch–Pagan rejects at 5% in 10 columns,
+ARCH in 7, Jarque–Bera in 6 and Ljung–Box in 4; RESET rejects only in column 10 (local currency with X, p &lt; 0.001). All t-statistics use
+Newey–West standard errors, which allow for heteroskedasticity and autocorrelation.</li>
+</ul>
+<h3>Is Oct 2009 the break inside this equation?</h3>
+</div>
+{q2_break_table()}
+<p class="note">Intercept break with the crisis and control terms fixed, robust sup-LM with Module C's simulated critical value
+(simulated size 6.9% and 5.8% under the two error processes). Exploratory 90% CI.</p>
+<div class="col">
+<ul class="tight">
+<li><b>The intercept breaks inside equation (2)</b> (sup LM 10.8 against 8.64 for EM), with the peak at 2010-09 (2010-08 with X). The 90% CI,
+2008-03…2013-03, contains 2009-10, and the SSR is within 1% of its minimum from 2007-09 to 2012-12.</li>
+<li><b>The Post date does not change the result.</b> With Post at 2007-10, 2009-10, 2010-09 or 2012-12, γ<sub>4</sub> is between −0.51 and 0.52
+for EM and between −0.90 and 0.29 for EM ex-IT, with |t| ≤ 1.03 in all 16 specifications; θ Post is significant in all of them (|t| ≥ 2.86).
+Adding a Current main effect leaves γ<sub>4</sub> at −0.02 (t = −0.02).</li>
 </ul>
 </div>
 </section>
