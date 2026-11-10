@@ -355,13 +355,14 @@ against 0.02–0.03 in every earlier block; removing China raises it by 0.10 (Ho
 
 <section id="modB">
 <h2><span class="q">Question 1 · Module B</span>Time-varying correlations (DCC-GARCH)</h2>
-{figure("b_weekly_dcc", "Module B. Full-sample weekly DCC-GARCH correlations (log returns; EM Small Cap price index).")}
+{figure("b_weekly_dcc", "Module B. Weekly DCC-GARCH correlations, weeks ending January 2001 to August 2026 (log returns; EM Small Cap price index).")}
 <div class="col">
 <p>Each series gets an AR(2)-GARCH-t or AR(2)-GJR-GARCH-t model (weekly U.S. IT also tries EGARCH, skewed-t and ARCH(10) versions),
 chosen by the lowest BIC among the models that pass all three residual diagnostics; the pairwise DCC has its persistence capped at 0.998.
-Weekly U.S. IT is the one series where no model passes all three diagnostics, and EM Small Cap vs U.S. IT ends at the cap
-(a + b = 0.998), so that pair is boundary-sensitive. The weekly conditional correlation of EM with the U.S. averages 0.62 in 2003,
-0.68 in 2020, 0.57 in 2022 and 0.60 in 2026; with U.S. tech it averages 0.58, 0.65, 0.49 and 0.53 in the same years.</p>
+Weekly data cover the weeks ending January 2001 to August 2026. Every series has a model that passes all three diagnostics (weekly U.S. IT:
+AR(2)-GJR-GARCH with skewed-t errors), and no pair is near the cap: a + b is 0.64–0.93, the same at caps of 0.995, 0.998 and 0.999.
+The weekly conditional correlation of EM with the U.S. averages 0.62 in 2003, 0.68 in 2020, 0.57 in 2022 and 0.61 in 2026; with U.S. tech
+it stays between 0.56 and 0.62 in every year.</p>
 </div>
 </section>
 
